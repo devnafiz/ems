@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Student\RegistrationController;
 use App\Http\Controllers\Student\StudentRegistrationController;
+use App\Http\Controllers\Admin\ApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,8 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
 
     Route::post('/users/{user}/permissions', [UserController::class, 'givePermission'])->name('users.permissions');
     Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])->name('users.permissions.revoke');
+
+    Route::resource('/all-application',ApplicationController::class);
 });
 
 Route::middleware(['auth', 'role:student'])->name('student.')->prefix('student')->group(function(){

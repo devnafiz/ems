@@ -24,5 +24,9 @@ class Student extends Model
         return $this->hasMany('App\Models\StudentCertificate', 'student_id');
     }
 
+    public function student(){
+        return $this->belongsTo(User::class,'id','student_id');
+    }
+
     use HasFactory;
 }
