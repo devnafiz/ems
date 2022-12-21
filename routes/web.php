@@ -58,6 +58,7 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])->name('users.permissions.revoke');
 
     Route::resource('/all-application',ApplicationController::class);
+    Route::get('/application/details/{id}',[ApplicationController::class,'pdf'])->name('application.pdf');
 });
 
 Route::middleware(['auth', 'role:student'])->name('student.')->prefix('student')->group(function(){

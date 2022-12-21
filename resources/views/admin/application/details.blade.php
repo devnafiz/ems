@@ -1,7 +1,8 @@
 <x-admin-layout>
     <div class="container px-6 mx-auto grid">
-        <div class="flex justify-end p-2">
+        <div class="flex justify-end p-2 space-x-2">
                     <a href="{{ route('admin.all-application.index') }}" class="px-4 py-2 bg-green-700 text-white hover:bg-green-500 rounded-md">All Application</a>
+                     <a href="{{ route('admin.application.pdf',$application_details->id) }}" class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md">PDF</a>
         </div>
         
         <div class="p-2">
@@ -69,11 +70,11 @@
                     </tr>
                     <tr class="bg-white border table-row-gray-200">
                         <th scope="row" class="mt-1 p-2">Subject</th>
-                        <td>{{ $application_details->subject ?? 'N/A' }}</td>
+                        <td>{{ $subject ?? 'N/A' }}</td>
                     </tr>
                     <tr class="bg-white border table-row-gray-200">
                         <th scope="row" class="mt-1 p-2">Programme</th>
-                        <td>{{ $application_details->programme ?? 'N/A' }}</td>
+                        <td>{{ $programme ?? 'N/A' }}</td>
                     </tr>
                     <tr class="bg-white border table-row-gray-200">
                         <th scope="row" class="mt-1 p-2">Applicant Name</th>
