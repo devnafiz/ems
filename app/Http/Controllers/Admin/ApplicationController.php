@@ -103,6 +103,9 @@ class ApplicationController extends Controller
       $programme=DB::table('programme')->where('programme_id', $item->programme)->first()->programme_name;
         //dd($data['programme']);
       $subject=DB::table('subject')->where('subject_id', $item->subject)->first()->subject_name;
+      $user=DB::table('users')->where('id', $id)->first();
+      //dd($user);
+
 
         $now = new \DateTime();
        
@@ -117,7 +120,7 @@ class ApplicationController extends Controller
         );
 
         //dd($extra);
-         $pdf = PDF::loadView('admin.pdf'.'.apllication_details', ['items' => $item, 'extra' => $extra])->setPaper('a4', 'landscape');
+         $pdf = PDF::loadView('admin.pdf'.'.apllication_details', ['items' => $item, 'extra' => $extra,'users'=>$user])->setPaper('a4', 'landscape');
 
          //dd($pdf);
          return $pdf->download($extra['current_date_time'] . '_' . $extra['module_name'] . '.pdf');

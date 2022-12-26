@@ -32,8 +32,8 @@ Route::get('/agency', function () {
     return view('agency.register');
 });
 
-Route::get('/dashboard', function () {
-    return view('admin.index');
+Route::get('/dashboard',[IndexController::class, 'index'], function () {
+   // return view('admin.index');
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function(){
@@ -67,5 +67,7 @@ Route::middleware(['auth', 'role:student'])->name('student.')->prefix('student')
     Route::get('/getSubject/{id}', [StudentRegistrationController::class, 'getSubject'])->name('getSubject');
    
 });
+
+
 
 require __DIR__.'/auth.php';

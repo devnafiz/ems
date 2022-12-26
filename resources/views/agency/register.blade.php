@@ -11,9 +11,10 @@
             @csrf
 
             <!-- Name -->
+           
             <div>
 
-                <x-input id="name" class="block mt-1 w-full" type="hidden" value="agency" name="name" :value="old('name')" />
+                <x-input id="name" class="block mt-1 w-full" type="hidden" value="agency" name="name" />
             </div>
 
             <!-- Agency Name -->

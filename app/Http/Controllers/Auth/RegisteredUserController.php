@@ -23,6 +23,15 @@ class RegisteredUserController extends Controller
         return view('auth.register');
     }
 
+    /* angency register */
+
+
+    public function angencyRegister(){
+
+
+        return view('agency.register');
+    }
+
     /**
      * Handle an incoming registration request.
      *
@@ -51,6 +60,25 @@ class RegisteredUserController extends Controller
             'mobile_number' => $request->mobile_number,
             'password' => Hash::make($request->password),
         ]);
+        if($user->name=='student'){
+            //dd($user->name);
+          $license_type ='ST1';
+         
+           
+          $generate_id = generate_number($user->id, 4, $license_type);
+                   
+             //dd($generate_id);        
+           User::find($user->id)->update(['generated_id' => $generate_id]);
+        }else{
+            $license_type ='AG1';
+         
+           
+          $generate_id = generate_number($user->id, 4, $license_type);
+                   
+             //dd($generate_id);        
+           User::find($user->id)->update(['generated_id' => $generate_id]);
+        }
+        //dd($user);
 
         event(new Registered($user));
 

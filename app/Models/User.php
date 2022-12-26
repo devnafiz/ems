@@ -23,6 +23,7 @@ class User extends Authenticatable
         'student_name',
         'agency_name',
         'email',
+        'generated_id',
         'mobile_number',
         'password',
     ];
