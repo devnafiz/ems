@@ -65,6 +65,7 @@ Route::middleware(['auth', 'role:student'])->name('student.')->prefix('student')
     //Route::resource('/registration', RegistrationController::class);
     Route::resource('/registration', StudentRegistrationController::class);
     Route::get('/getSubject/{id}', [StudentRegistrationController::class, 'getSubject'])->name('getSubject');
+    Route::get('/profile/{id}',[StudentRegistrationController::class,'getProfile'])->name('get.student.profile');
    
 });
 

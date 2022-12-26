@@ -269,4 +269,15 @@ class StudentRegistrationController extends Controller
         ]);
     }
 
+    public function getProfile($id){
+
+       $user=User::findOrfail($id);
+
+       return view('student.profile',compact('user'));
+
+
+       }
+
+    
+
 }
