@@ -56,13 +56,13 @@
                                         <div class="flex space-x-2">
                                              <a href="{{route('admin.agency.details',$val->id)}}" class="px-4 py-2 bg-green-500 hover:bg-blue-700 text-white rounded-md"><i></i>View</a>
                                             <a href="#" class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"><i></i>Edit</a>
-                                             <a href="#" class="px-4 py-2 bg-red-500 hover:bg-blue-700 text-white rounded-md"><i></i>Delete</a>
+                                             <a href="{{route('admin.agency.delete',$val->id)}}" class="px-4 py-2 bg-red-500 hover:bg-blue-700 text-white rounded-md"><i></i>Delete</a>
 
                                              @if($val->status == 1)
-                                             <a href="#" class="btn btn-danger" title="Inactive Now"><i class="fa fa-arrow-down"></i>Inactive </a>
-                                                 @else
-                                             <a href="#" class="btn btn-success" title="Active Now"><i class="fa fa-arrow-up"></i>Active </a>
-                                                 @endif
+                                             <a href="{{route('admin.agency.inactive',$val->id)}}" class="btn btn-danger" title="Inactive Now"><i class="fa fa-arrow-down"></i>Inactive </a>
+                                            @else
+                                             <a href="{{route('admin.agency.active',$val->id)}}" class="btn btn-success" title="Active Now"><i class="fa fa-arrow-up"></i>Active </a>
+                                            @endif
                                         
                                             
                                         </div>

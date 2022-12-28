@@ -64,6 +64,11 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::get('/agency/details/{id}',[IndexController::class,'AgencyView'])->name('agency.details');
     Route::get('/agency/edit/{id}',[IndexController::class,'EditAgency'])->name('agency.edit');
     Route::post('/agency/update/{id}',[IndexController::class,'updateAgency'])->name('agency.update');
+    Route::get('/agency/inactive/{id}', [IndexController::class, 'AgencyInactive'])->name('agency.inactive');
+
+    Route::get('/agency/active/{id}', [IndexController::class, 'AgencyActive'])->name('agency.active');
+    Route::get('/agency/delete/{id}', [IndexController::class, 'AgencyDelete'])->name('agency.delete');
+
 });
 
 Route::middleware(['auth', 'role:student'])->name('student.')->prefix('student')->group(function(){

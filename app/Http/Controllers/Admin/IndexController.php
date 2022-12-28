@@ -69,6 +69,54 @@ class IndexController extends Controller
     }
 
 
+    public function AgencyActive(Request $request,$id){
+
+
+        User::findOrFail($id)->update(['status' => 1]);
+        $notification = array(
+            'message' => 'Agency Active',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
+     public function AgencyInactive(Request $request,$id){
+
+
+      User::findOrFail($id)->update(['status' => 0]);
+        $notification = array(
+            'message' => 'Agency Inactive',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function AgencyDelete($id){
+
+        $user = User::findOrFail($id);
+        unlink(public_path('uploads/profile/'.$user->pro_image));
+        User::findOrFail($id)->delete();
+
+        $profile = Profile::where('user_id',$id)->first();
+        if($profile){
+            $profile->delete();
+        }
+         
+
+        
+
+        $notification = array(
+            'message' => 'Agency Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+    }
+
+
 
 
     public function profileEditValidation()

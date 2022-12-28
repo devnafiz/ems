@@ -294,12 +294,12 @@
          <div class="mt-4">
             <x-label for="contact_person" :value="__('Contact Person')" />
 
-            <x-input id="contact_person" class="block mt-1 w-full" type="text" name="contact_person" value="{{ $edit_data['profile']['contact_person'] }}"  />
+            <x-input id="contact_person" class="block mt-1 w-full" type="text" name="contact_person" value="{{ $edit_data['profile']['contact_person'] ?? 'N/A' }}"  />
         </div>
         <div class="mt-4">
             <x-label for="address" :value="__('Address')" />
 
-            <textarea id="address" class="block mt-1 w-full" type="text" name="address"   />{{ $edit_data['profile']->address }}</textarea>
+            <textarea id="address" class="block mt-1 w-full" type="text" name="address"   />{{ $edit_data['profile']->address ?? 'N/A'}}</textarea>
         </div>
 
         <!-- Photo -->
