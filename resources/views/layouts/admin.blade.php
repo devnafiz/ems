@@ -267,7 +267,7 @@
               </x-admin-link>
             </li>
             <li class="relative px-6 py-1">
-              <x-admin-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')" 
+              <x-admin-link :href="route('admin.all.agency')" :active="request()->routeIs('admin.all.agency')" 
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
               >
                 <svg
@@ -576,6 +576,12 @@
           }
       });
     </script>
+    <style type="text/css">
+      
+      body{
+        font-size: 16px;
+      }
+    </style>
     
   </body>
 </html>

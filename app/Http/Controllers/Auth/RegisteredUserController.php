@@ -76,7 +76,7 @@ class RegisteredUserController extends Controller
           $generate_id = generate_number($user->id, 4, $license_type);
                    
              //dd($generate_id);        
-           User::find($user->id)->update(['generated_id' => $generate_id]);
+           User::find($user->id)->update(['generated_id' => $generate_id,'status'=>'0']);
         }
         //dd($user);
 

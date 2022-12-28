@@ -26,6 +26,7 @@ class User extends Authenticatable
         'generated_id',
         'mobile_number',
         'password',
+        'pro_image',
     ];
 
     /**
@@ -46,4 +47,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function profile(){
+
+        return $this->belongsTo(Profile::class,'id','user_id');
+    }
 }

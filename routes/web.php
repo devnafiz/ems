@@ -59,6 +59,11 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
 
     Route::resource('/all-application',ApplicationController::class);
     Route::get('/application/details/{id}',[ApplicationController::class,'pdf'])->name('application.pdf');
+
+    Route::get('/all-agency',[IndexController::class,'allAgency'])->name('all.agency');
+    Route::get('/agency/details/{id}',[IndexController::class,'AgencyView'])->name('agency.details');
+    Route::get('/agency/edit/{id}',[IndexController::class,'EditAgency'])->name('agency.edit');
+    Route::post('/agency/update/{id}',[IndexController::class,'updateAgency'])->name('agency.update');
 });
 
 Route::middleware(['auth', 'role:student'])->name('student.')->prefix('student')->group(function(){
