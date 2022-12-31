@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Student\RegistrationController;
 use App\Http\Controllers\Student\StudentRegistrationController;
 use App\Http\Controllers\Admin\ApplicationController;
+use App\Http\Controllers\Agency\AgencyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,8 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::get('/agency/active/{id}', [IndexController::class, 'AgencyActive'])->name('agency.active');
     Route::get('/agency/delete/{id}', [IndexController::class, 'AgencyDelete'])->name('agency.delete');
 
+    
+
 });
 
 Route::middleware(['auth', 'role:student'])->name('student.')->prefix('student')->group(function(){
@@ -77,6 +80,17 @@ Route::middleware(['auth', 'role:student'])->name('student.')->prefix('student')
     Route::get('/getSubject/{id}', [StudentRegistrationController::class, 'getSubject'])->name('getSubject');
     Route::get('/profile/{id}',[StudentRegistrationController::class,'getProfile'])->name('get.student.profile');
    
+});
+
+//agency
+
+Route::middleware(['auth','role:agency'])->name('agency.')->prefix('agency')->group(function(){
+
+    Route::get('/profile/view/{id}',[AgencyController::class,'viewAgency'])->name('get.agency.profile');
+    Route::get('/profile/{id}',[AgencyController::class,'EditAgency'])->name('edit.agency.profile');
+
+    Route::get('/all-application',[AgencyController::class,'AgencyAllApplication'])->name('all.apllication');
+
 });
 
 

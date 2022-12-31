@@ -9,6 +9,29 @@
             <h1 class="display-6 text-center">Details Information</h1>
         </div>
 
+       <div class="row">
+          <div class="p-4 pt-6 col-6">
+            <div class="p-3 pt-6">
+                <div class="form-group">
+                    <label><h3 class="py-2">Application Status:</h3></label> 
+                    <select class="selectpicker form-control border-0 mb-1 px-4 py-4 rounded shadow">
+                                <option value="Ultrasound Knee Right">Step One</option>
+                                <option value="Ultrasound Knee Left">Step Two</option>
+                                <option value="MRI Forearm/Elbow Right">Step Three</option>
+                                <option value="MRI Knee Right">Step Four</option>
+                                <option value="MRI Knee Left">Step Five</option>
+                               
+                                
+                    </select>
+                    
+                </div>
+                <button type="submit" class="btn btn-info float-right my-3">Update Status</button>
+           </div>
+            
+
+          </div>
+       </div>      
+
     <div class="row">
           <div class="p-4 pt-6 col-6">
              <div class="p-3 pt-6">

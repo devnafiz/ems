@@ -1,42 +1,122 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Agency;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\StudentRegister;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
+//use Barryvdh\DomPDF\Facade as PDF;
 
-class IndexController extends Controller
+use DB;
+Use Auth;
+
+class AgencyController extends Controller
 {
-    public function index(){
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
 
-        $data['students']=User::where('name','student')->count();
-        //dd($data['students']);
-        return view('admin.index',$data);
+        $data['applications'] =StudentRegister::where('reference_id',)->paginate(10);
+         //dd($data['applications']);
+        return view('admin.application.index',$data);
     }
 
-    public function allAgency(){
-
-         $data['all_data']=User::where('name','agency')->orderByDesc('id')->paginate(10);
-
-         return view('admin.agency.index',$data);
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
-    public function AgencyView($id){
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+
+    public function viewAgency($id){
+
+
 
         $data['agency_data']=User::where('id',$id)->first();
-        return view('admin.agency.show',$data);
+        return view('agency.profile',$data);
     }
+
 
     public function EditAgency($id){
 
-        $data['edit_data']=User::with('profile')->where('id',$id)->first();
+       $data['edit_data']=User::with('profile')->where('id',$id)->first();
         //dd($data['edit_data']);
-        return view('admin.agency.edit',$data);
+        return view('agency.profile_edit',$data);
+
     }
 
+
     public function updateAgency(Request $request,$id){
+
+
+
          $user_data = $this->UserDataValidation();
          $profile_data = $this->profileEditValidation();
 
@@ -67,63 +147,6 @@ class IndexController extends Controller
             ->withFlashSuccess('Successfully updated');   
 
     }
-
-
-    public function AgencyActive(Request $request,$id){
-
-
-        User::findOrFail($id)->update(['status' => 1]);
-        $notification = array(
-            'message' => 'Agency Active',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->back()->with($notification);
-    }
-
-     public function AgencyInactive(Request $request,$id){
-
-
-      User::findOrFail($id)->update(['status' => 0]);
-        $notification = array(
-            'message' => 'Agency Inactive',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->back()->with($notification);
-    }
-
-    public function AgencyDelete($id){
-
-        $user = User::findOrFail($id);
-        unlink(public_path('uploads/profile/'.$user->pro_image));
-        User::findOrFail($id)->delete();
-
-        $profile = Profile::where('user_id',$id)->first();
-        if($profile){
-            $profile->delete();
-        }
-         
-
-        
-
-        $notification = array(
-            'message' => 'Agency Deleted Successfully',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->back()->with($notification);
-
-    }
-
-    public function getProfile(Request $request,$id){
-
-        
-
-    }
-
-
-
 
     public function profileEditValidation()
     {

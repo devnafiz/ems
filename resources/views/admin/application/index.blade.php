@@ -19,6 +19,11 @@
                                 <th scope="col" class="py-3 px-6">
                                     Name
                                 </th>
+
+                                <th scope="col" class="py-3 px-6">
+                                    Reference Id
+                                </th>
+
                                  <th scope="col" class="py-3 px-6">
                                     Nationality
                                 </th>
@@ -37,7 +42,9 @@
                                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ $ad->student->student_name }}
                                     </th>
-                                    <td class="">{{$ad->nationality}}</td>
+                                     <td class="">{{$ad->reference_id ?? 'N/A'}}</td>
+                                     <td class="">{{$ad->nationality}}</td>
+                                   
                                     <td class="">{{$ad->passport_number}}</td>
                                     <td class="py-4 px-6">
                                         <div class="flex space-x-2">
