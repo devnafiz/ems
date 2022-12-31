@@ -89,7 +89,8 @@ Route::middleware(['auth','role:agency'])->name('agency.')->prefix('agency')->gr
     Route::get('/profile/view/{id}',[AgencyController::class,'viewAgency'])->name('get.agency.profile');
     Route::get('/profile/{id}',[AgencyController::class,'EditAgency'])->name('edit.agency.profile');
 
-    Route::get('/all-application',[AgencyController::class,'AgencyAllApplication'])->name('all.apllication');
+    Route::get('/all-application',[AgencyController::class,'index'])->name('all.apllication');
+    Route::get('/application/details/{id}',[AgencyController::class,'show'])->name('application.show');
 
 });
 

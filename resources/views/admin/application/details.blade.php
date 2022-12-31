@@ -41,7 +41,7 @@
 
                     <tr>
                         <th scope="row" class="mt-1 p-2">Student Name</th>
-                        <td>{{ $application_details->student->student_name }}</td>
+                        <td>{{ $application_details->user->student_name }}</td>
                     </tr>
                     <tr>
                         <th scope="row" class="mt-1 p-2">Mobile Number</th>

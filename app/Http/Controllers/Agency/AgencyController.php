@@ -14,6 +14,8 @@ use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use DB;
 Use Auth;
 
+
+
 class AgencyController extends Controller
 {
     /**
@@ -24,9 +26,19 @@ class AgencyController extends Controller
     public function index()
     {
 
-        $data['applications'] =StudentRegister::where('reference_id',)->paginate(10);
+        $reference_id = Auth::user()->generated_id;
+        if($reference_id){
+
+              $data['applications'] =StudentRegister::where('reference_id',$reference_id)->paginate(10);
+              return view('agency.application.index',$data);
+        }else{
+
+            return redirect()->back()->withErrors('You have not any data');
+        }
+
+       
          //dd($data['applications']);
-        return view('admin.application.index',$data);
+        
     }
 
     /**
@@ -58,7 +70,10 @@ class AgencyController extends Controller
      */
     public function show($id)
     {
-        //
+        $students = StudentRegister::with('user')->where('student_id', $id)->first();
+        //dd($students);
+
+        return view('agency.application.show', compact('students'));
     }
 
     /**

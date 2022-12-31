@@ -70,7 +70,7 @@ class StudentRegister extends Model
 
     use HasFactory;
 
-     public function student(){
+     public function user(){
         return $this->belongsTo(User::class,'student_id','id');
     }
 }

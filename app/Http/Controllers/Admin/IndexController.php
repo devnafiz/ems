@@ -12,6 +12,7 @@ class IndexController extends Controller
     public function index(){
 
         $data['students']=User::where('name','student')->count();
+        $data['agencys']=User::where('name','agency')->count();
         //dd($data['students']);
         return view('admin.index',$data);
     }
@@ -118,7 +119,7 @@ class IndexController extends Controller
 
     public function getProfile(Request $request,$id){
 
-        
+
 
     }
 

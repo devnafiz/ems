@@ -116,7 +116,7 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    6389
+                   {{$agencys}}
                   </p>
                 </div>
               </div>
