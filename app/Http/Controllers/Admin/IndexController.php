@@ -125,6 +125,17 @@ class IndexController extends Controller
 
 
 
+    //all student 
+
+    public  function allStudents(Request $request){
+
+        $data['all_data']=User::where('name','student')->orderByDesc('id')->paginate(10);
+
+         return view('admin.student.index',$data);
+    }
+
+
+
 
     public function profileEditValidation()
     {

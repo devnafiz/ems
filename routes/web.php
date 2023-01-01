@@ -9,6 +9,7 @@ use App\Http\Controllers\Student\RegistrationController;
 use App\Http\Controllers\Student\StudentRegistrationController;
 use App\Http\Controllers\Admin\ApplicationController;
 use App\Http\Controllers\Agency\AgencyController;
+use App\Http\Controllers\Admin\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,13 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
 
     Route::get('/agency/active/{id}', [IndexController::class, 'AgencyActive'])->name('agency.active');
     Route::get('/agency/delete/{id}', [IndexController::class, 'AgencyDelete'])->name('agency.delete');
+
+    //all Student
+
+   // Route::get('/all-student',[IndexController::class,'allStudents'])->name('all.students');
+
+     Route::resource('/student',StudentController::class);
+
 
     
 
