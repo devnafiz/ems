@@ -18,7 +18,7 @@
                               <div class="row g-0">
                                 <div class="col-md-4 gradient-custom text-center text-white"
                                   style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                                    <a href="{{route('admin.student.edit',$all_data->id)}}" class="btn btn-primary my-2"><i class="far fa-edit ">Edit profile</i></a>    
+                                    <!-- <a href="{{route('admin.student.edit',$all_data->id)}}" class="btn btn-primary my-2"><i class="far fa-edit ">Edit profile</i></a>     -->
                                 
                                   @if($all_data->pro_image)
                                     <img src="{{asset('uploads/profile/'.$all_data->pro_image)}}"

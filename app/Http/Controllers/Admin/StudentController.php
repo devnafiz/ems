@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use DB;
 use Auth;
+use App\Models\Profile;
 
 class StudentController extends Controller
 {
@@ -78,7 +79,45 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
+         $user_data = $this->UserDataValidation();
+         $profile_data = $this->profileEditValidation();
+         //dd($profile_data);
+
+          if (!empty($request->file('pro_image'))) {
+            $documents = uniqid() . '.' . $request->pro_image->getClientOriginalExtension();
+            $request->pro_image->move(public_path('uploads/profile/'), $documents);
+            $user_data['pro_image'] = $documents;
+        }
+
+        //dd($user_data);
+
+          $User_deatils= User::where('id', $id)->first();
+          $User_deatils->update($user_data);
+
+          
+         //dd($profile_data['user_id']);
+          if (!empty($profile_data['user_id'])) {
+                     $profile =Profile::where('user_id', $profile_data['user_id'])->first();
+                     if(empty($profile)){
+                        // unset($profile_data['user_id']);
+                     $newOwner = Profile::create($profile_data);
+
+
+                     }else{
+                        Profile::where('user_id', $profile_data['user_id'])->update($profile_data);
+                     }
+
+                   
+                } else {
+                    unset($profile_data['user_id']);
+                    $newOwner = Profile::create($profile_data);
+                    // Creating owners and also inserting the owners id to join table with license
+                   
+                }
+
+              return redirect()
+            ->back()
+            ->withFlashSuccess('Successfully updated');   
 
     }
 
@@ -90,7 +129,44 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $user = User::findOrFail($id);
+        unlink(public_path('uploads/profile/'.$user->pro_image));
+        User::findOrFail($id)->delete();
+
+        $profile = Profile::where('user_id',$id)->first();
+        if($profile){
+            $profile->delete();
+        }
+        $notification = array(
+            'message' => 'Product Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function StudentInactive(Request $request,$id){
+         User::findOrFail($id)->update(['status' => 0]);
+        $notification = array(
+            'message' => 'Student Inactive',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+
+    }
+
+    public function StudentActive(Request $request,$id){
+
+       User::findOrFail($id)->update(['status' => 1]);
+        $notification = array(
+            'message' => 'Student Active',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
     }
 
     public function profileEditValidation()
@@ -109,7 +185,6 @@ class StudentController extends Controller
      public function UserDataValidation()
     {
         $user_data = request()->validate([
-            'agency_name' => 'nullable|string',
             'student_name' => 'nullable|string',
             'email' => 'required|string',
             'mobile_number' => 'required|string',

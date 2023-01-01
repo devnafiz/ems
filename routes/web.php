@@ -76,6 +76,9 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
    // Route::get('/all-student',[IndexController::class,'allStudents'])->name('all.students');
 
      Route::resource('/student',StudentController::class);
+     Route::get('/student/inactive/{id}', [StudentController::class, 'StudentInactive'])->name('student.inactive');
+
+    Route::get('/student/active/{id}', [StudentController::class, 'StudentActive'])->name('student.active');
 
 
     
