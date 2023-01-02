@@ -10,6 +10,7 @@ use App\Http\Controllers\Student\StudentRegistrationController;
 use App\Http\Controllers\Admin\ApplicationController;
 use App\Http\Controllers\Agency\AgencyController;
 use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\ApplicationStatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,6 +80,11 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
      Route::get('/student/inactive/{id}', [StudentController::class, 'StudentInactive'])->name('student.inactive');
 
     Route::get('/student/active/{id}', [StudentController::class, 'StudentActive'])->name('student.active');
+
+    // Application Status
+     Route::resource('/application/status',ApplicationStatusController::class);
+
+
 
 
     
