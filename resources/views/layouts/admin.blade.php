@@ -42,12 +42,13 @@
 
     <script src="{{ asset('assets/js/charts-lines.js') }}" defer></script>
     <script src="{{ asset('assets/js/charts-pie.js') }}" defer></script>
+     <script src="{{ asset('js/admin.js') }}" ></script>
 
     <!-- <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
     <script src="{{ asset('js/app.js') }}" defer></script> -->
 
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script src="{{ asset('js/app.js') }}" defer></script>
   </head>
   <body class="font-sans antialiased bg-gray-100 dark:bg-gray-900">
     <!-- npm run watch -->

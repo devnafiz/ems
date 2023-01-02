@@ -56,6 +56,7 @@ class StudentRegister extends Model
         'study',
         'passport_number_2',
         'visa_pass',
+        'app_status',
         'health_declaration',
         'health_declaration_file',
         'passport_scanned',
@@ -72,5 +73,9 @@ class StudentRegister extends Model
 
      public function user(){
         return $this->belongsTo(User::class,'student_id','id');
+    }
+
+    public function appstatus(){
+        return $this->belongsTo(ApplicationStatus::class,'app_status','id');
     }
 }

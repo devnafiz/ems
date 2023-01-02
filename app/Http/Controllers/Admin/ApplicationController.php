@@ -9,6 +9,7 @@ use Barryvdh\DomPDF\Facade\Pdf as PDF;
 //use Barryvdh\DomPDF\Facade as PDF;
 
 use DB;
+use App\Models\ApplicationStatus;
 
 class ApplicationController extends Controller
 {
@@ -59,6 +60,8 @@ class ApplicationController extends Controller
         $data['subject']=DB::table('subject')->where('subject_id',$data['application_details']->subject)->first()->subject_name;
 
         //dd($data['subject']);
+         $data['status'] =ApplicationStatus::where('status',1)->get();
+         //dd( $data['status']);
         return view('admin.application.details',$data);
     }
 
@@ -126,5 +129,13 @@ class ApplicationController extends Controller
          return $pdf->download($extra['current_date_time'] . '_' . $extra['module_name'] . '.pdf');
 
 
+    }
+
+    public function UpdateStatus(Request $request,$id){
+   //dd($request->name);
+       $data=StudentRegister::findOrFail($id)->update(['app_status'=>$request->name]);
+
+       return response()->json(['success'=>'Successfully update status']);
+       
     }
 }

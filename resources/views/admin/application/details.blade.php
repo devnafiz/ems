@@ -12,23 +12,36 @@
        <div class="row">
           <div class="p-4 pt-6 col-6">
             <div class="p-3 pt-6">
-                <div class="form-group">
+                <form >
+                    @csrf
+                    <input type="hidden" name="id" value="{{$application_details->id}}" id="id">
+                    <div class="form-group">
                     <label><h3 class="py-2">Application Status:</h3></label> 
-                    <select class="selectpicker form-control border-0 mb-1 px-4 py-4 rounded shadow">
-                                <option value="Ultrasound Knee Right">Step One</option>
-                                <option value="Ultrasound Knee Left">Step Two</option>
-                                <option value="MRI Forearm/Elbow Right">Step Three</option>
-                                <option value="MRI Knee Right">Step Four</option>
-                                <option value="MRI Knee Left">Step Five</option>
+                    <select class="selectpicker form-control border-0 mb-1 px-4 py-4 rounded shadow" name="status" id="status">
+                                <option value="">Select Status</option>
+                                @foreach($status as $k =>$val)
+                                <option value="{{$val->id}}">{{$val->name}}</option>
+                                @endforeach
+                                
                                
                                 
                     </select>
                     
                 </div>
-                <button type="submit" class="btn btn-info float-right my-3">Update Status</button>
+                <button  class="btn btn-info float-right my-3 " id="btn-submit">Update Status</button>
+                    
+                </form>
+                
            </div>
             
 
+          </div>
+          <div class="p-4 col-6">
+             <div class="p-3 pt-6">
+                 <p>Application Status :&nbsp<span class="badge badge-info px-4">{{$application_details->appstatus->name}}</span></p>
+                 
+             </div>
+              
           </div>
        </div>      
 
@@ -327,4 +340,39 @@
   </div>  
     
   </div>
+
+  <script type="text/javascript">
+     $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+   
+
+         $("#btn-submit").click(function(e){
+        
+
+        e.preventDefault();
+ 
+        var name = $("#status").val();
+        var id   =$('#id').val();
+         //alert(id);
+ 
+        $.ajax({
+           type:'POST',
+           url:"{{url('admin/application/status/update/')}}/"+id,
+           data:{
+            "_token": "{{ csrf_token() }}",
+            name:name, id:id},
+           success:function(data){
+              alert(data.success);
+           }
+        });
+ 
+    });
+
+  
+      
+     
+  </script>
 </x-admin-layout>

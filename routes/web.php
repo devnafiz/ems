@@ -62,6 +62,7 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
 
     Route::resource('/all-application',ApplicationController::class);
     Route::get('/application/details/{id}',[ApplicationController::class,'pdf'])->name('application.pdf');
+    Route::post('/application/status/update/{id}',[ApplicationController::class,'UpdateStatus'])->name('application.status.update');
 
     Route::get('/all-agency',[IndexController::class,'allAgency'])->name('all.agency');
     Route::get('/agency/details/{id}',[IndexController::class,'AgencyView'])->name('agency.details');
@@ -79,10 +80,13 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
      Route::resource('/student',StudentController::class);
      Route::get('/student/inactive/{id}', [StudentController::class, 'StudentInactive'])->name('student.inactive');
 
-    Route::get('/student/active/{id}', [StudentController::class, 'StudentActive'])->name('student.active');
+     Route::get('/student/active/{id}', [StudentController::class, 'StudentActive'])->name('student.active');
 
     // Application Status
      Route::resource('/application/status',ApplicationStatusController::class);
+     Route::get('/status/inactive/{id}', [ApplicationStatusController::class, 'StatusInactive'])->name('status.inactive');
+
+     Route::get('/status/active/{id}', [ApplicationStatusController::class, 'StatusActive'])->name('status.active');
 
 
 
