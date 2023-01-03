@@ -10,7 +10,7 @@
         class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
       >
 
-      <form method="POST" action="{{ route('agency.profile.update',$edit_data->id) }}" enctype="multipart/form-data">
+      <form method="POST" action="{{ route('student.profile.update',$edit_data->id) }}" enctype="multipart/form-data">
         @csrf
         <!-- Full Name -->
         <input type="hidden" name="user_id" value="{{$edit_data->id}}">
@@ -18,7 +18,7 @@
         <div>
             <x-label for="student_name" :value="__('Full Name')" />
 
-            <x-input id="student_name" class="block mt-1 w-full" type="text" name="agency_name" value="{{ $edit_data->agency_name }}" required autofocus />
+            <x-input id="student_name" class="block mt-1 w-full" type="text" name="student_name" value="{{ $edit_data->student_name }}" required autofocus />
         </div>
 
         <!-- Email Address -->
@@ -291,11 +291,7 @@
                                     </select>
         </div>
 
-         <div class="mt-4">
-            <x-label for="contact_person" :value="__('Contact Person')" />
-
-            <x-input id="contact_person" class="block mt-1 w-full" type="text" name="contact_person" value="{{ $edit_data['profile']['contact_person'] ?? 'N/A' }}"  />
-        </div>
+        
         <div class="mt-4">
             <x-label for="address" :value="__('Address')" />
 

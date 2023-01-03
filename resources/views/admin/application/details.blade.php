@@ -38,7 +38,7 @@
           </div>
           <div class="p-4 col-6">
              <div class="p-3 pt-6">
-                 <p>Application Status :&nbsp<span class="badge badge-info px-4">{{$application_details->appstatus->name}}</span></p>
+                 <p>Application Status :&nbsp<span class="badge badge-info px-4">{{$application_details->appstatus->name ?? 'N/A'}}</span></p>
                  
              </div>
               

@@ -130,10 +130,11 @@ class AgencyController extends Controller
 
     public function updateAgency(Request $request,$id){
 
-
+         //dd(ok);
 
          $user_data = $this->UserDataValidation();
          $profile_data = $this->profileEditValidation();
+
 
           if (!empty($request->file('pro_image'))) {
             $documents = uniqid() . '.' . $request->pro_image->getClientOriginalExtension();
@@ -149,7 +150,14 @@ class AgencyController extends Controller
 
         // dd($profile_data['user_id']);
           if (!empty($profile_data['user_id'])) {
-                    Profile::where('user_id', $profile_data['user_id'])->update($profile_data);
+                     $profile = Profile::where('user_id', $profile_data['user_id'])->first();
+                     if($profile){
+                         Profile::where('user_id', $profile_data['user_id'])->update($profile_data);
+                     }else{
+
+                          $newOwner = Profile::create($profile_data);
+                     }  
+                   
                 } else {
                     unset($profile_data['user_id']);
                     $newOwner = Profile::create($profile_data);
@@ -181,7 +189,6 @@ class AgencyController extends Controller
     {
         $user_data = request()->validate([
             'agency_name' => 'nullable|string',
-            'student_name' => 'nullable|string',
             'email' => 'required|string',
             'mobile_number' => 'required|string',
             'pro_image' => 'nullable',

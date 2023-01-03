@@ -100,6 +100,8 @@ Route::middleware(['auth', 'role:student'])->name('student.')->prefix('student')
     Route::resource('/registration', StudentRegistrationController::class);
     Route::get('/getSubject/{id}', [StudentRegistrationController::class, 'getSubject'])->name('getSubject');
     Route::get('/profile/{id}',[StudentRegistrationController::class,'getProfile'])->name('get.student.profile');
+    Route::get('/profile/edit/{id}',[StudentRegistrationController::class,'editProfile'])->name('edit.student.profile');
+    Route::post('/profile/update/{id}',[StudentRegistrationController::class,'UpdateProfile'])->name('profile.update');
    
 });
 
@@ -109,6 +111,7 @@ Route::middleware(['auth','role:agency'])->name('agency.')->prefix('agency')->gr
 
     Route::get('/profile/view/{id}',[AgencyController::class,'viewAgency'])->name('get.agency.profile');
     Route::get('/profile/{id}',[AgencyController::class,'EditAgency'])->name('edit.agency.profile');
+    Route::post('/profile/update/{id}',[AgencyController::class,'updateAgency'])->name('profile.update');
 
     Route::get('/all-application',[AgencyController::class,'index'])->name('all.apllication');
     Route::get('/application/details/{id}',[AgencyController::class,'show'])->name('application.show');

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
+
 class RegisteredUserController extends Controller
 {
     /**
@@ -62,28 +63,33 @@ class RegisteredUserController extends Controller
         ]);
         if($user->name=='student'){
             //dd($user->name);
-          $license_type ='ST1';
-         
-           
-          $generate_id = generate_number($user->id, 4, $license_type);
-                   
-             //dd($generate_id);        
-           User::find($user->id)->update(['generated_id' => $generate_id]);
-        }else{
-            $license_type ='AG1';
-         
-           
-          $generate_id = generate_number($user->id, 4, $license_type);
-                   
-             //dd($generate_id);        
-           User::find($user->id)->update(['generated_id' => $generate_id,'status'=>'0']);
-        }
-        //dd($user);
+            $license_type ='ST1';
+            $generate_id = generate_number($user->id, 4, $license_type);
+            User::find($user->id)->update(['generated_id' => $generate_id]);
+            $user->assignRole('student');
 
+        }elseif($user->name=='agency'){
+
+            $license_type ='AG1';
+            $generate_id = generate_number($user->id, 4, $license_type);
+            //dd($generate_id);        
+             User::find($user->id)->update(['generated_id' => $generate_id,'status'=>'0']);
+            $user->assignRole('agency');
+
+        }else{
+
+           $license_type ='IN1';
+           $generate_id = generate_number($user->id, 4, $license_type);
+           User::find($user->id)->update(['generated_id' => $generate_id,'status'=>'0']);
+           $user->assignRole('institute');
+
+        }
+      
         event(new Registered($user));
 
-        Auth::login($user);
+       // Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        //return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::LOGIN);
     }
 }
