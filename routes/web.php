@@ -35,6 +35,11 @@ Route::get('/agency', function () {
     return view('agency.register');
 });
 
+Route::get('/institute',function(){
+  
+  return view('institute.register');
+});
+
 Route::get('/dashboard',[IndexController::class, 'index'], function () {
    // return view('admin.index');
 })->middleware(['auth'])->name('dashboard');
@@ -115,6 +120,13 @@ Route::middleware(['auth','role:agency'])->name('agency.')->prefix('agency')->gr
 
     Route::get('/all-application',[AgencyController::class,'index'])->name('all.apllication');
     Route::get('/application/details/{id}',[AgencyController::class,'show'])->name('application.show');
+
+});
+
+//Institute
+
+Route::middleware(['auth','role:institute'])->name('institute.')->prefix('institute')->group(function(){
+     Route::get('/profile/view/{id}',[AgencyController::class,'viewAgency'])->name('get.profile');
 
 });
 
