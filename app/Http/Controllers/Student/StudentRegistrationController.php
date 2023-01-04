@@ -59,6 +59,8 @@ class StudentRegistrationController extends Controller
         //dd($studentRegistration);
         
         $student->nationality = $studentRegistration['nationality'];
+        $student->reference_id = $studentRegistration['reference_id'];
+
         $student->passport_number = $studentRegistration['passport_number'];
         $student->date_of_birth = $studentRegistration['date_of_birth'];
         $student->passport_issue_date = $studentRegistration['passport_issue_date'];
@@ -218,6 +220,7 @@ class StudentRegistrationController extends Controller
     {
         return request()->validate([
             'nationality' => 'nullable|string|max:255',
+            'reference_id'=>'nullable|string|max:255',
             'passport_number' => 'nullable|string|max:255',
             'date_of_birth' => 'nullable|string|max:255',
             'passport_issue_date' => 'nullable|string|max:255',

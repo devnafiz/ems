@@ -128,7 +128,7 @@
           @role('institute')
 
             <li class="relative px-6 py-1">
-              <x-admin-link :href="route('agency.get.agency.profile',Auth::user()->id)" :active="request()->routeIs('agency.get.agency.profile',Auth::user()->id)"
+              <x-admin-link :href="route('institute.get.profile',Auth::user()->id)" :active="request()->routeIs('institute.get.profile',Auth::user()->id)"
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
               > 
                 <svg

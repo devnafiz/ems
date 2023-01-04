@@ -12,6 +12,8 @@ use App\Http\Controllers\Agency\AgencyController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\ApplicationStatusController;
 
+use App\Http\Controllers\Institute\InstituteController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -126,7 +128,9 @@ Route::middleware(['auth','role:agency'])->name('agency.')->prefix('agency')->gr
 //Institute
 
 Route::middleware(['auth','role:institute'])->name('institute.')->prefix('institute')->group(function(){
-     Route::get('/profile/view/{id}',[AgencyController::class,'viewAgency'])->name('get.profile');
+     Route::get('/profile/view/{id}',[InstituteController::class,'viewProfile'])->name('get.profile');
+     Route::get('/profile/{id}',[InstituteController::class,'editProfile'])->name('edit.profile');
+     Route::post('/profile/update/{id}',[InstituteController::class,'UpdateProfile'])->name('profile.update');
 
 });
 
