@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\ApplicationStatusController;
 
 use App\Http\Controllers\Institute\InstituteController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,9 @@ Route::get('/institute',function(){
   
   return view('institute.register');
 });
+
+Route::get('/student/status',[HomeController::class,'searchstatus'])->name('status.check');
+Route::get('/student/info',[HomeController::class,'studentInfo'])->name('status.info');
 
 Route::get('/dashboard',[IndexController::class, 'index'], function () {
    // return view('admin.index');
@@ -131,6 +135,8 @@ Route::middleware(['auth','role:institute'])->name('institute.')->prefix('instit
      Route::get('/profile/view/{id}',[InstituteController::class,'viewProfile'])->name('get.profile');
      Route::get('/profile/{id}',[InstituteController::class,'editProfile'])->name('edit.profile');
      Route::post('/profile/update/{id}',[InstituteController::class,'UpdateProfile'])->name('profile.update');
+
+      Route::resource('/all-application', InstituteController::class);
 
 });
 

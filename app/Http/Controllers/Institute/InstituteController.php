@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Profile;
 use DB;
 use Auth;
+use App\Models\StudentRegister;
 
 class InstituteController extends Controller
 {
@@ -18,7 +19,15 @@ class InstituteController extends Controller
      */
     public function index()
     {
-        //
+       $reference_id = Auth::user()->generated_id;
+        if($reference_id){
+
+              $data['applications'] =StudentRegister::where('reference_id',$reference_id)->paginate(10);
+              return view('institute.index',$data);
+        }else{
+
+            return redirect()->back()->withErrors('You have not any data');
+        }
     }
 
     /**
@@ -50,7 +59,11 @@ class InstituteController extends Controller
      */
     public function show($id)
     {
-        //
+        //dd($id);
+        $students = StudentRegister::with('user')->where('id', $id)->first();
+        //dd($students);
+
+        return view('institute.show', compact('students'));
     }
 
     /**
