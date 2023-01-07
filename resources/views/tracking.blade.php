@@ -94,10 +94,11 @@
                         <div class="card-header py-4">
                             <h3>Check Application Status</h3>
                         </div>
-                        <div class="card-body">
+                        <form method="GET" action="{{route('student.application')}}">
+                            <div class="card-body">
                             <div class="col-sm-12">
                               <label for="lastName" class="form-label">Student Id<span style="color: red;">*</span></label>
-                              <input type="text" class="form-control" id="lastName" placeholder="Enter Student Id" value="" required>
+                              <input type="text" class="form-control" id="student_id" name="student_id" placeholder="Enter Student Id" value="" required>
                               <div class="invalid-feedback">
                                 Valid last name is required.
                               </div>
@@ -114,6 +115,9 @@
                         <button class="w-100 btn btn-primary btn-lg" type="submit">Track My Application</button>
                             
                         </div>
+                            
+                        </form>
+                        
                         
                     </div>
                    

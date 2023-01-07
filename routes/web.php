@@ -44,6 +44,7 @@ Route::get('/institute',function(){
 });
 
 Route::get('/student/status',[HomeController::class,'searchstatus'])->name('status.check');
+Route::get('/student/application/info',[HomeController::class,'searchApplication'])->name('student.application');
 Route::get('/student/info',[HomeController::class,'studentInfo'])->name('status.info');
 
 Route::get('/dashboard',[IndexController::class, 'index'], function () {
