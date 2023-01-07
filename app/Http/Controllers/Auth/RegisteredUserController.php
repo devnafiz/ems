@@ -49,7 +49,7 @@ class RegisteredUserController extends Controller
             'agency_name' => ['nullable', 'string', 'max:255'],
             'institute_name' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'mobile_number' => ['required', 'numeric','max:15'],
+            'mobile_number' => ['required', 'numeric'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
         

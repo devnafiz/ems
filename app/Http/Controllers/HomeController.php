@@ -14,16 +14,22 @@ class HomeController extends Controller
     }
 
     public function searchApplication(Request $request){
-    $search_data =$this->searchValidation();
+       $search_data =$this->searchValidation();
 
-      dd($search_data);
+       $searchResult = StudentRegister::with('user')
+                      ->join('users', 'users.id', '=', 'student_registers.student_id');
+
+
+       $searchResult  =$searchResult->where('generated_id',$search_data['student_id'])->where('passport_number',$search_data['passport_number'])->first(); 
+         //dd($searchResult);
+       return view('tracking_info',compact('searchResult'));
 
     }
 
 
-    public function studentInfo(Request $request){
-        return view('tracking_info');
-    }
+    // public function studentInfo(Request $request){
+    //     return view('tracking_info');
+    // }
 
 
 

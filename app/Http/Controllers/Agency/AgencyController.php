@@ -70,7 +70,7 @@ class AgencyController extends Controller
      */
     public function show($id)
     {
-        $students = StudentRegister::with('user')->where('student_id', $id)->first();
+        $students = StudentRegister::with('user')->where('id', $id)->first();
         //dd($students);
 
         return view('agency.application.show', compact('students'));

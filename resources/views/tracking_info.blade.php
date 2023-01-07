@@ -89,6 +89,7 @@
           </div>
          <div class="container">
             <div class="row">
+                @if($searchResult)
                 <div class="col-10 offset-md-1">
                     <div class="card" style="margin-top: 100px;">
                         <div class="card-header py-4">
@@ -201,21 +202,21 @@
                                             <table style="border:#c30e2e solid 2px;">
                                                 <tbody><tr style="border-bottom: #c30e2e solid 1px;">
                                                     <td style="padding: 10px; vertical-align: middle; padding-top: 17px; width: 10%; text-align: center; min-width:62px;">
-                                                        <img style="width:80%;" src="https://visa.educationmalaysia.gov.my/skin/frontend/emgs/default/images/green.png">
+                                                        <img style="width:80%;" src="{{asset('uploads/status/green.png')}}">
                                                     </td>
                                                     <td style="padding:5px; vertical-align:middle; padding-left:10px; padding-top:17px; font-size:14px;">
                                                         Your application is progressing accordingly.                </td>
                                                 </tr>
                                                 <tr style="border-bottom: #c30e2e solid 1px;">
                                                     <td style="padding: 10px; vertical-align: middle; width: 10%; text-align: center;min-width:62px;">
-                                                        <img style="width:80%;" src="https://visa.educationmalaysia.gov.my/skin/frontend/emgs/default/images/amber.png">
+                                                        <img style="width:80%;" src="{{asset('uploads/status/amber.png')}}">
                                                     </td>
                                                     <td style="padding:5px; vertical-align:middle;padding-left:10px; font-size:14px;">
                                                         Your application is pending additional documents or correction by your institution.                </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="padding: 10px; vertical-align: middle; width: 10%; text-align: center;min-width:62px;">
-                                                        <img style="width:80%;" src="https://visa.educationmalaysia.gov.my/skin/frontend/emgs/default/images/red.png">
+                                                        <img style="width:80%;" src="{{asset('uploads/status/red.png')}}">
                                                     </td>
                                                     <td style="padding:5px; vertical-align:middle;padding-left:10px; font-size:14px;">
                                                         Your application has been rejected/expired at the current stage. Please contact your institution for advice.                </td>
@@ -238,6 +239,15 @@
                 </div>
                 
             </div>
+            @else
+                <div class="card"  style="margin-top: 100px;">
+                     <div class="card-header py-4 ">
+                            <h3 style="color:red;text-align: center;display: block;">You have not any application here</h3>
+                        </div>
+                    
+                </div>
+
+            @endif
              
          </div>
 
