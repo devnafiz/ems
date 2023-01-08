@@ -105,7 +105,7 @@
                             </div>
                             <div class="col-sm-12">
                               <label for="lastName" class="form-label"> Passport Number<span style="color:red;">*</span></label>
-                              <input type="text" class="form-control" id="lastName" placeholder="Enter Passport Number" name="passport_number" value="" required>
+                              <input type="text" class="form-control" id="passport_number" placeholder="Enter Passport Number" name="passport_number" value="" required>
                               <div class="invalid-feedback">
                                 Valid last name is required.
                               </div>

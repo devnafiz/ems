@@ -15,7 +15,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
+        
         <!-- Styles -->
         
 
@@ -117,9 +117,9 @@
                                     <div class="col-md-8">
                                         <h3>Summary</h3>
                                         <hr>
-                                        <h5>Full Name: Hasan Imtiaz</h5>
-                                        <h5>Student Id: ST0012</h5>
-                                        <h5>Application Number: 12</h5>
+                                        <h5>Full Name: {{ $searchResult->student_name}}</h5>
+                                        <h5>Student Id: {{$searchResult->generated_id}}</h5>
+                                        <h5>Application Number: {{$searchResult->id}}</h5>
                                         <h5>Application Type: New</h5>
                                         <h5>Application Status: EMGS Approval Letter</h5>
 
@@ -135,6 +135,74 @@
                        
                         
                     </div>
+
+                     <div class="card" style="margin-top: 100px;">   
+                                <div id="accordion" class="mobile-desktop card-header py-4">
+                                    <h3 ></span>
+                                        <strong>Application Progress History</strong>
+                                    </h3>
+                                    <div class="col-xs-12 app-his  ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active" id="ui-id-2" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="false" style="display: block;">
+                                        <div class="content">
+                                            <div class="card-body">
+                                                 <div class="status-border">
+                                                <table id="form-table" class="table table-striped ">
+                                                    
+                                                    <thead>
+                                                        <tr class="first last">
+                                                            <th>Date</th>
+                                                            <th>Status</th>
+                                                            <th>Remark </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                       <tr class="first odd">
+                                                            <td class="a-center"> 04/01/2023   </td>
+                                                            <td> VAL Approved and ready for download       </td>
+                                                            <td class="last">
+                                                                Congratulations, your Visa Approval Letter (VAL) is ready for download.                            </td>
+                                                        </tr>
+                                                                                <tr class="even">
+                                                            <td class="a-center">
+                                                                04/01/2023                            </td>
+                                                            <td>
+                                                                VAL Approved                            </td>
+                                                            <td class="last">
+                                                                Congratulations, your Visa Approval Letter (VAL) has been Approved.                            </td>
+                                                        </tr>
+                                                                                <tr class="odd">
+                                                            <td class="a-center">
+                                                                30/12/2022                            </td>
+                                                            <td>
+                                                                In Progress with Immigration                            </td>
+                                                            <td class="last">
+                                                                Your Visa Approval Letter (VAL) application was submitted to the Immigration Department for approval purposes. The issuance of your VAL is entirely at the discretion of the Immigration Department.                            </td>
+                                                        </tr>
+                                                                                <tr class="even">
+                                                            <td class="a-center">
+                                                                29/12/2022                            </td>
+                                                            <td>
+                                                                In Progress with EMGS                            </td>
+                                                            <td class="last">
+                                                                We are in the process of submitting your student pass application for approval.                            </td>
+                                                        </tr>
+                                                                                <tr class="odd">
+                                                            <td class="a-center">
+                                                                23/12/2022                            </td>
+                                                            <td>
+                                                                Document checking is in progress                            </td>
+                                                            <td class="last">
+                                                                Your documents are being vetted and your institution will be notified on further updates regarding your application.                            </td>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                          </div>
 
                     <div class="card" style="margin-top: 100px;">
                         <div class="card-header py-4">
@@ -234,6 +302,10 @@
                        
                         
                     </div>
+                   
+                         
+                            
+                       
                    
                     
                 </div>
@@ -419,13 +491,17 @@
 
 }
 
- .status-exp2 {
-    width: 100%;
-    float: left;
-    margin-right: 1%;
-    margin-left: 1%;
-    margin-top: 27px;
-}
+         .status-exp2 {
+            width: 100%;
+            float: left;
+            margin-right: 1%;
+            margin-left: 1%;
+            margin-top: 27px;
+        }
+      
+
+
+
          </style>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

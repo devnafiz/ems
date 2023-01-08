@@ -13,20 +13,27 @@
           <div class="p-4 pt-6 col-6">
             <div class="p-3 pt-6">
                 <form >
-                    @csrf
+                    
                     <input type="hidden" name="id" value="{{$application_details->id}}" id="id">
                     <div class="form-group">
                     <label><h3 class="py-2">Application Status:</h3></label> 
-                    <select class="selectpicker form-control border-0 mb-1 px-4 py-4 rounded shadow" name="status" id="status">
-                                <option value="">Select Status</option>
+                    <select class="selectpicker form-control border-0 mb-1 px-4 py-4 rounded shadow one" name="status" id="status">
+                                <option value="" >Select Status</option>
                                 @foreach($status as $k =>$val)
-                                <option value="{{$val->id}}">{{$val->name}}</option>
+                                <option value="{{$val->id}}" >{{$val->name}}</option>
                                 @endforeach
                                 
                                
                                 
                     </select>
                     
+                </div>
+                <br>
+                <div id="showOne" class="myDiv" style="display:none">
+                    <textarea cols="85" rows="3" name="feedback" id="feedback">
+                        Congratulations,
+                        Congratulations, your Visa Approval Letter (VAL) has been Approved.
+                    </textarea>
                 </div>
                 <button  class="btn btn-info float-right my-3 " id="btn-submit">Update Status</button>
                     
@@ -354,16 +361,15 @@
 
         e.preventDefault();
  
-        var name = $("#status").val();
-        var id   =$('#id').val();
-         //alert(id);
+        var status = $("#status").val();
+        var id =$('#id').val();
+        var feedback   =$('#feedback').val();
+         //alert(feedback );
  
         $.ajax({
            type:'POST',
            url:"{{url('admin/application/status/update/')}}/"+id,
-           data:{
-            "_token": "{{ csrf_token() }}",
-            name:name, id:id},
+           data:{status:status, application_id:id,feedback:feedback, "_token": "{{ csrf_token() }}"},
            success:function(data){
               alert(data.success);
            }
@@ -374,5 +380,15 @@
   
       
      
+  </script>
+
+  <script type="text/javascript">
+      $('.one').click(function(){
+        //alert('hi');
+
+          $("#showOne").css("display","block") 
+
+      });
+
   </script>
 </x-admin-layout>

@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ApplicationController;
 use App\Http\Controllers\Agency\AgencyController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\ApplicationStatusController;
+use App\Http\Controllers\Admin\ApplicationProgressController;
 
 use App\Http\Controllers\Institute\InstituteController;
 use App\Http\Controllers\HomeController;
@@ -74,7 +75,8 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
 
     Route::resource('/all-application',ApplicationController::class);
     Route::get('/application/details/{id}',[ApplicationController::class,'pdf'])->name('application.pdf');
-    Route::post('/application/status/update/{id}',[ApplicationController::class,'UpdateStatus'])->name('application.status.update');
+    Route::post('/application/status/update/{id}',[ApplicationProgressController::class,'UpdateStatus'])->name('application.status.update');
+    
 
     Route::get('/all-agency',[IndexController::class,'allAgency'])->name('all.agency');
     Route::get('/agency/details/{id}',[IndexController::class,'AgencyView'])->name('agency.details');
@@ -99,6 +101,11 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
      Route::get('/status/inactive/{id}', [ApplicationStatusController::class, 'StatusInactive'])->name('status.inactive');
 
      Route::get('/status/active/{id}', [ApplicationStatusController::class, 'StatusActive'])->name('status.active');
+
+     //status progress
+
+
+     Route::get('/application/status/add/{id}',[ApplicationProgressController::class,'addStatus'])->name('application.status.add');
 
 
 
