@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\StudentStatus;
+use App\Models\StudentRegister;
 
 class ApplicationProgressController extends Controller
 {
@@ -87,23 +88,23 @@ class ApplicationProgressController extends Controller
 
 
     public function UpdateStatus(Request $request,$id){
-        //dd($request->all());
+       //dd($request->all());
 
           $data=[
             'application_id'=>$request->application_id,
             'status'=>$request->status,
             'feedback'=>$request->feedback
-
-
-          ];
+           ];
 
           //dd($data);
          $application_status = new StudentStatus;
          $data = $application_status->insertGetId($data);
+          StudentRegister::findOrFail($id)->update(['app_status'=>$request->status]);
+
 
          //$data=StudentRegister::findOrFail($id)->update(['app_status'=>$request->name]);
 
-       return response()->json(['success'=>'Successfully update status']);
+       return response()->json(['success'=>'Successfully updated status']);
     }
 
 

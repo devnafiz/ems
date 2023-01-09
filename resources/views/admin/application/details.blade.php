@@ -13,7 +13,7 @@
           <div class="p-4 pt-6 col-6">
             <div class="p-3 pt-6">
                 <form >
-                    
+                    @csrf
                     <input type="hidden" name="id" value="{{$application_details->id}}" id="id">
                     <div class="form-group">
                     <label><h3 class="py-2">Application Status:</h3></label> 
@@ -40,7 +40,7 @@
                 </form>
                 
            </div>
-            
+            <div id="output"></div>
 
           </div>
           <div class="p-4 col-6">
@@ -371,7 +371,8 @@
            url:"{{url('admin/application/status/update/')}}/"+id,
            data:{status:status, application_id:id,feedback:feedback, "_token": "{{ csrf_token() }}"},
            success:function(data){
-              alert(data.success);
+              //alert(data.success);
+              $('#output').html('<div style="color:green">'+data.success+'</div>');
            }
         });
  

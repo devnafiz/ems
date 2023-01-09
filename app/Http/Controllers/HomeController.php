@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\StudentRegister;
+use App\Models\StudentStatus;
 
 class HomeController extends Controller
 {
@@ -16,13 +17,18 @@ class HomeController extends Controller
     public function searchApplication(Request $request){
        $search_data =$this->searchValidation();
 
-       $searchResult = StudentRegister::with('user')
-                      ->join('users', 'users.id', '=', 'student_registers.student_id');
+       $searchResult = StudentRegister::with('user','studentStatus')
+                      ->join('users', 'users.id', '=', 'student_registers.student_id')
+                      ->select('student_registers.*','users.student_name','users.generated_id','users.email','users.mobile_number');
+                  
 
 
        $searchResult  =$searchResult->where('generated_id',$search_data['student_id'])->where('passport_number',$search_data['passport_number'])->first(); 
-         //dd($searchResult);
-       return view('tracking_info',compact('searchResult'));
+          
+        $student_status = StudentStatus::where('application_id', $searchResult->id)->get();
+          
+         dd($student_status);
+       return view('tracking_info',compact('searchResult','student_status'));
 
     }
 

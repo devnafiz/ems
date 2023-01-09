@@ -90,6 +90,7 @@
          <div class="container">
             <div class="row">
                 @if($searchResult)
+
                 <div class="col-10 offset-md-1">
                     <div class="card" style="margin-top: 100px;">
                         <div class="card-header py-4">
@@ -155,12 +156,20 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                       <tr class="first odd">
-                                                            <td class="a-center"> 04/01/2023   </td>
+
+                                                        @foreach($student_status as $status)
+                                                        
+                                                          <tr class="first odd">
+                                                            <td class="a-center"> {{$status->created_at}}  </td>
                                                             <td> VAL Approved and ready for download       </td>
                                                             <td class="last">
                                                                 Congratulations, your Visa Approval Letter (VAL) is ready for download.                            </td>
                                                         </tr>
+
+
+                                                        @endforeach
+
+                                                      
                                                                                 <tr class="even">
                                                             <td class="a-center">
                                                                 04/01/2023                            </td>

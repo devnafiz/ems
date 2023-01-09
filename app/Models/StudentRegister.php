@@ -78,4 +78,9 @@ class StudentRegister extends Model
     public function appstatus(){
         return $this->belongsTo(ApplicationStatus::class,'app_status','id');
     }
+
+    public function studentStatus(){
+
+        return $this->hasMany(StudentStatus::class,'application_id','id');
+    }
 }

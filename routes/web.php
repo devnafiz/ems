@@ -105,7 +105,7 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
      //status progress
 
 
-     Route::get('/application/status/add/{id}',[ApplicationProgressController::class,'addStatus'])->name('application.status.add');
+    // Route::get('/application/status/add/{id}',[ApplicationProgressController::class,'addStatus'])->name('application.status.add');
 
 
 
