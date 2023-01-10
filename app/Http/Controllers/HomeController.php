@@ -21,13 +21,11 @@ class HomeController extends Controller
                       ->join('users', 'users.id', '=', 'student_registers.student_id')
                       ->select('student_registers.*','users.student_name','users.generated_id','users.email','users.mobile_number');
                   
-
-
        $searchResult  =$searchResult->where('generated_id',$search_data['student_id'])->where('passport_number',$search_data['passport_number'])->first(); 
           
-        $student_status = StudentStatus::where('application_id', $searchResult->id)->get();
+       $student_status = StudentStatus::where('application_id', $searchResult->id)->get();
           
-         dd($student_status);
+         //dd($student_status);
        return view('tracking_info',compact('searchResult','student_status'));
 
     }

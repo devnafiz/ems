@@ -11,4 +11,9 @@ class StudentStatus extends Model
     protected $table='student_statuses';
 
     protected $fillable=['application_id','status','feedback'];
+
+    public function appstatus(){
+       
+        return $this->belongsTo(ApplicationStatus::class,'status','id');
+    }
 }

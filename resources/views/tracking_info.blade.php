@@ -12,6 +12,7 @@
             <!-- Bootstrap CDN Links -->
             <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
             <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -103,15 +104,25 @@
                                     <div class="col-md-4">
 
 
-                                        <div class="progress blue">
-                                            <span class="progress-left">
-                                              <span class="progress-bar"></span>
-                                            </span>
-                                            <span class="progress-right">
-                                                <span class="progress-bar"></span>
-                                            </span>
-                                            <div class="progress-value">90%</div>
-                                        </div>
+                                        <div class="bg-white rounded-lg p-5 shadow">
+                                          <h2 class="h6 font-weight-bold text-center mb-4">Application Status Progress</h2>
+
+                       
+                                           <div class="progress mx-auto" data-value='{{$searchResult->appstatus->percentage}}'>
+                                               <span class="progress-left">
+                                                 <span class="progress-bar border-success"></span>
+                                                 </span>
+                                                 <span class="progress-right">
+                                                 <span class="progress-bar border-success"></span>
+                                                 </span>
+                                             <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                                                 <div class="h2 font-weight-bold">{{$searchResult->appstatus->percentage}}<sup class="small">%</sup></div>
+                                                </div>
+                                             </div>
+                       
+
+                       
+                                            </div>
         
                                         
                                     </div>
@@ -121,8 +132,8 @@
                                         <h5>Full Name: {{ $searchResult->student_name}}</h5>
                                         <h5>Student Id: {{$searchResult->generated_id}}</h5>
                                         <h5>Application Number: {{$searchResult->id}}</h5>
-                                        <h5>Application Type: New</h5>
-                                        <h5>Application Status: EMGS Approval Letter</h5>
+                                       <!--  <h5>Application Type: New</h5> -->
+                                        <h5>Application Status: {{$searchResult->appstatus->name}}</h5>
 
                                         <p>As per the announcement from the Malaysian Government on the transition to the endemic phase on 1 April 2022, the Travel Authorisation Letter is no longer part of the requirements for International Students to enter Malaysia.</p>
                                         
@@ -157,50 +168,19 @@
                                                     </thead>
                                                     <tbody>
 
-                                                        @foreach($student_status as $status)
+                                                        @foreach($student_status as $st_status)
                                                         
                                                           <tr class="first odd">
-                                                            <td class="a-center"> {{$status->created_at}}  </td>
-                                                            <td> VAL Approved and ready for download       </td>
+                                                            <td class="a-center"> {{date('d/m/Y',strtotime($st_status->created_at))}}  </td>
+                                                            <td>    {{$st_status->appstatus->name ?? 'N/A'}}   </td>
                                                             <td class="last">
-                                                                Congratulations, your Visa Approval Letter (VAL) is ready for download.                            </td>
+                                                               {{$st_status->feedback ?? 'N/A'}} </td>
                                                         </tr>
 
 
                                                         @endforeach
 
                                                       
-                                                                                <tr class="even">
-                                                            <td class="a-center">
-                                                                04/01/2023                            </td>
-                                                            <td>
-                                                                VAL Approved                            </td>
-                                                            <td class="last">
-                                                                Congratulations, your Visa Approval Letter (VAL) has been Approved.                            </td>
-                                                        </tr>
-                                                                                <tr class="odd">
-                                                            <td class="a-center">
-                                                                30/12/2022                            </td>
-                                                            <td>
-                                                                In Progress with Immigration                            </td>
-                                                            <td class="last">
-                                                                Your Visa Approval Letter (VAL) application was submitted to the Immigration Department for approval purposes. The issuance of your VAL is entirely at the discretion of the Immigration Department.                            </td>
-                                                        </tr>
-                                                                                <tr class="even">
-                                                            <td class="a-center">
-                                                                29/12/2022                            </td>
-                                                            <td>
-                                                                In Progress with EMGS                            </td>
-                                                            <td class="last">
-                                                                We are in the process of submitting your student pass application for approval.                            </td>
-                                                        </tr>
-                                                                                <tr class="odd">
-                                                            <td class="a-center">
-                                                                23/12/2022                            </td>
-                                                            <td>
-                                                                Document checking is in progress                            </td>
-                                                            <td class="last">
-                                                                Your documents are being vetted and your institution will be notified on further updates regarding your application.                            </td>
                                                         
                                                     </tbody>
                                                 </table>
@@ -233,7 +213,7 @@
                                                     <tbody><tr>
                                                         <td style="padding:10px;  border-radius:5px; vertical-align:middle; color:white; background-color:#098136; border-right:none; text-align:center;">
                                                             <h2>
-                                                                70%                        </h2>
+                                                               {{$searchResult->appstatus->percentage ?? '0'}}%                        </h2>
                                                         </td>
                                                         <td style="padding:10px;border-radius: 8px; vertical-align:middle; background-color:#ededed;border-left:none;">
                                                             <p>
@@ -348,7 +328,7 @@
                   color: #007bff;
                   font-size: 30px;
                 }
-                .status-border {
+             /*   .status-border {
                 border: #f9a51c solid 1px;
                 border-radius: 5px;
                 padding: 5px;
@@ -356,149 +336,9 @@
                 float: left;
                 margin-top: 10px;
              }
-
-            .progress{
-                width: 150px;
-                height: 150px;
-                line-height: 150px;
-                background: none;
-                margin: 0 auto;
-                box-shadow: none;
-                position: relative;
-                top: 60px;
-                margin-bottom: 10px;
-                margin-bottom: 76px !important;
-            }
-            .progress:after{
-                content: "";
-                width: 100%;
-                height: 100%;
-                border-radius: 50%;
-                border: 12px solid #fff;
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
-            .progress > span{
-                width: 50%;
-                height: 100%;
-                overflow: hidden;
-                position: absolute;
-                top: 0;
-                z-index: 1;
-            }
-            .progress .progress-left{
-                left: 0;
-            }
-            .progress .progress-bar{
-                width: 100%;
-                height: 100%;
-                background: none;
-                border-width: 20px;
-                border-style: solid;
-                position: absolute;
-                top: 0;
-            }
-            .progress .progress-left .progress-bar{
-                left: 100%;
-                border-top-right-radius: 80px;
-                border-bottom-right-radius: 80px;
-                border-left: 0;
-                -webkit-transform-origin: center left;
-                transform-origin: center left;
-            }
-            .progress .progress-right{
-                right: 0;
-            }
-            .progress .progress-right .progress-bar{
-                left: -100%;
-                border-top-left-radius: 80px;
-                border-bottom-left-radius: 80px;
-                border-right: 0;
-                -webkit-transform-origin: center right;
-                transform-origin: center right;
-                animation: loading-1 1.8s linear forwards;
-            }
-            .progress .progress-value{
-                width: 90%;
-                height: 90%;
-                border-radius: 50%;
-                background: #ffffff;
-                font-size: 24px;
-                color: #1c1b1b;
-                line-height: 135px;
-                text-align: center;
-                position: absolute;
-                top: 5%;
-                left: 5%;
-            }
-            .progress.blue .progress-bar{
-                border-color: #2b7844;
-            }
-            .progress.blue .progress-left .progress-bar{
-                animation: loading-2 1.5s linear forwards 1.8s;
-            }
+*/
 
 
-
-
-
-
-            @keyframes loading-1{
-                0%{
-                    -webkit-transform: rotate(0deg);
-                    transform: rotate(0deg);
-                }
-                100%{
-                    -webkit-transform: rotate(180deg);
-                    transform: rotate(180deg);
-                }
-            }
-            @keyframes loading-2{
-                0%{
-                    -webkit-transform: rotate(0deg);
-                    transform: rotate(0deg);
-                }
-                100%{
-                    -webkit-transform: rotate(144deg);
-                    transform: rotate(144deg);
-                }
-            }
-            @keyframes loading-3{
-                0%{
-                    -webkit-transform: rotate(0deg);
-                    transform: rotate(0deg);
-                }
-                100%{
-                    -webkit-transform: rotate(90deg);
-                    transform: rotate(90deg);
-                }
-            }
-            @keyframes loading-4{
-                0%{
-                    -webkit-transform: rotate(0deg);
-                    transform: rotate(0deg);
-                }
-                100%{
-                    -webkit-transform: rotate(36deg);
-                    transform: rotate(36deg);
-                }
-            }
-            @keyframes loading-5{
-                0%{
-                    -webkit-transform: rotate(0deg);
-                    transform: rotate(0deg);
-                }
-                100%{
-                    -webkit-transform: rotate(126deg);
-                    transform: rotate(126deg);
-                }
-            }
-            @media only screen and (max-width: 990px){
-                .progress{ margin-bottom: 20px; }
-
-
-}
 
          .status-exp2 {
             width: 100%;
@@ -513,7 +353,125 @@
 
          </style>
 
+<style type="text/css">
+.status-border {
+    border: #f9a51c solid 1px;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    float: left;
+    margin-top: 10px;
+}
+
+.progress {
+  width: 150px;
+  height: 150px;
+  background: none;
+  position: relative;
+}
+
+.progress::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 6px solid #eee;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress>span {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.progress .progress-left {
+  left: 0;
+}
+
+.progress .progress-bar {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border-width: 6px;
+  border-style: solid;
+  position: absolute;
+  top: 0;
+}
+
+.progress .progress-left .progress-bar {
+  left: 100%;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border-left: 0;
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+
+.progress .progress-right {
+  right: 0;
+}
+
+.progress .progress-right .progress-bar {
+  left: -100%;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-right: 0;
+  -webkit-transform-origin: center right;
+  transform-origin: center right;
+}
+
+.progress .progress-value {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+  </style>
+
+       
+
+<script type="text/javascript">
+     // $(function() {
+
+   $(document).ready(function(){
+
+     
+
+  $(".progress").each(function() {
+
+    var value = $(this).attr('data-value');
+    var left = $(this).find('.progress-left .progress-bar');
+    var right = $(this).find('.progress-right .progress-bar');
+
+    if (value > 0) {
+      if (value <= 50) {
+        right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
+      } else {
+        right.css('transform', 'rotate(180deg)')
+        left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)')
+      }
+    }
+
+  });
+
+  function percentageToDegrees(percentage) {
+
+    return percentage / 100 * 360
+
+  }
+ });  
+//});
+  </script>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <!--  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script> -->
     </body>
 </html>

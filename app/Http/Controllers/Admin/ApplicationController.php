@@ -10,6 +10,7 @@ use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 use DB;
 use App\Models\ApplicationStatus;
+use App\Models\Country;
 
 class ApplicationController extends Controller
 {
@@ -73,7 +74,11 @@ class ApplicationController extends Controller
      */
     public function edit($id)
     {
-        //
+       $data['edit_data'] =StudentRegister::findOrfail($id);
+       $data['countries'] =Country::all();
+       $data['programmes'] = DB::table('programme')->get();
+
+       return view('admin.application.edit_application',$data);
     }
 
     /**
