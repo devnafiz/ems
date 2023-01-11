@@ -108,7 +108,7 @@
                                           <h2 class="h6 font-weight-bold text-center mb-4">Application Status Progress</h2>
 
                        
-                                           <div class="progress mx-auto" data-value='{{$searchResult->appstatus->percentage}}'>
+                                           <div class="progress mx-auto" data-value='{{$searchResult->appstatus->percentage ?? "0"}}'>
                                                <span class="progress-left">
                                                  <span class="progress-bar border-success"></span>
                                                  </span>
@@ -116,7 +116,7 @@
                                                  <span class="progress-bar border-success"></span>
                                                  </span>
                                              <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-                                                 <div class="h2 font-weight-bold">{{$searchResult->appstatus->percentage}}<sup class="small">%</sup></div>
+                                                 <div class="h2 font-weight-bold">{{$searchResult->appstatus->percentage ?? "0"}}<sup class="small">%</sup></div>
                                                 </div>
                                              </div>
                        
@@ -133,7 +133,7 @@
                                         <h5>Student Id: {{$searchResult->generated_id}}</h5>
                                         <h5>Application Number: {{$searchResult->id}}</h5>
                                        <!--  <h5>Application Type: New</h5> -->
-                                        <h5>Application Status: {{$searchResult->appstatus->name}}</h5>
+                                        <h5>Application Status: {{$searchResult->appstatus->name ?? 'N/A'}}</h5>
 
                                         <p>As per the announcement from the Malaysian Government on the transition to the endemic phase on 1 April 2022, the Travel Authorisation Letter is no longer part of the requirements for International Students to enter Malaysia.</p>
                                         

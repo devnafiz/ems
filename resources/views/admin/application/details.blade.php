@@ -12,7 +12,7 @@
        <div class="row">
           <div class="p-4 pt-6 col-6">
             <div class="p-3 pt-6">
-                <form >
+                <form  enctype="multipart/form-data" action="{{route('admin.application.status.update',$application_details->id)}}" method="POST">
                     @csrf
                     <input type="hidden" name="id" value="{{$application_details->id}}" id="id">
                     <div class="form-group">
@@ -34,6 +34,8 @@
                         Congratulations,
                         Congratulations, your Visa Approval Letter (VAL) has been Approved.
                     </textarea>
+                    <br/>
+                    <input type="file" name="status_file" class="form-control" id="status_file">
                 </div>
                 <button  class="btn btn-info float-right my-3 " id="btn-submit">Update Status</button>
                     
@@ -54,7 +56,7 @@
                 <h2 class="h6 font-weight-bold text-center mb-4">Application Status Progress</h2>
 
                 <!-- Progress bar 3 -->
-                <div class="progress mx-auto" data-value='{{$application_details->appstatus->percentage}}'>
+                <div class="progress mx-auto" data-value='{{$application_details->appstatus->percentage ?? "0"}}'>
                   <span class="progress-left">
                                 <span class="progress-bar border-success"></span>
                   </span>
@@ -62,7 +64,7 @@
                                 <span class="progress-bar border-success"></span>
                   </span>
                   <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-                    <div class="h2 font-weight-bold">{{$application_details->appstatus->percentage}}<sup class="small">%</sup></div>
+                    <div class="h2 font-weight-bold">{{$application_details->appstatus->percentage ?? '0'}}<sup class="small">%</sup></div>
                   </div>
                 </div>
                 <!-- END -->
@@ -312,6 +314,9 @@
   </div>
 
   <div class="row">
+    <div class="col-md-6">
+        
+   
      <table class="table table-striped">
                 <thead>
                     <tr>
@@ -375,41 +380,53 @@
                     </tr>
 
 
-                </tbody>     
+                </tbody> 
+               </table>
+               </div>
+
 
   </div>  
     
   </div>
 
   <script type="text/javascript">
-     $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
+    //  $.ajaxSetup({
+    //     headers: {
+    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //     }
+    // });
    
 
-         $("#btn-submit").click(function(e){
+    //      $("#btn-submit").click(function(e){
         
 
-        e.preventDefault();
+    //     e.preventDefault();
  
-        var status = $("#status").val();
-        var id =$('#id').val();
-        var feedback   =$('#feedback').val();
-         //alert(feedback );
+    //     var status = $("#status").val();
+    //     var id =$('#id').val();
+    //     var feedback   =$('#feedback').val();
+    //     var file = $('#status_file').val();
+    //     //var file_ext = status_file.substr(status_file.lastIndexOf('.')+1,status_file.length);
+    //     var status_file =file.replace(/^.*[\\\/]/, '');
+       
+    //    //var formData = new FormData($(this));
+        
+
+    //      //alert(status_file);
  
-        $.ajax({
-           type:'POST',
-           url:"{{url('admin/application/status/update/')}}/"+id,
-           data:{status:status, application_id:id,feedback:feedback, "_token": "{{ csrf_token() }}"},
-           success:function(data){
-              //alert(data.success);
-              $('#output').html('<div style="color:green">'+data.success+'</div>');
-           }
-        });
+    //     $.ajax({
+    //        type:'POST',
+    //        enctype: 'multipart/form-data',
+
+    //        url:"{{url('admin/application/status/update/')}}/"+id,
+    //        data:{status:status, application_id:id,feedback:feedback,status_file:status_file, "_token": "{{ csrf_token() }}"},
+    //        success:function(data){
+    //           //alert(data.success);
+    //           $('#output').html('<div style="color:green">'+data.success+'</div>');
+    //        }
+    //     });
  
-    });
+    // });
 
   
       

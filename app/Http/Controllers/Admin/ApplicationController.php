@@ -76,6 +76,7 @@ class ApplicationController extends Controller
     {
        $data['edit_data'] =StudentRegister::findOrfail($id);
        $data['countries'] =Country::all();
+       $data['subject'] = DB::table('subject')->get();
        $data['programmes'] = DB::table('programme')->get();
 
        return view('admin.application.edit_application',$data);
@@ -90,7 +91,7 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request->all());
     }
 
     /**

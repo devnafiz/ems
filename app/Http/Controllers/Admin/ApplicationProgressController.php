@@ -90,12 +90,22 @@ class ApplicationProgressController extends Controller
     public function UpdateStatus(Request $request,$id){
        //dd($request->all());
 
+
+
           $data=[
             'application_id'=>$request->application_id,
             'status'=>$request->status,
-            'feedback'=>$request->feedback
-           ];
+            'feedback'=>$request->feedback,
 
+           ];
+          // dd($request->hasfile('status_file'));
+
+           if (!empty($request->hasfile('status_file'))) {
+            $documents = uniqid() . '.' . $request->status_file->getClientOriginalExtension();
+            $request->status_file->move(public_path('uploads/status/'), $documents);
+            $data['status_file'] = $documents;
+        }
+        
           //dd($data);
          $application_status = new StudentStatus;
          $data = $application_status->insertGetId($data);
@@ -103,8 +113,13 @@ class ApplicationProgressController extends Controller
 
 
          //$data=StudentRegister::findOrFail($id)->update(['app_status'=>$request->name]);
+           $notification = array(
+            'message' => 'Status updated',
+            'alert-type' => 'success'
+        );
+          return redirect()->back()->with($notification);
 
-       return response()->json(['success'=>'Successfully updated status']);
+       //return response()->json(['success'=>'Successfully updated status']);
     }
 
 
