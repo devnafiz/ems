@@ -384,6 +384,48 @@
                </table>
                </div>
 
+               <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>SL</th>
+                                        <td>date</td>
+                                        <td>status</td>
+                                        <td>file</td>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  @foreach($all_status as $k=>$val)  
+                                    <tr>
+                                        <td>{{$k+1}}</td>
+                                        <td>{{date('d/m/Y',strtotime($val->created_at))}}</td>
+                                        <td>{{$val->appstatus->name ?? 'N/A'}}</td>
+                                        <td> 
+                                                @if ($val->status_file &&
+                                                    file_exists(public_path('uploads/status/' . $val->status_file)))
+                                                    <a class="text-black badge badge-danger"
+                                                        href="{{ asset('uploads/status/' . $val->status_file) }}"
+                                                        download><i class="fa fa-file fa-2x" aria-hidden="true"></i>Download</a>
+                                                @else
+                                                    <h6><span class="badge badge-danger">no file</span></h6>
+                                                @endif
+                                            </td>
+                                    </tr>
+                                  @endforeach  
+                                </tbody>
+                                
+                            </table>
+                            
+                        </div>
+                        
+                    </div>
+
+               </div> 
+
 
   </div>  
     

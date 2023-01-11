@@ -11,6 +11,7 @@ use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use DB;
 use App\Models\ApplicationStatus;
 use App\Models\Country;
+use App\Models\StudentStatus;
 
 class ApplicationController extends Controller
 {
@@ -56,6 +57,7 @@ class ApplicationController extends Controller
     public function show($id)
     {
         $data['application_details'] =StudentRegister::findOrfail($id);
+        $data['all_status']=StudentStatus::where('application_id',$id)->get();
         $data['programme']=DB::table('programme')->where('programme_id',$data['application_details']->programme)->first()->programme_name;
         //dd($data['programme']);
         $data['subject']=DB::table('subject')->where('subject_id',$data['application_details']->subject)->first()->subject_name;

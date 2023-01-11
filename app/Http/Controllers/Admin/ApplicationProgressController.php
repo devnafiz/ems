@@ -93,7 +93,7 @@ class ApplicationProgressController extends Controller
 
 
           $data=[
-            'application_id'=>$request->application_id,
+            'application_id'=>$request->id,
             'status'=>$request->status,
             'feedback'=>$request->feedback,
 
