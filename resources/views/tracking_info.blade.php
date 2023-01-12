@@ -13,6 +13,8 @@
             <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
             <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
             <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+           <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/fontawesome.min.css"> -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.0/css/font-awesome.css" integrity="sha512-CB+XYxRC7cXZqO/8cP3V+ve2+6g6ynOnvJD6p4E4y3+wwkScH9qEOla+BTHzcwB4xKgvWn816Iv0io5l3rAOBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -134,6 +136,23 @@
                                         <h5>Application Number: {{$searchResult->id}}</h5>
                                        <!--  <h5>Application Type: New</h5> -->
                                         <h5>Application Status: {{$searchResult->appstatus->name ?? 'N/A'}}</h5>
+
+                                        @if($student_status)
+                                           @foreach($student_status as $val)
+                                             <h5>{{$val->appstatus->name ?? 'N/A'}}:  @if ($val->status_file &&
+                                                    file_exists(public_path('uploads/status/' . $val->status_file)))
+                                                    <a class="text-black badge badge-danger"
+                                                        href="{{ asset('uploads/status/' . $val->status_file) }}"
+                                                        download><i class="fa fa-file fa-2x" aria-hidden="true"></i>Download</a>
+                                                @else
+                                                   <span class="badge badge-danger">no file</span>
+                                                   <i class="fa-sharp fa-solid fa-file-arrow-down"></i>
+                                                @endif</h5>
+
+
+                                           @endforeach
+
+                                        @endif
 
                                         <p>As per the announcement from the Malaysian Government on the transition to the endemic phase on 1 April 2022, the Travel Authorisation Letter is no longer part of the requirements for International Students to enter Malaysia.</p>
                                         

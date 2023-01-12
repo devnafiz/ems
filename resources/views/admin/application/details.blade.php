@@ -395,6 +395,7 @@
                                         <td>date</td>
                                         <td>status</td>
                                         <td>file</td>
+                                        <td>Action</td>
 
                                     </tr>
                                 </thead>
@@ -402,7 +403,7 @@
                                   @foreach($all_status as $k=>$val)  
                                     <tr>
                                         <td>{{$k+1}}</td>
-                                        <td>{{date('d/m/Y',strtotime($val->created_at))}}</td>
+                                        <td>{{date('d/m/Y',strtotime($val->created_at)) ?? 'N/A'}}</td>
                                         <td>{{$val->appstatus->name ?? 'N/A'}}</td>
                                         <td> 
                                                 @if ($val->status_file &&
@@ -413,6 +414,11 @@
                                                 @else
                                                     <h6><span class="badge badge-danger">no file</span></h6>
                                                 @endif
+                                            </td>
+
+                                            <td>
+                                                <a href="#"><i class="fa-fa-edit"></i>Edit</a>|
+                                                 <a href="#"><i class="fa-fa-edit"></i>Delete</a>
                                             </td>
                                     </tr>
                                   @endforeach  
