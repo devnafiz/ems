@@ -93,7 +93,52 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
+
+          $studentRegistration= $this->studentRegistrationValidation();
+          //dd($studentRegistration);
+
+           if (!empty($request->file('health_declaration_file'))) {
+            $health_declaration_file = uniqid() . '.' . $request->health_declaration_file->getClientOriginalExtension();
+            $request->health_declaration_file->move(public_path('uploads/health'), $health_declaration_file);
+            $studentRegistration['health_declaration_file'] = $health_declaration_file;
+        }
+
+        if (!empty($request->file('passport_scanned_file'))) {
+            $passport_scanned_file = uniqid() . '.' . $request->passport_scanned_file->getClientOriginalExtension();
+            $request->passport_scanned_file->move(public_path('uploads/passport'), $passport_scanned_file);
+            $studentRegistration['passport_scanned_file'] = $passport_scanned_file;
+        }
+
+        if (!empty($request->file('photo_file'))) {
+            $photo_file = uniqid() . '.' . $request->photo_file->getClientOriginalExtension();
+            $request->photo_file->move(public_path('uploads/photo'), $photo_file);
+            $studentRegistration['photo_file'] = $photo_file;
+        }
+
+        if (!empty($request->file('academic_certificate_file_1'))) {
+            $academic_certificate_file_1 = uniqid() . '.' . $request->academic_certificate_file_1->getClientOriginalExtension();
+            $request->academic_certificate_file_1->move(public_path('uploads/certificates'), $academic_certificate_file_1);
+            $studentRegistration['academic_certificate_file_1'] = $academic_certificate_file_1;
+            
+        }
+
+        if (!empty($request->file('academic_certificate_file_2'))) {
+            $academic_certificate_file_2 = uniqid() . '.' . $request->academic_certificate_file_2->getClientOriginalExtension();
+            $request->academic_certificate_file_2->move(public_path('uploads/certificates'), $academic_certificate_file_2);
+            $studentRegistration['academic_certificate_file_2'] = $academic_certificate_file_2;
+            
+        }
+
+
+         $student_registration = StudentRegister::where('id', $id)->first();
+         $student_registration->update($studentRegistration);
+
+           $notification = array(
+            'message' => 'Student Registration Info updated',
+            'alert-type' => 'success'
+        );
+          return redirect()->back()->with($notification);
+        
     }
 
     /**
@@ -146,4 +191,65 @@ class ApplicationController extends Controller
        return response()->json(['success'=>'Successfully update status']);
        
     }
+
+      public function studentRegistrationValidation()
+    {
+        return request()->validate([
+            'nationality' => 'nullable|string|max:255',
+            'reference_id'=>'nullable|string|max:255',
+            'passport_number' => 'nullable|string|max:255',
+            'date_of_birth' => 'nullable|string|max:255',
+            'passport_issue_date' => 'nullable|string|max:255',
+            'obtain_single_entry_visa' => 'nullable|string|max:255',
+            'applicant_email_id' => 'nullable|string|max:255',
+            'sex' => 'nullable|string|max:255',
+            'applicant_permanent_add' => 'nullable|string|max:255',
+            'applicant_postal_code' => 'nullable|string|max:255',
+            'country' => 'nullable|string|max:255',
+            'resident_number' => 'nullable|string|max:255',
+            'programme' => 'nullable|string|max:255',
+            'subject' => 'nullable|string|max:255',
+            'applicant_name' => 'nullable|string|max:255',
+            'passport_issued_place' => 'nullable|string|max:255',
+            'passport_expiry_date' => 'nullable|string|max:255',
+            'applicant_mobile_number' => 'nullable|string|max:255',
+            'agent_email_id' => 'nullable|string|max:255',
+            'marital' => 'nullable|string|max:255',
+            'applicant_city' => 'nullable|string|max:255',
+            'applicant_state' => 'nullable|string|max:255',
+            'mobile_number' => 'nullable|string|max:255',
+
+            'as_above' => 'nullable|string|max:255',
+            'correspondence_address' => 'nullable|string|max:255',
+            'postal_code' => 'nullable|string|max:255',
+            'country_2' => 'nullable|string|max:255',
+            'resident_number_2' => 'nullable|string|max:255',
+            'father_tel_no' => 'nullable|string|max:255',
+            'mother_name' => 'nullable|string|max:255',
+            'mother_occupation' => 'nullable|string|max:255',
+            'guardian_tel_no' => 'nullable|string|max:255',
+            'highest_qualification' => 'nullable|string|max:255',
+            'year_of_passing' => 'nullable|string|max:255',
+            'city' => 'nullable|string|max:255',
+            'state' => 'nullable|string|max:255',
+            'mobile_number_2' => 'nullable|string|max:255',
+            'father_name' => 'nullable|string|max:255',
+            'father_occupation' => 'nullable|string|max:255',
+            'mother_tel_no' => 'nullable|string|max:255',
+            'gurdian_name' => 'nullable|string|max:255',
+            'gurdian_occupation' => 'nullable|string|max:255',
+            'grade' => 'nullable|string|max:255',
+
+            'applicant_name_2' => 'nullable|string|max:255',
+            'study' => 'nullable|string|max:255',
+            'passport_number_2' => 'nullable|string|max:255',
+            'visa_pass' => 'nullable|string|max:255',
+            'health_declaration' => 'nullable|string|max:255',
+            'passport_scanned' => 'nullable|string|max:255',
+            'photo' => 'nullable|string|max:255',
+            'academic_certificate_1' => 'nullable|string|max:255',
+            'academic_certificate_2' => 'nullable|string|max:255',
+        ]);
+    }
+
 }

@@ -12,6 +12,7 @@ use App\Http\Controllers\Agency\AgencyController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\ApplicationStatusController;
 use App\Http\Controllers\Admin\ApplicationProgressController;
+use App\Http\Controllers\Admin\ProgramController;
 
 use App\Http\Controllers\Institute\InstituteController;
 use App\Http\Controllers\HomeController;
@@ -107,6 +108,8 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
 
 
     // Route::get('/application/status/add/{id}',[ApplicationProgressController::class,'addStatus'])->name('application.status.add');
+
+     Route::resource('/programmes',ProgramController::class);
 
 
 

@@ -269,7 +269,7 @@
                                     <!--end::Label-->
 
                                     <!--begin::Input-->
-                                    <input type="text" class="form-control form-control-solid" name="resident_number" value="{{$edit->resident_number ?? 'N/A'}}" />
+                                    <input type="text" class="form-control form-control-solid" name="resident_number" value="{{$edit_data->resident_number ?? 'N/A'}}" />
                                     <!--end::Input-->
                                 </div>
                                 <!--end::Input group-->
