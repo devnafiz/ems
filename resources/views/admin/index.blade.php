@@ -15,7 +15,7 @@
                                     <img src="{{asset('uploads/profile/'.$user_data->pro_image)}}"
                                     alt="Avatar" class=" rounded-circle img-responsive m-5" style="width: 80px;" />
                           @else
-                                 <img class="rounded-circle mt-5" src="http://localhost:8000/assets/img/101.png" width="90">
+                                 <img class="rounded-circle mt-5" src="{{asset('assets/img/101.png')}}" width="90">
                           @endif
                      
                         <span class="font-weight-bold">{{$user_data->student_name ?? ''}}</span><span class="text-black-50">{{$user_data->email ?? ''}}</span><span>{{$user_data->country ?? ''}}</span></div>
