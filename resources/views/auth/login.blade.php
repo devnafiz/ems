@@ -1,10 +1,11 @@
 <x-guest-layout>
     <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+        <x-slot name="logo" class="px-4">
+
+         
+            <img src="{{asset('assets/img/Unice-Education_Malaysia.png')}}" width="100%" class="max-w-xl  h-30 fill-current text-gray-500 px-4" style="padding: 68px;">
         </x-slot>
+        <br/><br/>
 
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />

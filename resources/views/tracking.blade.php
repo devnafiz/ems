@@ -27,11 +27,11 @@
     </head>
     <body class="antialiased">
          <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-           <nav class="navbar navbar-dark navbar-expand-sm bg-dark fixed-top">
+           <nav class="navbar navbar-dark navbar-expand-sm bg-gray-500 fixed-top">
                 <div class="container">
                 <a href="/" class="navbar-brand">
                 <i class="fas fa-blog"></i> &nbsp;
-                <img src="{{ asset('assets/img/Unice_Education_Logo.jpg') }}" width="100px">
+                <img src="{{ asset('assets/img/Unice-Education_Malaysia.png') }}" width="100px">
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
@@ -89,6 +89,9 @@
           </div>
          <div class="container">
             <div class="row">
+                <div class="col-8 offset-md-2">
+                     <a href="{{url('/')}}"> <img src="{{asset('assets/img/Unice-Education_Malaysia.png')}}" width="100%" class="max-w-xl  h-30 fill-current text-gray-500 px-4" style="padding: 68px;"></a>
+                </div>   
                 <div class="col-8 offset-md-2">
                     <div class="card" style="margin-top: 100px;">
                         <div class="card-header py-4">

@@ -55,4 +55,9 @@ class User extends Authenticatable
 
         return $this->belongsTo(Profile::class,'id','user_id');
     }
+
+    public function studentregister(){
+
+        return $this->belongsTo(StudentRegister::class,'id','student_id');
+    }
 }

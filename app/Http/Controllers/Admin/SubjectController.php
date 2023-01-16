@@ -47,7 +47,7 @@ class SubjectController extends Controller
 
         Subject::create($user_data);
          $notification = array(
-            'message' => ' Program deleted successfully ',
+            'message' => ' Subject Insert successfully ',
             'alert-type' => 'success'
         );
 
@@ -74,7 +74,10 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['edit_data']= Subject::where('subject_id',$id)->first();
+        $data['programmes']=Program::all();
+
+        return view('admin.subject.edit',$data);
     }
 
     /**
@@ -86,7 +89,16 @@ class SubjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //dd($request->all());
+        $user_data = $this->subjectInformationValidation();
+
+        Subject::where('subject_id',$id)->update($user_data);
+         $notification = array(
+            'message' => ' Subject updated  ',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('admin.subjects.index')->with($notification);
     }
 
     /**
@@ -97,7 +109,26 @@ class SubjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $subject=Subject::where('subject_id',$id)->first();
+        if($subject){
+
+            Subject::where('subject_id',$id)->delete();
+            $notification = array(
+            'message' => ' Subject deleted  ',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('admin.subjects.index')->with($notification);
+        }else{
+              $notification = array(
+            'message' => 'Sorry Something is worng',
+            'alert-type' => 'danger'
+        );
+
+        return redirect()->route('admin.subjects.index')->with($notification);
+
+        }
+        
     }
 
 
@@ -114,7 +145,13 @@ class SubjectController extends Controller
 
     public function StatusActive($id){
 
+     Subject::where('subject_id',$id)->update(['status' => 1]);
+        $notification = array(
+            'message' => 'Status Active',
+            'alert-type' => 'success'
+        );
 
+        return redirect()->back()->with($notification);   
     }
 
 

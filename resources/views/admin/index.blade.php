@@ -5,9 +5,90 @@
         >
             Dashboard
         </h2> 
-        
-                    <!-- Cards -->
-                    <div class="grid gap-6 mb-8 md:grid-cols-3 xl:grid-cols-4">
+        @role('student')
+          <div class="container rounded bg-white mt-5">
+              <div class="row">
+                  <div class="col-md-4 border-right">
+                      <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+
+                           @if($user_data->pro_image)
+                                    <img src="{{asset('uploads/profile/'.$user_data->pro_image)}}"
+                                    alt="Avatar" class=" rounded-circle img-responsive m-5" style="width: 80px;" />
+                          @else
+                                 <img class="rounded-circle mt-5" src="http://localhost:8000/assets/img/101.png" width="90">
+                          @endif
+                     
+                        <span class="font-weight-bold">{{$user_data->student_name ?? ''}}</span><span class="text-black-50">{{$user_data->email ?? ''}}</span><span>{{$user_data->country ?? ''}}</span></div>
+                     
+                  </div>
+                  <div class="col-md-8">
+                      <div class="p-3 py-5">
+                          <div class="d-flex justify-content-between align-items-center mb-3">
+                              <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+                                  <h6>Back to home</h6>
+                              </div>
+                              <h6 class="text-right">Edit Profile</h6>
+                          </div>
+                          <div class="row mt-2">
+                              <div class="col-md-12"><input type="text" class="form-control" placeholder="first name" value="{{$user_data->student_name ?? ''}}" readonly></div>
+                             
+                          </div>
+                          <div class="row mt-3">
+                              <div class="col-md-6"><input type="text" class="form-control" placeholder="Email" value="{{$user_data->email ?? ''}}" readonly></div>
+                              <div class="col-md-6"><input type="text" class="form-control" value="{{$user_data->mobile_number ?? ''}}" placeholder="Phone number" readonly></div>
+                          </div>
+                          <div class="row mt-3">
+                              <div class="col-md-6"><input type="text" class="form-control" placeholder="address" value="{{$user_data->profile->address ?? ''}}"></div>
+                              <div class="col-md-6"><input type="text" class="form-control" value="{{$user_data->profile->country ?? ''}}" placeholder="Country"></div>
+                          </div>
+                          
+                         
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                     <div class="p-3 pt-6">
+                 <p>Application Status :&nbsp<span class="badge badge-info px-4">{{$user_data->studentregister->appstatus->name ?? 'N/A'}}</span></p><br/>
+
+               
+
+
+              <div class="bg-white rounded-lg p-5 shadow">
+                <h2 class="h6 font-weight-bold text-center mb-4">Application Status Progress</h2>
+
+                <!-- Progress bar 3 -->
+                <div class="progress mx-auto" data-value='{{$user_data->studentregister->appstatus->percentage ?? "0"}}'>
+                  <span class="progress-left">
+                                <span class="progress-bar border-success"></span>
+                  </span>
+                  <span class="progress-right">
+                                <span class="progress-bar border-success"></span>
+                  </span>
+                  <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                    <div class="h2 font-weight-bold">{{$user_data->studentregister->appstatus->percentage ?? '0'}}<sup class="small">%</sup></div>
+                  </div>
+                </div>
+                <!-- END -->
+
+            </div>
+
+                 
+            
+              
+          </div>
+                  
+                </div>
+                
+              </div>
+          </div>
+
+
+
+        @endrole 
+             @role('admin')        <!-- Cards -->
+            <div class="grid gap-6 mb-8 md:grid-cols-3 xl:grid-cols-4">
               <!-- Card -->
               <div
                 class="flex items-center p-5  bg-orange-100 rounded-lg shadow-xs dark:bg-gray-800"
@@ -259,8 +340,41 @@
                 </div>
               </div>
               <!-- Card -->
+              @endrole
              
             </div>
     </div>
+
+  
+<script type="text/javascript">
+      $(function() {
+
+  $(".progress").each(function() {
+
+    var value = $(this).attr('data-value');
+    //alert(value);
+    var left = $(this).find('.progress-left .progress-bar');
+    var right = $(this).find('.progress-right .progress-bar');
+
+    if (value > 0) {
+      if (value <= 50) {
+        right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
+      } else {
+        right.css('transform', 'rotate(180deg)')
+        left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)')
+      }
+    }
+
+  })
+
+  function percentageToDegrees(percentage) {
+
+    return percentage / 100 * 360
+
+  }
+
+});
+  </script>
+   
 
 </x-admin-layout>

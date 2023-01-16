@@ -30,11 +30,11 @@
     </head>
     <body class="antialiased">
          <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-           <nav class="navbar navbar-dark navbar-expand-sm bg-dark fixed-top">
+           <nav class="navbar navbar-dark navbar-expand-sm bg-gray-500 fixed-top">
                 <div class="container">
                 <a href="/" class="navbar-brand">
                 <i class="fas fa-blog"></i> &nbsp;
-                <img src="{{ asset('assets/img/Unice_Education_Logo.jpg') }}" width="100px">
+                <img src="{{ asset('assets/img/Unice-Education_Malaysia.png') }}" width="100px">
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">

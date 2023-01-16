@@ -22,8 +22,15 @@ class HomeController extends Controller
                       ->select('student_registers.*','users.student_name','users.generated_id','users.email','users.mobile_number');
                   
        $searchResult  =$searchResult->where('generated_id',$search_data['student_id'])->where('passport_number',$search_data['passport_number'])->first(); 
+       if(isset($searchResult->id)){
+
+          $student_status = StudentStatus::where('application_id', $searchResult->id)->get();
+       }else{
+
+         $student_status='0';
+       }
           
-       $student_status = StudentStatus::where('application_id', $searchResult->id)->get();
+      
           
          //dd($student_status);
        return view('tracking_info',compact('searchResult','student_status'));

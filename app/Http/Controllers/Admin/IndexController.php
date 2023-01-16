@@ -6,12 +6,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Profile;
+use Auth;
+use DB;
+use App\Models\StudentRegister;
 
 class IndexController extends Controller
 {
     public function index(){
+        $data['user_data']=User::with('profile','studentregister')->where('id',Auth::user()->id)->first();
+
+        //dd($data['user_data']);
+
 
         $data['students']=User::where('name','student')->count();
+
         $data['agencys']=User::where('name','agency')->count();
         //dd($data['students']);
         return view('admin.index',$data);

@@ -52,16 +52,16 @@
                                     </td>
                                     <td class="py-4 px-4">
                                         <div class="flex space-x-2">
-                                            <a href="{{route('admin.programmes.edit',$val->programme_id)}}" class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md">edit</a>
+                                            <a href="{{route('admin.subjects.edit',$val->subject_id)}}" class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md">edit</a>
                                                @if($val->status == 1)
                                              <a href="{{route('admin.subjects.inactive',$val->subject_id)}}" class=" px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md" title="Inactive Now"><i class="fa fa-arrow-down"></i>Inactive </a>
                                             @else
-                                             <a href="#" class=" px-4 py-2 bg-green-500 hover:bg-green-700 text-white rounded-md" title="Active Now"><i class="fa fa-arrow-up"></i>Active </a>
+                                             <a href="{{route('admin.subjects.active',$val->subject_id)}}" class=" px-4 py-2 bg-green-500 hover:bg-green-700 text-white rounded-md" title="Active Now"><i class="fa fa-arrow-up"></i>Active </a>
                                             @endif
 
                                             
                                         
-                                            <form method="POST" action="{{route('admin.programmes.destroy',$val->programme_id)}}" onsubmit="return confirm('Are You Sure?');" >
+                                            <form method="POST" action="{{route('admin.subjects.destroy',$val->subject_id)}}" onsubmit="return confirm('Are You Sure?');" >
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md">Delete</button>
