@@ -406,9 +406,25 @@
                                                 @endif
                                             </td>
 
-                                            <td>
-                                                <a href="#"><i class="fa-fa-edit"></i>Edit</a>|
-                                                 <a href="#"><i class="fa-fa-edit"></i>Delete</a>
+                                            <td width="25%">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                       <span> <a href="{{route('admin.progress.edit',$val->id)}}"><i class="fa-fa-edit"></i>Edit</a></span>
+                                                    </div>
+                                                    <div class="col-md-6">
+
+                                                <span>
+                                                 <form method="POST" action="{{route('admin.progress.destroy',$val->id)}}" onsubmit="return confirm('Are You Sure?');" >
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="px-1 py-2 badge badge-danger bg-red-500 text-white rounded-md">Delete</button>
+                                            </form>
+                                        </span>
+                                                        
+                                                    </div>
+                                                    
+                                                </div>
+                                                
                                             </td>
                                     </tr>
                                   @endforeach  

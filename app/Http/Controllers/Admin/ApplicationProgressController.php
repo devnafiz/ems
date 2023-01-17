@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\StudentStatus;
 use App\Models\StudentRegister;
+use App\Models\ApplicationStatus;
 
 class ApplicationProgressController extends Controller
 {
@@ -59,7 +60,11 @@ class ApplicationProgressController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['edit_data']=StudentStatus::findOrFail($id);
+        $data['status'] =ApplicationStatus::where('status',1)->get();
+        //dd($data['edit_data']);
+
+        return view('admin.status.progress_edit',$data);
     }
 
     /**
@@ -71,7 +76,29 @@ class ApplicationProgressController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $data=[
+            
+            'status'=>$request->status,
+            'feedback'=>$request->feedback,
+
+           ];
+          // dd($request->hasfile('status_file'));
+
+           if (!empty($request->hasfile('status_file'))) {
+            $documents = uniqid() . '.' . $request->status_file->getClientOriginalExtension();
+            $request->status_file->move(public_path('uploads/status/'), $documents);
+            $data['status_file'] = $documents;
+        }
+        
+          //dd($data);
+        // $application_status = new StudentStatus;
+         $data = StudentStatus::where('id',$id)->update($data);
+
+           $notification = array(
+            'message' => 'Status updated',
+            'alert-type' => 'success'
+        );
+          return redirect()->back()->with($notification);
     }
 
     /**
@@ -82,7 +109,20 @@ class ApplicationProgressController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = StudentStatus::findOrFail($id);
+       // unlink(public_path('uploads/profile/'.$user->pro_image));
+        //User::findOrFail($id)->delete();
+
+       
+        if($user){
+            $user->delete();
+        }
+        $notification = array(
+            'message' => 'Status Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
     }
 
 

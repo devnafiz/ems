@@ -77,7 +77,9 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
 
     Route::resource('/all-application',ApplicationController::class);
     Route::get('/application/details/{id}',[ApplicationController::class,'pdf'])->name('application.pdf');
-   
+
+
+    Route::resource('/application/progress',ApplicationProgressController::class);
     Route::post('/application/status/update/{id}',[ApplicationProgressController::class,'UpdateStatus'])->name('application.status.update');
     
 
