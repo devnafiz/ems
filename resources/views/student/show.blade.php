@@ -5,207 +5,207 @@
             <h1 class="display-6 text-center">Student Information</h1>
         </div>
         <div class="p-3 pt-6">
-            <table class="table table-striped">
+            <table class="table table-striped table-bordered ">
             @foreach ($students as $student)
                 <tbody>
-                    <tr>
-                        <th scope="row">Student Name</th>
+                    <tr >
+                        <th scope="row" class="px-5">Student Name</th>
                         <td>{{ $user->student_name }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Email</th>
+                        <th scope="row" class="px-5">Email</th>
                         <td>{{ $user->email }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Mobile Number</th>
+                        <th scope="row" class="px-5">Mobile Number</th>
                         <td>{{ $user->mobile_number }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Nationality</th>
+                        <th scope="row" class="px-5">Nationality</th>
                         <td>{{ $student->nationality }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Passport / IC Number</th>
+                        <th scope="row" class="px-5">Passport / IC Number</th>
                         <td>{{ $student->passport_number }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Date of Birth</th>
+                        <th scope="row" class="px-5">Date of Birth</th>
                         <td>{{ $student->date_of_birth }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Passport Issue Date</th>
+                        <th scope="row" class="px-5">Passport Issue Date</th>
                         <td>{{ $student->passport_issue_date }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Obtain Single Entry Visa From</th>
+                        <th scope="row" class="px-5">Obtain Single Entry Visa From</th>
                         <td>{{ $student->obtain_single_entry_visa }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Applicant E-mail Id</th>
+                        <th scope="row" class="px-5">Applicant E-mail Id</th>
                         <td>{{ $student->applicant_email_id }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Sex</th>
+                        <th scope="row" class="px-5">Sex</th>
                         <td>{{ $student->sex }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Applicant Permanent Add</th>
+                        <th scope="row" class="px-5">Applicant Permanent Add</th>
                         <td>{{ $student->applicant_permanent_add }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Applicant Postal Code</th>
+                        <th scope="row" class="px-5">Applicant Postal Code</th>
                         <td>{{ $student->applicant_postal_code }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Country</th>
+                        <th scope="row" class="px-5">Country</th>
                         <td>{{ $student->country }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Resident Number</th>
+                        <th scope="row" class="px-5">Resident Number</th>
                         <td>{{ $student->resident_number }}</td>
                     </tr>
 
 
                     <tr>
-                        <th scope="row">Programme</th>
+                        <th scope="row" class="px-5">Programme</th>
                         <td>{{ $student->programme }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Subject</th>
+                        <th scope="row" class="px-5">Subject</th>
                         <td>{{ $student->subject }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Applicant Name</th>
+                        <th scope="row" class="px-5">Applicant Name</th>
                         <td>{{ $student->applicant_name }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Passport Issued Place</th>
+                        <th scope="row"class="px-5">Passport Issued Place</th>
                         <td>{{ $student->passport_issued_place }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Passport Expiry Date</th>
+                        <th scope="row" class="px-5">Passport Expiry Date</th>
                         <td>{{ $student->passport_expiry_date }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Applicant Mobile Number</th>
+                        <th scope="row" class="px-5">Applicant Mobile Number</th>
                         <td>{{ $student->applicant_mobile_number }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Staff/Agent E-mail Id</th>
+                        <th scope="row" class="px-5">Staff/Agent E-mail Id</th>
                         <td>{{ $student->agent_email_id }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Marital Status</th>
+                        <th scope="row" class="px-5">Marital Status</th>
                         <td>{{ $student->marital }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Applicant City</th>
+                        <th scope="row" class="px-5">Applicant City</th>
                         <td>{{ $student->applicant_city }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Applicant State</th>
+                        <th scope="row" class="px-5">Applicant State</th>
                         <td>{{ $student->applicant_state }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Mobile Number</th>
+                        <th scope="row" class="px-5">Mobile Number</th>
                         <td>{{ $student->mobile_number }}</td>
                     </tr>
 
 
                     <tr>
-                        <th scope="row">Correspondence Address</th>
+                        <th scope="row" class="px-5">Correspondence Address</th>
                         <td>{{ $student->correspondence_address }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Postal Code</th>
+                        <th scope="row" class="px-5">Postal Code</th>
                         <td>{{ $student->postal_code }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Country</th>
+                        <th scope="row" class="px-5">Country</th>
                         <td>{{ $student->country_2 }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Resident Number</th>
+                        <th scope="row" class="px-5">Resident Number</th>
                         <td>{{ $student->resident_number_2 }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Father's Tel No</th>
+                        <th scope="row" class="px-5">Father's Tel No</th>
                         <td>{{ $student->father_tel_no }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Mother's Name</th>
+                        <th scope="row" class="px-5">Mother's Name</th>
                         <td>{{ $student->mother_name }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Mother's Occupation</th>
+                        <th scope="row" class="px-5">Mother's Occupation</th>
                         <td>{{ $student->mother_occupation }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Guardian Tel No</th>
+                        <th scope="row" class="px-5">Guardian Tel No</th>
                         <td>{{ $student->guardian_tel_no }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Highest Qualification</th>
+                        <th scope="row" class="px-5">Highest Qualification</th>
                         <td>{{ $student->highest_qualification }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Year Of Passing</th>
+                        <th scope="row" class="px-5">Year Of Passing</th>
                         <td>{{ $student->year_of_passing }}</td>
                     </tr>
 
 
                     <tr>
-                        <th scope="row">City</th>
+                        <th scope="row" class="px-5">City</th>
                         <td>{{ $student->city }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">State</th>
+                        <th scope="row" class="px-5">State</th>
                         <td>{{ $student->state }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Mobile Number</th>
+                        <th scope="row" class="px-5">Mobile Number</th>
                         <td>{{ $student->mobile_number_2 }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Father's Name</th>
+                        <th scope="row" class="px-5">Father's Name</th>
                         <td>{{ $student->father_name }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Father's Occupation</th>
+                        <th scope="row" class="px-5">Father's Occupation</th>
                         <td>{{ $student->father_occupation }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Mother Tel No</th>
+                        <th scope="row" class="px-5">Mother Tel No</th>
                         <td>{{ $student->mother_tel_no }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Gurdian's Name</th>
+                        <th scope="row" class="px-5">Gurdian's Name</th>
                         <td>{{ $student->gurdian_name }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Gurdian's Occupation</th>
+                        <th scope="row" class="px-5">Gurdian's Occupation</th>
                         <td>{{ $student->gurdian_occupation }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Overall Grade</th>
+                        <th scope="row" class="px-5">Overall Grade</th>
                         <td>{{ $student->grade }}</td>
                     </tr>
 
 
                     <tr>
-                        <th scope="row">Applicant Name (as in Passport)</th>
+                        <th scope="row" class="px-5">Applicant Name (as in Passport)</th>
                         <td>{{ $student->applicant_name_2 }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Are you currently studying in any Malaysian University/College ?</th>
+                        <th scope="row" class="px-5">Are you currently studying in any Malaysian University/College ?</th>
                         <td>{{ $student->study }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Passport / IC Number</th>
+                        <th scope="row" class="px-5">Passport / IC Number</th>
                         <td>{{ $student->passport_number_2 }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Do you have Current Malaysian Visa Pass Active ?</th>
+                        <th scope="row" class="px-5">Do you have Current Malaysian Visa Pass Active ?</th>
                         <td>{{ $student->visa_pass }}</td>
                     </tr>
                         

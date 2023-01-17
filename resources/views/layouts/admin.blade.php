@@ -250,6 +250,10 @@
                 <span class="ml-4">Profile</span>
               </x-admin-link>
             </li>
+
+
+            @if(empty(check_student_application(auth::user()->id)))
+           
           <li class="relative px-6 py-1">
               <x-admin-link :href="route('student.registration.index')" :active="request()->routeIs('student.registration.index')"
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
@@ -271,6 +275,7 @@
                 <span class="ml-4">Application</span>
               </x-admin-link>
             </li>
+            @endif
             @endrole
 
             @role('student')

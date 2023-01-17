@@ -2,6 +2,8 @@
 
   use Illuminate\Support\Facades\Auth;
 
+  use App\Models\StudentRegister;
+
 
 
   if (!function_exists('generate_number')) {
@@ -18,6 +20,16 @@
         $bangNumber = ['১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯', '০'];
         $converted = str_replace($engNumber, $bangNumber, $int);
         return $converted;
+    }
+}
+
+if(!function_exists('check_student_application')){
+
+    function check_student_application($id){
+
+       $check=StudentRegister::where('student_id',$id)->first();
+
+       return $check;
     }
 }
 
