@@ -77,6 +77,7 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
 
     Route::resource('/all-application',ApplicationController::class);
     Route::get('/application/details/{id}',[ApplicationController::class,'pdf'])->name('application.pdf');
+    Route::get('/application/agency/info/{info}',[ApplicationController::class,'getInfo'])->name('application.get.info');
 
 
     Route::resource('/application/progress',ApplicationProgressController::class);

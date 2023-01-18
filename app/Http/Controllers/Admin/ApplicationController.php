@@ -12,6 +12,7 @@ use DB;
 use App\Models\ApplicationStatus;
 use App\Models\Country;
 use App\Models\StudentStatus;
+use App\Models\User;
 
 class ApplicationController extends Controller
 {
@@ -250,6 +251,29 @@ class ApplicationController extends Controller
             'academic_certificate_1' => 'nullable|string|max:255',
             'academic_certificate_2' => 'nullable|string|max:255',
         ]);
+    }
+
+
+    public function getInfo(Request $request,$info){
+
+
+          $student_data=StudentRegister::where('id',$info)->first()->reference_id;
+          if($student_data){
+
+            $data['agency_data']=User::where('generated_id',$student_data)->first();
+            $data['count_application'] =StudentRegister::where('reference_id',$student_data)->count();             
+
+            return view('admin.agency.user_info',$data);
+            
+          }else{
+             $notification = array(
+            'message' => 'Any Info here!',
+            'alert-type' => 'success'
+          );
+          return redirect()->back()->with($notification);
+           
+          }
+          
     }
 
 }

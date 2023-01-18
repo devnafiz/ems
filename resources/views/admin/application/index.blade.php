@@ -46,7 +46,7 @@
                                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ $ad['user']->student_name }}
                                     </th>
-                                     <td class="">{{$ad->reference_id ?? 'N/A'}}</td>
+                                     <td class=""><a href="{{route('admin.application.get.info',$ad->id) }}">{{$ad->reference_id ?? 'N/A'}}</a></td>
                                      <td class="">{{$ad->nationality}}</td>
                                    
                                     <td class="">{{$ad->passport_number}}</td>
