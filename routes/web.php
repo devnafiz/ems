@@ -69,6 +69,9 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
     Route::delete('/users/{user}', [UserController::class, 'distroy'])->name('users.distroy');
 
+    Route::get('/change-password/{user}',[UserController::class,'ChangePassword'])->name('user.change.password');
+    Route::post('/update/change/password/{user}',[UserController::class,'UpdateChangePassword'])->name('update.change.password');
+
     Route::post('/users/{user}/roles', [UserController::class, 'assignRole'])->name('users.roles');
     Route::delete('/users/{user}/roles/{role}', [UserController::class, 'removeRole'])->name('users.roles.remove');
 

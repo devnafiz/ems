@@ -30,6 +30,7 @@
                                     </td>
                                     <td class="py-4 px-6">
                                         <div class="flex space-x-2">
+                                            <a href="{{ route('admin.user.change.password', $user->id) }}" class="px-2 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md">Change Password</a>
                                             <a href="{{ route('admin.users.show', $user->id) }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md">Roles</a>
                                             
                                         

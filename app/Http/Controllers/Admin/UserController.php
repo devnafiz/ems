@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -63,5 +64,29 @@ class UserController extends Controller
         $user->delete();
 
         return back()->with('message', 'User Deleted');
+    }
+
+    public function ChangePassword(User $user){
+
+       $data['user_data']=$user;
+       //dd($data['user_data']);
+        return view('admin.users.change-password',$data);
+    }
+
+    public function UpdateChangePassword(Request $request, User $user){
+
+        //dd($user->id);
+
+            $user = User::find($user->id);
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+           $notification=[
+            'message'=>'Successfully update Password',
+            'alert-type'=>'success'
+           
+           ]; 
+
+           return redirect()->back()->with($notification);
     }
 }
