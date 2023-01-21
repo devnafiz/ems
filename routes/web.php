@@ -152,6 +152,11 @@ Route::middleware(['auth','role:agency'])->name('agency.')->prefix('agency')->gr
     Route::get('/all-application',[AgencyController::class,'index'])->name('all.apllication');
     Route::get('/application/details/{id}',[AgencyController::class,'show'])->name('application.show');
 
+    //aggrement
+
+    Route::get('/agreement/{user}',[AgencyController::class,'agncyAgreement'])->name('agreement.show');
+    Route::post('/agreement/save/{user}',[AgencyController::class,'agreementSave'])->name('agreement.save');
+
 });
 
 //Institute

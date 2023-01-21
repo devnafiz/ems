@@ -13,6 +13,7 @@ use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 use DB;
 Use Auth;
+use App\Models\Agreement;
 
 
 
@@ -196,5 +197,54 @@ class AgencyController extends Controller
         ]);
 
         return $user_data;
+    }
+
+
+
+    public function agncyAgreement(Request $request,$user){
+
+         $data['all_data']=User::findOrFail($user);  
+        return view('agency.agreement',$data);
+    }
+
+    public function agreementSave(Request $request,$user){
+            $agreement_data=Agreement::where('user_id',$user)->first();
+            if($agreement_data){
+
+                $notification=[
+            'message'=>'Sorry already added',
+            'alert-type'=>'danger'
+
+        ];
+
+        return redirect()->back()->with($notification); 
+            }
+       // dd($request->all());
+         
+         $agreement = new Agreement();
+         $agreement->user_id =$request->user_id;
+         $agreement->generated_id =$request->generated_id;
+
+         if (!empty($request->file('signature_image'))) {
+            $signature_image = uniqid() . '.' . $request->signature_image->getClientOriginalExtension();
+            $request->signature_image->move(public_path('uploads/signature'), $signature_image);
+            $agreement['signature_image'] = $signature_image;
+            //dd($agreement['signature_image']);
+        }
+        //dd($agreement['signature_image']);
+
+        $agreement->save();
+
+        $notification=[
+            'message'=>'Successfully added',
+            'alert-type'=>'success'
+
+        ];
+
+        return redirect()->back()->with($notification); 
+
+
+
+
     }
 }
