@@ -223,6 +223,15 @@
                 <span class="ml-4"> All Apllication </span>
               </x-admin-link>
             </li>
+            <!-- <div id="nav">
+            <a class="dropdown-toggle" href="#">Menu</a>
+            <ul class="dropdown">
+              <li><a href="#">Menu Item</a></li>
+              <li><a href="#">Menu</a></li>
+              <li><a href="#">Settings</a></li>
+              <li><a href="#">Search</a></li>
+            </ul>
+            </div> -->
 
 
           @endrole
@@ -391,6 +400,28 @@
                   <path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
                 </svg>
                 <span class="ml-4">Agency</span>
+              </x-admin-link>
+            </li>
+            <li class="relative px-6 py-1">
+              <x-admin-link :href="route('admin.all.agency.agreement')" :active="request()->routeIs('admin.all.agency.agreement')" 
+                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+              >
+                <svg
+                  class="w-5 h-5"
+                  aria-hidden="true"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"
+                  ></path>
+                  <path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+                </svg>
+                <span class="ml-4">Agency Agreement</span>
               </x-admin-link>
             </li>
 
@@ -758,6 +789,22 @@
       });
     </script>
 
+     <script type="text/javascript">
+            
+        $(function() { // Dropdown toggle
+            $('.dropdown-toggle').click(function() { $(this).next('.dropdown').slideToggle();
+            });
+
+            $(document).click(function(e) 
+            { 
+            var target = e.target; 
+            if (!$(target).is('.dropdown-toggle') && !$(target).parents().is('.dropdown-toggle')) 
+            //{ $('.dropdown').hide(); }
+              { $('.dropdown').slideUp(); }
+            });
+            });
+        </script>
+
     
 
 
@@ -766,6 +813,11 @@
       body{
         font-size: 16px;
       }
+
+      ul.dropdown { display: none; position: absolute; top: 100%;
+  margin-top: 5px; padding: 5px 5px 0 0; background: #777; }
+ul.dropdown li { list-style-type: none; }
+ul.dropdown li a { text-decoration: none; padding: 0em 1em; display: block; }
     </style>
     
   </body>

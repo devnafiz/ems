@@ -224,6 +224,7 @@ class AgencyController extends Controller
          $agreement = new Agreement();
          $agreement->user_id =$request->user_id;
          $agreement->generated_id =$request->generated_id;
+         
 
          if (!empty($request->file('signature_image'))) {
             $signature_image = uniqid() . '.' . $request->signature_image->getClientOriginalExtension();

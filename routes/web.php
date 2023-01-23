@@ -123,7 +123,10 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
 
      Route::get('/subjects/status/active/{id}', [SubjectController::class, 'StatusActive'])->name('subjects.active');
 
-
+    //agreement 
+     Route::get('/all/agency/agreement',[ApplicationController::class,'allAgencyAgreement'])->name('all.agency.agreement');
+     Route::get('/agreement/agency/view/{id}',[ApplicationController::class,'AgreementView'])->name('agreement.view');
+     Route::get('/agreement/agency/approved/{id}',[ApplicationController::class,'AgreementApproved'])->name('agreement.approved');
 
 
 

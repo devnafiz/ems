@@ -9,4 +9,9 @@ class Agreement extends Model
 {
     use HasFactory;
     protected $table='agency_license';
+
+    public function user(){
+
+       return $this->belongsTo(User::class,'user_id','id');
+    }
 }

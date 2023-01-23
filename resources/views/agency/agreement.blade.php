@@ -11,7 +11,7 @@
                 <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
 
                     <div class="space-y-8 divide-y divide-gray-200  mt-10 p-2 w-full">
-                        <form method="POST" action="{{ route('agency.agreement.save',$all_data->id ) }}">
+                        <form method="POST" action="{{ route('agency.agreement.save',$all_data->id ) }}" enctype="multipart/form-data">
                             @csrf
                            <input type="hidden" name="user_id" value="{{$all_data->id }}">
                             <input type="hidden" name="generated_id" value="{{$all_data->generated_id }}">
@@ -112,9 +112,9 @@
                             </div>
                             <br/>
                             <div class="sm:col-span-12">
-                                <label for="name" class="block text-sm font-medium text-gray-700"> Sign to confirm your agreement </label>
+                                <label for="signature_image" class="block text-sm font-medium text-gray-700"> Sign to confirm your agreement </label>
                                 <div class="mt-1">
-                                    <input type="file" id="name" name="signature_image" class="block w-full appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal sm:text-sm sm:leading-5" />
+                                    <input type="file" id="signature_image" name="signature_image" class="block w-full appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal sm:text-sm sm:leading-5" />
                                 </div>
                                 @error('name')
                                     <span class="text-red-400 text-sm">{{ $message }}</span>

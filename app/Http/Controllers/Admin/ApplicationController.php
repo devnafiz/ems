@@ -14,6 +14,8 @@ use App\Models\Country;
 use App\Models\StudentStatus;
 use App\Models\User;
 
+use App\Models\Agreement;
+
 class ApplicationController extends Controller
 {
     /**
@@ -274,6 +276,29 @@ class ApplicationController extends Controller
            
           }
           
+    }
+
+    public function allAgencyAgreement(){
+
+        $data['all_data']=Agreement::with('user')->orderByDesc('id')->paginate(10);
+
+        //dd($data['all_data']);
+         return view('admin.agency.all_agreement',$data);
+    }
+
+    public function AgreementView($id){
+
+
+        $data['all_data']=Agreement::with('user')->findOrfail($id);
+        //dd($data['all_data']);
+        return view('admin.agency.agreement_details',$data);
+    }
+
+    public function AgreementApproved($id){
+
+        $data['all_data']=Agreement::with('user')->findOrfail($id);
+        return view('admin.agency.approve_agreement',$data);
+
     }
 
 }
