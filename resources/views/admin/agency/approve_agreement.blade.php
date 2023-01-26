@@ -11,8 +11,10 @@
                 <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
 
                     <div class="space-y-8 divide-y divide-gray-200  mt-10 p-2">
-                        <form method="POST" action="{{ route('admin.roles.store') }}">
+                        <form method="POST" action="{{ route('admin.agreement.approved.update',$all_data->id) }}">
                             @csrf
+                            
+                            <input type="hidden" name="certificate" value="1">
                             <div class="sm:col-span-12">
                                 <div class="outer-border">
                                     <div class="inner-dotted-border">
@@ -53,8 +55,8 @@
                                   <div class="mt-1">
                                     <select class="block w-full appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal sm:text-sm sm:leading-5" name="status">
                                         <option value="">select status</option>
-                                        <option value="1">active</option>
-                                        <option value="0">deactive</option>
+                                        <option value="1" {{($all_data->status==1) ? 'selected' :''}}>active</option>
+                                        <option value="0" {{($all_data->status==0) ? 'selected' :''}}>deactive</option>
                                     </select>
                                   </div>  
                                 

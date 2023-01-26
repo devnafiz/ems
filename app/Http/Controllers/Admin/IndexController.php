@@ -9,6 +9,7 @@ use App\Models\Profile;
 use Auth;
 use DB;
 use App\Models\StudentRegister;
+use App\Models\Agreement;
 
 class IndexController extends Controller
 {
@@ -21,6 +22,7 @@ class IndexController extends Controller
         $data['students']=User::where('name','student')->count();
 
         $data['agencys']=User::where('name','agency')->count();
+        
         $data['institutes']=User::where('name','institute')->count();
         //dd($data['students']);
         return view('admin.index',$data);

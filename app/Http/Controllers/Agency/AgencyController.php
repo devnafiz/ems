@@ -248,4 +248,32 @@ class AgencyController extends Controller
 
 
     }
+
+    public function agreementCertificate($id){
+
+
+
+      $item =Agreement::with('user')->where('user_id',$id)->first();
+      //dd($data['item']);
+    
+
+        $now = new \DateTime();
+       
+        $date = $now->format('d-m-Y' . ' h:i:s');
+         //dd($date);
+        $extra = array(
+            'current_date_time' => $date,
+            'module_name' => 'Certificate',
+           
+           
+        );
+
+        //dd($extra);
+         $pdf = PDF::loadView('admin.pdf'.'.certificate', ['items' => $item, 'extra' => $extra])->setPaper('a4', 'landscape');
+
+         //dd($pdf);
+         return $pdf->download($extra['current_date_time'] . '_' . $extra['module_name'] . '.pdf');
+
+
+    }
 }

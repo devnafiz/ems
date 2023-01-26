@@ -127,6 +127,7 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
      Route::get('/all/agency/agreement',[ApplicationController::class,'allAgencyAgreement'])->name('all.agency.agreement');
      Route::get('/agreement/agency/view/{id}',[ApplicationController::class,'AgreementView'])->name('agreement.view');
      Route::get('/agreement/agency/approved/{id}',[ApplicationController::class,'AgreementApproved'])->name('agreement.approved');
+    Route::post('/agreement/agency/approved/update/{id}',[ApplicationController::class,'AgreementApprovedupdate'])->name('agreement.approved.update');
 
 
 
@@ -159,6 +160,9 @@ Route::middleware(['auth','role:agency'])->name('agency.')->prefix('agency')->gr
 
     Route::get('/agreement/{user}',[AgencyController::class,'agncyAgreement'])->name('agreement.show');
     Route::post('/agreement/save/{user}',[AgencyController::class,'agreementSave'])->name('agreement.save');
+
+    Route::get('/agreement/confirmation/view/{id}',[AgencyController::class,'agreementConfirmation'])->name('agreement.confirm');
+     Route::get('/agreement/certificate/view/{id}',[AgencyController::class,'agreementCertificate'])->name('agreement.certificate');
 
 });
 

@@ -301,4 +301,34 @@ class ApplicationController extends Controller
 
     }
 
+    public function AgreementApprovedupdate(Request $request,$id){
+         $status_data=$this->StatusValidation();
+        
+         $agreement=Agreement::where('id',$id)->update($status_data);
+
+          $notification = array(
+            'message' => 'Approved Agency Agreement',
+            'alert-type' => 'success'
+          );
+          return redirect()->back()->with($notification);
+        
+
+    }
+
+
+    public function StatusValidation(){
+
+        $status_data=request()->validate([
+         'status'=>'required',
+         'certificate'=>'nullable'
+
+
+        ]);
+
+        return $status_data;
+
+    }
+
+
+
 }

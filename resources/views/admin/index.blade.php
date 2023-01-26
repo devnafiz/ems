@@ -84,6 +84,14 @@
 
         @endrole 
         @role('agency')
+
+        <?php
+
+         $agreement=App\Models\Agreement::where('user_id',Auth::user()->id)->first();
+
+        ?>
+
+
          <h2
             class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
         >
@@ -169,6 +177,8 @@
                 </div>
               </div>
               <!-- Card -->
+
+             @if(empty($agreement))
               <div class="flex items-center p-4 bg-red-500 rounded-lg">
                 <div>
                   <a href="{{route('agency.agreement.show',Auth::user()->id)}}">
@@ -176,10 +186,23 @@
                      Click here
                   </p>
 
-                   <button><h3 style="font-size: 20px;">Agreement</h3></button> </a>
+                   <button><h3 style="font-size: 20px;">Agreement </h3></button> </a>
                 </div>
                 
               </div>
+              @else
+              <div class="flex items-center p-4  rounded-lg dark:text-blue-100 dark:bg-blue-500">
+                <table class="table table-bordered text-center">
+                  <tr  style="border: 2px solid #000 !important;">
+                    <td><strong>Agreement <a href="{{route('agency.agreement.confirm',Auth::user()->id)}}" class="badge badge-success">download</a></strong></td>
+                    <td>@if($agreement->status==1) <span class="badge badge-success">Active</span> @else <span class="badge badge-danger">pending..</span>@endif </td>
+                    <td><a href="{{route('agency.agreement.certificate',Auth::user()->id)}}" class="badge badge-success">certificate download </a></td>
+                  </tr>
+                </table>
+
+              </div> 
+
+              @endif
               
             </div>
 
