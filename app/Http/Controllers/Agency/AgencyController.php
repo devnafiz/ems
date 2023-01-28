@@ -276,4 +276,26 @@ class AgencyController extends Controller
 
 
     }
+
+   public function agreementConfirmation($id){
+
+      $item =Agreement::with('user')->where('user_id',$id)->first();
+      //dd($item);
+
+      $now = new \DateTime();
+       
+        $date = $now->format('d-m-Y' . ' h:i:s');
+         //dd($date);
+        $extra = array(
+            'current_date_time' => $date,
+            'module_name' => 'agreement',
+           
+           
+        );
+
+          $pdf = PDF::loadView('admin.pdf'.'.agreement', ['items' => $item, 'extra' => $extra])->setPaper('a4', 'landscape');
+
+         //dd($pdf);
+         return $pdf->download($extra['current_date_time'] . '_' . $extra['module_name'] . '.pdf');
+   }
 }

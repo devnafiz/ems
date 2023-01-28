@@ -2,7 +2,7 @@
     <div class="container px-6 mx-auto grid">
         
         <div class="p-2">
-            <h1 class="display-6 text-center">Student Information</h1>
+            <h1 class="display-6 text-center">Student Application Information</h1>
         </div>
         <div class="p-3 pt-6">
             <table class="table table-striped table-bordered ">

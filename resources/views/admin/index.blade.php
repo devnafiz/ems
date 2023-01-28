@@ -194,9 +194,22 @@
               <div class="flex items-center p-4  rounded-lg dark:text-blue-100 dark:bg-blue-500">
                 <table class="table table-bordered text-center">
                   <tr  style="border: 2px solid #000 !important;">
-                    <td><strong>Agreement <a href="{{route('agency.agreement.confirm',Auth::user()->id)}}" class="badge badge-success">download</a></strong></td>
+                    <td><strong>Agreement 
+                      @if($agreement->status==1)
+                      <a href="{{route('agency.agreement.confirm',Auth::user()->id)}}" class="badge badge-success">download</a>
+                      @else
+                        <a href="#" class="badge badge-success"> download </a>
+                      @endif
+                    </strong></td>
                     <td>@if($agreement->status==1) <span class="badge badge-success">Active</span> @else <span class="badge badge-danger">pending..</span>@endif </td>
-                    <td><a href="{{route('agency.agreement.certificate',Auth::user()->id)}}" class="badge badge-success">certificate download </a></td>
+                    <td>
+                       @if($agreement->status==1)
+                      <a href="{{route('agency.agreement.certificate',Auth::user()->id)}}" class="badge badge-success">certificate download </a>
+                      @else
+
+                         <a href="#" class="badge badge-success">certificate download </a>
+                      @endif  
+                    </td>
                   </tr>
                 </table>
 

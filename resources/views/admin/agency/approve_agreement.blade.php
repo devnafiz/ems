@@ -24,7 +24,7 @@
                                            <br><br>
                                            <span class="name"><b>{{$all_data->user->agency_name ?? ''}}</b></span><br/><br/>
                                            <span class="certify"><i>has successfully completed the certification</i></span> <br/><br/>
-                                           <span class="fs-30">Java Developer</span> <br/><br/>
+                                           <span class="fs-30">Agency Owner</span> <br/><br/>
                                            <span class="fs-20">with score of <b>A+</b></span> <br/><br/>
                                          
                                          
@@ -76,11 +76,11 @@
     </div>
     <style type="text/css">
 .outer-border{
-    width:800px; height:650px; padding:20px; text-align:center; border: 10px solid #673AB7;    margin-left: 21%;
+    width:800px; height:650px; padding:20px; text-align:center; border: 10px solid #00b2ff;    margin-left: 21%;
 }
 
 .inner-dotted-border{
-    width:750px; height:600px; padding:20px; text-align:center; border: 5px solid #673AB7;border-style: dotted;
+    width:750px; height:600px; padding:20px; text-align:center; border: 1px solid #673AB7;border-style: dotted;
 }
 
 .certification{
