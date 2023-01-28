@@ -73,7 +73,7 @@ class AgencyController extends Controller
     {
         $students = StudentRegister::with('user')->where('id', $id)->first();
         //dd($students);
-
+        
         return view('agency.application.show', compact('students'));
     }
 
@@ -116,6 +116,8 @@ class AgencyController extends Controller
 
 
         $data['agency_data']=User::where('id',$id)->first();
+        $data['agreement']  =Agreement::where('user_id',$id)->first();
+
         return view('agency.profile',$data);
     }
 

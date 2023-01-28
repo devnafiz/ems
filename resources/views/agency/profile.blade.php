@@ -39,7 +39,7 @@
                                   
                                     <div class="row pt-1">
                                       <div class="col-12 mb-3">
-                                        <h6 class="text-red-400">Agency ID : {{$agency_data->generated_id ?? 'N/A'}}</h6>
+                                        <h6 class="text-red-400">Agency ID : @if($agreement->status=='1') {{$agency_data->generated_id ?? 'N/A'}} @else <span style="color:red">Your Id  not display .Because agreement not  completed.</span>@endif</h6>
                                        
                                       </div>
                                       
