@@ -256,7 +256,7 @@ class AgencyController extends Controller
 
 
       $item =Agreement::with('user')->where('user_id',$id)->first();
-      //dd($data['item']);
+      //dd($item);
     
 
         $now = new \DateTime();
@@ -271,7 +271,7 @@ class AgencyController extends Controller
         );
 
         //dd($extra);
-         $pdf = PDF::loadView('admin.pdf'.'.certificate', ['items' => $item, 'extra' => $extra])->setPaper('a4', 'landscape');
+         $pdf = PDF::loadView('admin.pdf'.'.certificate', ['items' => $item, 'extra' => $extra])->setPaper('a4');
 
          //dd($pdf);
          return $pdf->download($extra['current_date_time'] . '_' . $extra['module_name'] . '.pdf');

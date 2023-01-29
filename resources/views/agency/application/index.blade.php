@@ -30,6 +30,9 @@
                                  <th scope="col" class="py-3 px-6">
                                     Passport No
                                 </th>
+                                 <th scope="col" class="py-3 px-6">
+                                   Status
+                                </th>
                                 <th scope="col" class="py-3 px-6">
                                     Action
                                 </th>
@@ -46,6 +49,7 @@
                                      <td class="">{{$ad->nationality}}</td>
                                    
                                     <td class="">{{$ad->passport_number}}</td>
+                                    <td><span class="badge badge-info">{{$ad->appstatus->name ?? 'N/A'}}</span></td>
                                     <td class="py-4 px-6">
                                         <div class="flex space-x-2">
                                             <a href="{{route('agency.application.show',$ad->id) }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md">details</a>
