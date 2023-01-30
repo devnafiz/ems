@@ -7,9 +7,87 @@
                 
         
         <div class="p-2">
-            <p class="display-7 text-center"><span  style="float:left;font-size: 18px;"> Appllication Status:<span class="badge btn-info">Step One</span> </span>Student Information</p>
+          
         </div>
-        <div class="p-3 pt-6">
+        <div class="row">
+        <div class="col-5">
+             <div class="p-4 ">
+             <div class="p-3 pt-6">
+               
+
+               
+
+
+              <div class="bg-white rounded-lg p-5 shadow">
+                <h2 class="h6 font-weight-bold text-center mb-4">Application Status Progress</h2>
+
+                <!-- Progress bar 3 -->
+                <div class="progress mx-auto" data-value='{{$students->appstatus->percentage ?? "0"}}'>
+                  <span class="progress-left">
+                                <span class="progress-bar border-success"></span>
+                  </span>
+                  <span class="progress-right">
+                                <span class="progress-bar border-success"></span>
+                  </span>
+                  <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                    <div class="h2 font-weight-bold">{{$students->appstatus->percentage ?? '0'}}<sup class="small">%</sup></div>
+                  </div>
+                </div>
+                <!-- END -->
+
+            </div>
+
+                 
+            
+              
+          </div>
+       </div>      
+        </div> 
+        <div class="col-7">
+            <div class="card">
+                        <div class="card-body">
+
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>SL</th>
+                                        <td>date</td>
+                                        <td>status</td>
+                                        <td>file</td>
+                                       
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  @foreach($all_status as $k=>$val)  
+                                    <tr>
+                                        <td>{{$k+1}}</td>
+                                        <td>{{date('d/m/Y',strtotime($val->created_at)) ?? 'N/A'}}</td>
+                                        <td>{{$val->appstatus->name ?? 'N/A'}}</td>
+                                        <td> 
+                                                @if ($val->status_file &&
+                                                    file_exists(public_path('uploads/status/' . $val->status_file)))
+                                                    <a class="text-black badge badge-danger"
+                                                        href="{{ asset('uploads/status/' . $val->status_file) }}"
+                                                        download><i class="fa fa-file fa-2x" aria-hidden="true"></i>Download</a>
+                                                @else
+                                                    <h6><span class="badge badge-danger">no file</span></h6>
+                                                @endif
+                                            </td>
+
+                                          
+                                    </tr>
+                                  @endforeach  
+                                </tbody>
+                                
+                            </table>
+                            
+                        </div>
+                        
+                    </div>
+        </div>
+        </div>   
+        <div class="p-3 pt-6 row">
+             <div class="col-6">
             <table class="table table-striped table-bordered ">
            
                 <tbody>
@@ -121,6 +199,21 @@
                         <th scope="col">Correspondence Address</th>
                         <td>{{ $students->correspondence_address  ?? 'N/A'}}</td>
                     </tr>
+                   
+                        
+                </tbody>
+            
+            </table>
+        </div>
+         <div class="col-6">
+             <table class="table table-striped table-bordered ">
+           
+                <tbody>
+                    
+                    <tr>
+                        <th scope="col">Correspondence Address</th>
+                        <td>{{ $students->correspondence_address  ?? 'N/A'}}</td>
+                    </tr>
                     <tr>
                         <th scope="col">Postal Code</th>
                         <td>{{ $students->postal_code  ?? 'N/A'}}</td>
@@ -217,6 +310,7 @@
                 </tbody>
             
             </table>
+          </div>  
         </div>
 
         <div class="row p-3 pt-6">
@@ -306,4 +400,116 @@
       }
 
   </style>
+
+  <style type="text/css">
+.status-border {
+    border: #f9a51c solid 1px;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    float: left;
+    margin-top: 10px;
+}
+
+.progress {
+  width: 150px;
+  height: 150px;
+  background: none;
+  position: relative;
+}
+
+.progress::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 6px solid #eee;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress>span {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.progress .progress-left {
+  left: 0;
+}
+
+.progress .progress-bar {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border-width: 6px;
+  border-style: solid;
+  position: absolute;
+  top: 0;
+}
+
+.progress .progress-left .progress-bar {
+  left: 100%;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border-left: 0;
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+
+.progress .progress-right {
+  right: 0;
+}
+
+.progress .progress-right .progress-bar {
+  left: -100%;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-right: 0;
+  -webkit-transform-origin: center right;
+  transform-origin: center right;
+}
+
+.progress .progress-value {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+  </style>
+
+
+  <script type="text/javascript">
+      $(function() {
+
+  $(".progress").each(function() {
+
+    var value = $(this).attr('data-value');
+    var left = $(this).find('.progress-left .progress-bar');
+    var right = $(this).find('.progress-right .progress-bar');
+
+    if (value > 0) {
+      if (value <= 50) {
+        right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
+      } else {
+        right.css('transform', 'rotate(180deg)')
+        left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)')
+      }
+    }
+
+  })
+
+  function percentageToDegrees(percentage) {
+
+    return percentage / 100 * 360
+
+  }
+
+});
+  </script>
 </x-admin-layout>

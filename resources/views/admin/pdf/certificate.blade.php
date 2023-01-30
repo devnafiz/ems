@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Certificate</title>
     <link rel="stylesheet" href="style.css" />
+   <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
 </head>
 <body>
   <div class="border-pattern">
@@ -12,12 +13,12 @@
           <div class="inner-content">
              <div style="">
                 @if($items->signature_image)
-                  <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/assets/img/malysia.png'))) }}" width="200" height="100">
+                  <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/assets/img/logo-for-certificate.png'))) }}" width="100" height="100">
                 @endif 
                </div> 
               <h1>Unice Education Malaysia</h1><br/>
 
-              <h2>Certificate OF Appointment</h2>
+              <h2 class="crt_title"><i>Certificate OF Appointment</i></h2>
               <h3>{{$items->user->agency_name}}</h3><br/>
 
                 <p>Has</p>
@@ -25,7 +26,7 @@
                 <p>representative for a period of 1 year</p>
                 <p>From</p><br/>
 
-                <p>{{date('jS \o\f F Y', strtotime($items->updated_at))}} to {{date('jS \o\f F Y', strtotime('+ 364 days',strtotime($items->updated_at)))}} </p>
+                <p style="font-size:13px;">{{date('jS \o\f F Y', strtotime($items->updated_at))}} to {{date('jS \o\f F Y', strtotime('+ 364 days',strtotime($items->updated_at)))}} </p>
                
                <div style="">
                 @if($items->signature_image)
@@ -35,7 +36,8 @@
               </div>
              
               <p style="font-size:13px;"> Engr. Md Omar Faruk </p>
-              <p style="font-size:13px;">CEO  issue date: {{date('jS \o\f F Y', strtotime($items->updated_at))}} </p>
+              <p style="font-size:13px;">CEO</p>
+              <p style="font-size:11px;">Issue date: {{date('jS \o\f F Y', strtotime($items->updated_at))}}</p>
               <p style="font-size:11px;float:left;"> SL no: {{$items->generated_id}}</p>
               <div style="float: right;left: 100px;position: relative;">
                 @if($items->signature_image)
@@ -122,6 +124,14 @@ h3{
 
 p{
     font-size:16pt;
+}
+.crt_title {
+ 
+  font-family: "Satisfy", cursive;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: #0060a9;
+  text-transform:uppercase;
 }
 
 .badge{

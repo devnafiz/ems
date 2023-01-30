@@ -14,6 +14,9 @@ use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use DB;
 Use Auth;
 use App\Models\Agreement;
+use App\Models\ApplicationStatus;
+use App\Models\Country;
+use App\Models\StudentStatus;
 
 
 
@@ -71,10 +74,18 @@ class AgencyController extends Controller
      */
     public function show($id)
     {
-        $students = StudentRegister::with('user')->where('id', $id)->first();
+        $data['students'] = StudentRegister::with('user')->where('id', $id)->first();
+
+        $data['all_status']=StudentStatus::where('application_id',$id)->get();
+        $data['programme']=DB::table('programme')->where('programme_id', $data['students']->programme)->first()->programme_name;
+        //dd($data['programme']);
+        $data['subject']=DB::table('subject')->where('subject_id', $data['students']->subject)->first()->subject_name;
+
+        //dd($data['subject']);
+         $data['status'] =ApplicationStatus::where('status',1)->get();
         //dd($students);
         
-        return view('agency.application.show', compact('students'));
+        return view('agency.application.show', $data);
     }
 
     /**
@@ -271,7 +282,7 @@ class AgencyController extends Controller
         );
 
         //dd($extra);
-         $pdf = PDF::loadView('admin.pdf'.'.certificate', ['items' => $item, 'extra' => $extra])->setPaper('a4');
+         $pdf = PDF::loadView('admin.pdf'.'.certificate', ['items' => $item, 'extra' => $extra])->setPaper('a4')->setOptions(['defaultFont' => 'sans-serif']);
 
          //dd($pdf);
          return $pdf->download($extra['current_date_time'] . '_' . $extra['module_name'] . '.pdf');

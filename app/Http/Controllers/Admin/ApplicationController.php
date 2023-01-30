@@ -16,6 +16,10 @@ use App\Models\User;
 
 use App\Models\Agreement;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\DealMail;
+
+
 class ApplicationController extends Controller
 {
     /**
@@ -305,6 +309,19 @@ class ApplicationController extends Controller
          $status_data=$this->StatusValidation();
         
          $agreement=Agreement::where('id',$id)->update($status_data);
+
+         $all_data=Agreement::with('user')->findOrfail($id);
+
+         $data = [
+            
+            'name' => $all_data->user->agency_name,
+            'email' => $all_data->user->email,
+            
+        ];
+
+        Mail::to($all_data->user->email)->send(new DealMail($data));
+
+
 
           $notification = array(
             'message' => 'Approved Agency Agreement',

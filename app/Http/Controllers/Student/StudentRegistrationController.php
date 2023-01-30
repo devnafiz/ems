@@ -29,10 +29,13 @@ class StudentRegistrationController extends Controller
     public function index()
     {
         $user_data = Auth::user()->id;
-        $user = User::find($user_data);
-        $programmes = DB::table('programme')->get();
+        $data['user'] = User::find($user_data);
+        //$programmes = DB::table('programme')->get();
+        $data['countries'] =Country::all();
+        $data['subject'] = DB::table('subject')->where('status','1')->get();
+        $data['programmes'] = DB::table('programme')->where('status','1')->get();
         
-        return view('student.studentRegister', compact('user', 'programmes'));
+        return view('student.studentRegister', $data);
     }
 
     /**
