@@ -8,6 +8,12 @@ use App\Models\StudentStatus;
 use App\Models\StudentRegister;
 use App\Models\ApplicationStatus;
 
+use App\Mail\StatusMail;
+use Illuminate\Support\Facades\Mail;
+use App\Models\User;
+
+
+
 class ApplicationProgressController extends Controller
 {
     /**
@@ -149,7 +155,22 @@ class ApplicationProgressController extends Controller
           //dd($data);
          $application_status = new StudentStatus;
          $data = $application_status->insertGetId($data);
+        
           StudentRegister::findOrFail($id)->update(['app_status'=>$request->status]);
+          $student_id=StudentRegister::findOrFail($id)->student_id;
+          $all_data= User::where('id',$student_id)->first();
+          //dd($all_data);
+
+          
+           
+           $status_data = [
+            
+            'name' => $all_data->student_name,
+            'email' => $all_data->email,
+            
+           ];
+
+        Mail::to('nafiz016@gmail.com')->send(new StatusMail($status_data));
 
 
          //$data=StudentRegister::findOrFail($id)->update(['app_status'=>$request->name]);

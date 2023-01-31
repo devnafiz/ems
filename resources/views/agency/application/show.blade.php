@@ -386,7 +386,7 @@
         
 
         <div class="p-4 pt-6">
-            <a href="{{ route('student.registration.edit',Auth::user()->id) }}">
+            <a href="{{ route('agency.application.edit',$students->id) }}">
                 <button type="button" class="btn btn-info float-right">Edit</button>
             </a>
         </div>

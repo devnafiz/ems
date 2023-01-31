@@ -155,6 +155,8 @@ Route::middleware(['auth','role:agency'])->name('agency.')->prefix('agency')->gr
 
     Route::get('/all-application',[AgencyController::class,'index'])->name('all.apllication');
     Route::get('/application/details/{id}',[AgencyController::class,'show'])->name('application.show');
+    Route::get('/application/edit/{id}',[AgencyController::class,'applicationEdit'])->name('application.edit');
+    Route::post('/application/update/{id}',[AgencyController::class,'applicationUpdate'])->name('application.update');
 
     //aggrement
 
@@ -163,6 +165,7 @@ Route::middleware(['auth','role:agency'])->name('agency.')->prefix('agency')->gr
 
     Route::get('/agreement/confirmation/view/{id}',[AgencyController::class,'agreementConfirmation'])->name('agreement.confirm');
      Route::get('/agreement/certificate/view/{id}',[AgencyController::class,'agreementCertificate'])->name('agreement.certificate');
+
 
 });
 
