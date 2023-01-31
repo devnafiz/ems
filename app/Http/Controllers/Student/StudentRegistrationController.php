@@ -15,6 +15,7 @@ use App\Models\Profile;
 use App\Models\Country;
 use App\Models\Program;
 use App\Models\Subject;
+use App\Models\StudentStatus;
 
 
 
@@ -171,9 +172,10 @@ class StudentRegistrationController extends Controller
         $user = User::find($student_id);
         //dd($user);
         $students = DB::table('student_registers')->where('student_id', $student_id)->get();
-        //dd($students);
+        $all_status=StudentStatus::where('application_id',$id)->get();
+        //dd($all_status);
 
-        return view('student.show', compact('students', 'user'));
+        return view('student.show', compact('students', 'user','all_status'));
     }
 
     /**

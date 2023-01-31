@@ -170,7 +170,7 @@ class ApplicationProgressController extends Controller
             
            ];
 
-        Mail::to('nafiz016@gmail.com')->send(new StatusMail($status_data));
+        Mail::to($all_data->email)->send(new StatusMail($status_data));
 
 
          //$data=StudentRegister::findOrFail($id)->update(['app_status'=>$request->name]);

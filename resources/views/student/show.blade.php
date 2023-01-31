@@ -4,7 +4,59 @@
         <div class="p-2">
             <h1 class="display-6 text-center">Student Application Information</h1>
         </div>
-        <div class="p-3 pt-6">
+        <br/>
+        <div class="row">
+            <div class="col-6">
+                @if($all_status!='')
+                <div class="card">
+                        <div class="card-body">
+
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>SL</th>
+                                        <td>date</td>
+                                        <td>status</td>
+                                        <td>file</td>
+                                       
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  @foreach($all_status as $k=>$val)  
+                                    <tr>
+                                        <td>{{$k+1}}</td>
+                                        <td>{{date('d/m/Y',strtotime($val->created_at)) ?? 'N/A'}}</td>
+                                        <td>{{$val->appstatus->name ?? 'N/A'}}</td>
+                                        <td> 
+                                                @if ($val->status_file &&
+                                                    file_exists(public_path('uploads/status/' . $val->status_file)))
+                                                    <a class="text-black badge badge-danger"
+                                                        href="{{ asset('uploads/status/' . $val->status_file) }}"
+                                                        download><i class="fa fa-file fa-2x" aria-hidden="true"></i>Download</a>
+                                                @else
+                                                    <h6><span class="badge badge-danger">no file</span></h6>
+                                                @endif
+                                            </td>
+
+                                          
+                                    </tr>
+                                  @endforeach  
+                                </tbody>
+                                
+                            </table>
+                            
+                        </div>
+                        
+                    </div>
+                  @endif  
+            </div>    
+            
+        </div>
+        <br/>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="p-3 pt-6">
             <table class="table table-striped table-bordered ">
             @foreach ($students as $student)
                 <tbody>
@@ -112,6 +164,23 @@
                     </tr>
 
 
+                   
+                        
+                </tbody>
+            
+            </table>
+        </div>
+                
+            </div>
+
+             <div class="col-6">
+                <div class="p-3 pt-6">
+            <table class="table table-striped table-bordered ">
+          
+                <tbody>
+                    
+
+
                     <tr>
                         <th scope="row" class="px-5">Correspondence Address</th>
                         <td>{{ $student->correspondence_address }}</td>
@@ -213,6 +282,11 @@
             
             </table>
         </div>
+                
+            </div>
+
+        </div>   
+        
 
         <div class="row p-3 pt-6">
             <table class="table table-striped">
