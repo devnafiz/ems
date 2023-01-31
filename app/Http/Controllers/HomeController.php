@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\StudentRegister;
 use App\Models\StudentStatus;
+use Auth;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -55,6 +57,39 @@ class HomeController extends Controller
          ]);
 
          return $search_data;
+
+    }
+
+
+
+    public function ChangePassword(Request $request){
+
+        return view('password.change-password');
+    }
+
+    public function UpdateChangePassword(Request $request){
+       //dd($request->all());
+
+       $validateData = $request->validate([
+            'oldpassword' => 'required',
+            'password' => 'required|confirmed',
+        ]);
+
+        $hashedPassword = Auth::user()->password;
+        if (Hash::check($request->oldpassword,$hashedPassword)) {
+            $admin = User::find(Auth::id());
+            $admin->password = Hash::make($request->password);
+            $admin->save();
+            Auth::logout();
+            return redirect('/login');
+        }else{
+
+            $notification = array(
+            'message' => 'Password not change',
+            'alert-type' => 'success'
+        );
+            return redirect()->back()->with($notification);
+        }
 
     }
 }

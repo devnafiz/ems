@@ -35,13 +35,13 @@
                                         {{$k+1}}
                                         
                                     </td>
-                                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <th scope="row" class="py-4 px-6 font-medium text-gray-800 whitespace-nowrap dark:text-white">
                                         {{ $val->programme_name }}
                                     </th>
                                     <!-- <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ $val->percentage }}%
                                     </td> -->
-                                     <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                     <td scope="row" class="py-4 px-6 font-medium text-gray-800 whitespace-nowrap dark:text-white">
                                        <span class="badge badge-info">{{($val->status == 1)? 'active' :'inactive'}}</span>
                                     </td>
                                     <td class="py-4 px-6">

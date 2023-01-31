@@ -46,6 +46,10 @@ Route::get('/institute',function(){
   return view('institute.register');
 });
 
+Route::get('change-password',[HomeController::class,'ChangePassword'])->name('change.password');
+Route::post('change-password/update',[HomeController::class,'UpdateChangePassword'])->name('change.password.update');
+
+
 Route::get('/student/status',[HomeController::class,'searchstatus'])->name('status.check');
 Route::get('/student/application/info',[HomeController::class,'searchApplication'])->name('student.application');
 Route::get('/student/info',[HomeController::class,'studentInfo'])->name('status.info');

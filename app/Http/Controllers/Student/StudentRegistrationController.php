@@ -172,7 +172,9 @@ class StudentRegistrationController extends Controller
         $user = User::find($student_id);
         //dd($user);
         $students = DB::table('student_registers')->where('student_id', $student_id)->get();
-        $all_status=StudentStatus::where('application_id',$id)->get();
+        $students_id = DB::table('student_registers')->where('student_id', $student_id)->first();
+        //dd($students_id);
+        $all_status=StudentStatus::where('application_id',$students_id->id)->get();
         //dd($all_status);
 
         return view('student.show', compact('students', 'user','all_status'));
