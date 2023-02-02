@@ -2,6 +2,12 @@
     <div class="container px-6 mx-auto grid">
        
         @role('student')
+         <h3
+            class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200" style="text-decoration: underline;
+    text-transform: uppercase;"
+        >
+          Welcome, <span >{{Auth::user()->student_name}}</span>
+        </h3> 
           <div class="container rounded bg-white mt-5">
               <div class="row">
                   <div class="col-md-4 border-right">
@@ -91,12 +97,14 @@
 
         ?>
 
-
-         <h2
-            class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
+         <h2></h2>    
+         <h3
+            class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200" style="text-decoration: underline;
+    text-transform: uppercase;"
         >
-           Agency Dashboard
-        </h2> 
+          Welcome, <span >{{Auth::user()->agency_name}}</span>
+        </h3> 
+
         <div class="grid gap-6 mb-8 md:grid-cols-3 xl:grid-cols-4">
               <!-- Card -->
               <div
@@ -223,11 +231,12 @@
         @endrole
         @role('admin')  
 
-                <h2
-            class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
+              <h3
+            class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200" style="text-decoration: underline;
+    text-transform: uppercase;"
         >
-           Admin Dashboard
-        </h2>      
+          Welcome, <span >{{Auth::user()->name}}</span>
+        </h3>    
 
                    <!-- Cards -->
             <div class="grid gap-6 mb-8 md:grid-cols-3 xl:grid-cols-4">
