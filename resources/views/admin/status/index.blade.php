@@ -39,7 +39,7 @@
                                         {{ $val->percentage }}%
                                     </td> -->
                                      <td scope="row" class="py-4 px-6 font-medium text-gray-800 whitespace-nowrap dark:text-white">
-                                        {{ $val->status }}
+                                       <span class="badge badge-info"> {{ ($val->status==1) ?'Active':'Inactive' }}</span>
                                     </td>
                                     <td class="py-4 px-6">
                                         <div class="flex space-x-2">

@@ -158,10 +158,7 @@
                         <th scope="row" class="px-5">Applicant State</th>
                         <td>{{ $student->applicant_state }}</td>
                     </tr>
-                    <tr>
-                        <th scope="row" class="px-5">Mobile Number</th>
-                        <td>{{ $student->mobile_number }}</td>
-                    </tr>
+                    
 
 
                    
@@ -179,7 +176,10 @@
           
                 <tbody>
                     
-
+                     <tr>
+                        <th scope="row" class="px-5">Mobile Number</th>
+                        <td>{{ $student->mobile_number }}</td>
+                    </tr>
 
                     <tr>
                         <th scope="row" class="px-5">Correspondence Address</th>

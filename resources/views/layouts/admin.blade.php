@@ -635,9 +635,11 @@
       </aside>
       <div class="flex flex-col flex-1 w-full">
         <header class="z-10 py-4 bg-white shadow-md dark:bg-gray-800" style="background-color: #7587d52b !important;">
+        
           <div
             class="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300"
           >
+
             <!-- Mobile hamburger -->
             <button
               class="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple"
@@ -668,8 +670,22 @@
               
               <!-- Profile menu -->
               <li class="relative">
+                 <button
+                  class="align-middle ribbon rounded-full focus:shadow-outline-purple focus:outline-none"
+                  @click="toggleProfileMenu"
+                  @keydown.escape="closeProfileMenu"
+                  aria-label="Account"
+                  aria-haspopup="true"
+                ><span class="ribbon-label" style="padding: 0px 7px;top: 13% !important;color:red;">0</span>
+                  <img
+                    class="object-cover w-8 h-8 rounded-full"
+                    src="{{ asset('assets/img/notification.png') }}"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </button>
                 <button
-                  class="align-middle rounded-full focus:shadow-outline-purple focus:outline-none"
+                  class="align-middle rounded-full focus:shadow-outline-purple scroll-ms focus:outline-none"
                   @click="toggleProfileMenu"
                   @keydown.escape="closeProfileMenu"
                   aria-label="Account"
