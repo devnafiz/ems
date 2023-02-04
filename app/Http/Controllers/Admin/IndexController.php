@@ -14,6 +14,9 @@ use App\Models\Agreement;
 class IndexController extends Controller
 {
     public function index(){
+
+        $data['notifications'] = auth()->user()->unreadNotifications->count();
+        //dd($notifications);
         $data['user_data']=User::with('profile','studentregister')->where('id',Auth::user()->id)->first();
 
         //dd($data['user_data']);
@@ -22,7 +25,7 @@ class IndexController extends Controller
         $data['students']=User::where('name','student')->count();
 
         $data['agencys']=User::where('name','agency')->count();
-       
+      
         $data['institutes']=User::where('name','institute')->count();
         //dd($data['students']);
         return view('admin.index',$data);

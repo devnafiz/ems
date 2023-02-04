@@ -11,14 +11,16 @@ class NewRegisterNotification extends Notification
 {
     use Queueable;
 
+    public $data;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -53,9 +55,11 @@ class NewRegisterNotification extends Notification
      * @return array
      */
     public function toArray($notifiable)
-    {
+    { 
+        //dd();
         return [
-            //
+            'user_id' =>$this->data['user_id'],
+            'subject' => $this->data['subject'],
         ];
     }
 }

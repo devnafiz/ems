@@ -54,6 +54,12 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
   </head>
   <body class="font-sans antialiased bg-gray-100 dark:bg-gray-900">
+
+    <?php
+       $notifications = auth()->user()->unreadNotifications->count();
+       $notifications_all = auth()->user()->unreadNotifications;
+
+    ?>
     <!-- npm run watch -->
     @if(Session::has('message'))
           <div class="bg-indigo-600" x-data="{open: true}" x-show="open">
@@ -670,13 +676,16 @@
               
               <!-- Profile menu -->
               <li class="relative">
+                  @role('admin')
+
+                 
                  <button
                   class="align-middle ribbon rounded-full focus:shadow-outline-purple focus:outline-none"
-                  @click="toggleProfileMenu"
-                  @keydown.escape="closeProfileMenu"
-                  aria-label="Account"
+                  @click="toggleNotificationsMenu"
+                  @keydown.escape="closeNotificationsMenu"
+                  aria-label="Account1"
                   aria-haspopup="true"
-                ><span class="ribbon-label" style="padding: 0px 7px;top: 13% !important;color:red;">0</span>
+                ><span class="ribbon-label" style="padding: 0px 7px;top: 13% !important;color:red;">{{($notifications)? $notifications :'0'}}</span>
                   <img
                     class="object-cover w-8 h-8 rounded-full"
                     src="{{ asset('assets/img/notification.png') }}"
@@ -684,6 +693,40 @@
                     aria-hidden="true"
                   />
                 </button>
+
+                 <template x-if="isNotificationsMenuOpen">
+                  <ul
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100"
+                    x-transition:leave-end="opacity-0"
+                    @click.away="closeNotificationsMenu"
+                    @keydown.escape="closeNotificatiosnMenu"
+                    class="absolute right-0  p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700"
+                    aria-label="submenu" style="width: 400px;"
+                  >
+                   @if ($notifications > 0 )
+                    @foreach($notifications_all as $notification)
+                    <li class="flex">
+                     <div  role="alert">
+                      <p class="dropdown-item"><b>#Id: {{$notification->data['user_id'] ?? ''}}</b>&nbsp;  {{$notification->data['subject'] ?? ''}}  &nbsp <a href="#"><span style="color:red">X</span></a> </p>
+                      <!-- <a href="#"><button type="button" rel="tooltip" title="Mark as read" class="btn btn-danger btn-link btn-sm mark-as-read" data-id="{{ $notification->id }}">
+                      <i class="material-icons">close</i>
+                      </button>
+                      </a> -->
+                   </div>
+  
+                      
+                    </li>
+                    <!--  <hr> -->
+                     @endforeach
+                     @else
+                    <li class="flex">
+                    
+                    </li>
+                    @endif
+                  </ul>
+                </template>
+                @endrole
                 <button
                   class="align-middle rounded-full focus:shadow-outline-purple scroll-ms focus:outline-none"
                   @click="toggleProfileMenu"

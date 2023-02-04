@@ -33,4 +33,8 @@ if(!function_exists('check_student_application')){
     }
 }
 
+if(!function_exists('no')){
+    
+}
+
 ?>

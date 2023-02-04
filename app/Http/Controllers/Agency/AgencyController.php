@@ -17,6 +17,7 @@ use App\Models\Agreement;
 use App\Models\ApplicationStatus;
 use App\Models\Country;
 use App\Models\StudentStatus;
+use App\Notifications\NewRegisterNotification;
 
 
 
@@ -248,6 +249,19 @@ class AgencyController extends Controller
         //dd($agreement['signature_image']);
 
         $agreement->save();
+
+          $data=[
+
+               'user_id' =>$request->generated_id,
+               'subject' =>'Agency apply for Agreement'
+          ];
+         // dd($data);
+
+           $notification = User::first();
+           //dd($notification);
+           #store notification info into notifications table
+           $notification->notify(new NewRegisterNotification($data));
+
 
         $notification=[
             'message'=>'Successfully added',

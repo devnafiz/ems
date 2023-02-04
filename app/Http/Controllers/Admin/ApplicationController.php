@@ -17,8 +17,9 @@ use App\Models\User;
 use App\Models\Agreement;
 
 use Illuminate\Support\Facades\Mail;
-use App\Mail\DealMail;
+use App\Mail\DealMail
 
+use Session;
 
 class ApplicationController extends Controller
 {
@@ -29,6 +30,8 @@ class ApplicationController extends Controller
      */
     public function index()
     {
+        $notifications = auth()->user()->unreadNotifications;
+        dd($notifications);
          $data['applications'] =StudentRegister::paginate(10);
          //dd($data['applications']);
         return view('admin.application.index',$data);
