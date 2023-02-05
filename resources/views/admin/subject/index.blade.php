@@ -8,10 +8,10 @@
                 </div>
                 
                 <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 table-fixed">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400  table-bordered"  >
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th scope="col" class="py-3 px-4">
+                                <th  scope="row" >
                                     SL
                                 </th>
                                 <th scope="col" class="py-3 px-4">
@@ -34,13 +34,13 @@
                         <tbody>
                             @foreach($all_data as $k=>$val)
                                 <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                                    <td scope="row" class="py-4  px-4 ">
+                                    <td  class="py-4  px-4 ">
                                         {{$k+1}}
                                         
                                     </td>
-                                    <th scope="row" class="py-4 px-4 font-medium text-gray-800 whitespace-nowrap dark:text-white">
+                                    <td class="py-4 px-4 font-medium text-gray-800 whitespace-nowrap dark:text-white">
                                         {{ $val->subject_name }}
-                                    </th>
+                                    </td>
                                     <!-- <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ $val->percentage }}%
                                     </td> -->
