@@ -45,7 +45,7 @@
 
     <script src="{{ asset('assets/js/charts-lines.js') }}" defer></script>
     <script src="{{ asset('assets/js/charts-pie.js') }}" defer></script>
-     <script src="{{ asset('js/admin.js') }}" ></script>
+     
 
 
     <!-- <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
