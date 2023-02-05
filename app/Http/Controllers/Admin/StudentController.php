@@ -8,6 +8,7 @@ use App\Models\User;
 use DB;
 use Auth;
 use App\Models\Profile;
+use App\Models\Country;
 
 class StudentController extends Controller
 {
@@ -66,6 +67,8 @@ class StudentController extends Controller
     {
         //dd($id);
         $data['edit_data']=User::with('profile')->where('id',$id)->first();
+         $data['countries'] =Country::all();
+
         //dd($data['edit_data']);
          return view('admin.student.edit',$data);
     }

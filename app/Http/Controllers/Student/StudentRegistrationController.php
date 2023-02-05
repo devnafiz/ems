@@ -351,7 +351,7 @@ class StudentRegistrationController extends Controller
 
      public function editProfile(Request $request,$id){
          $data['edit_data']=User::with('profile')->findOrfail($id);
-
+            $data['countries'] =Country::all();
         //dd($data['student_data']);
         return view('student.edit_profile',$data);
        }
