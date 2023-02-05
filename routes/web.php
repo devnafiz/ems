@@ -133,6 +133,9 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
      Route::get('/agreement/agency/approved/{id}',[ApplicationController::class,'AgreementApproved'])->name('agreement.approved');
     Route::post('/agreement/agency/approved/update/{id}',[ApplicationController::class,'AgreementApprovedupdate'])->name('agreement.approved.update');
 
+    //notification
+    Route::get('/mark-as-read/{id}',[ApplicationController::class, 'markNotification'])->name('markNotification');
+
 
 
     

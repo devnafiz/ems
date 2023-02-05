@@ -9,14 +9,15 @@
     <!-- Horizontal Stepper -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.bundle.css') }}">
     <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
-    
+     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+
     <!-- Bootstrap CDN Links -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script> -->
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.repeater.min.js') }}"></script>
+   <!--  <script src="{{ asset('assets/js/jquery.repeater.min.js') }}"></script> -->
     <script src="{{ asset('assets/js/popper.min.js') }}"></script>
-   <!--  <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script> -->
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
    
 
@@ -40,12 +41,12 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
       defer
     ></script>
-
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
 
     <script src="{{ asset('assets/js/charts-lines.js') }}" defer></script>
     <script src="{{ asset('assets/js/charts-pie.js') }}" defer></script>
      <script src="{{ asset('js/admin.js') }}" ></script>
+
 
     <!-- <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
     <script src="{{ asset('js/app.js') }}" defer></script> -->
@@ -677,6 +678,7 @@
               <!-- Profile menu -->
               <li class="relative">
                   @role('admin')
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
                  
                  <button
@@ -708,11 +710,8 @@
                     @foreach($notifications_all as $notification)
                     <li class="flex">
                      <div  role="alert">
-                      <p class="dropdown-item"><b>#Id: {{$notification->data['user_id'] ?? ''}}</b>&nbsp;  {{$notification->data['subject'] ?? ''}}  &nbsp <a href="#"><span style="color:red">X</span></a> </p>
-                      <!-- <a href="#"><button type="button" rel="tooltip" title="Mark as read" class="btn btn-danger btn-link btn-sm mark-as-read" data-id="{{ $notification->id }}">
-                      <i class="material-icons">close</i>
-                      </button>
-                      </a> -->
+                      <p class="dropdown-item"><b>#Id: {{$notification->data['user_id'] ?? ''}}</b>&nbsp;  {{$notification->data['subject'] ?? ''}}  &nbsp <a href="{{route('admin.markNotification',$notification->id)}}" class="mark-as-read" data-id="{{ $notification->id }}"><span style="color:red">X</span></a> </p>
+                     
                    </div>
   
                       
@@ -726,6 +725,24 @@
                     @endif
                   </ul>
                 </template>
+
+                 <script type="text/javascript">
+                  // $(document).ready(function(){
+
+                    $('.mark-as-read').click(function(){
+
+                    alert('hi');
+
+                    });
+
+
+                  // });
+
+               
+                 
+
+                 
+               </script>
                 @endrole
                 <button
                   class="align-middle rounded-full focus:shadow-outline-purple scroll-ms focus:outline-none"
@@ -814,7 +831,7 @@
     </div>
 
 
-    <script>
+   <!--  <script>
       // form repeater Initialization
       $('.repeater-default').repeater({
         show: function () {
@@ -826,7 +843,7 @@
           }
         }
       });
-    </script>
+    </script> -->
 
     <script>
       // Stepper lement
@@ -885,6 +902,8 @@
             });
             });
         </script>
+
+ 
 
     
 

@@ -117,7 +117,7 @@
                                     <!--end::Label-->
 
                                     <!--begin::Input-->
-                                    <select id="country" name="nationality" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="country" name="nationality" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         @foreach($countries as $k=>$country)
                                         <option value="{{$country->Name}}" >{{$country->Name}}</option>
                                         @endforeach
@@ -179,7 +179,7 @@
                                     <!--end::Label-->
 
                                     <!--begin::Input-->
-                                    <select id="country" name="obtain_single_entry_visa" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="country" name="obtain_single_entry_visa" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         @foreach($countries as $k=>$country)
                                         <option value="{{$country->Name}}" >{{$country->Name}}</option>
                                         @endforeach
@@ -247,7 +247,7 @@
                                     <!--end::Label-->
 
                                     <!--begin::Input-->
-                                    <select id="country" name="country" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="country" name="country" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                          @foreach($countries as $k=>$country)
                                         <option value="{{$country->Name}}" >{{$country->Name}}</option>
                                         @endforeach
@@ -280,7 +280,7 @@
                                     <!--end::Label-->
 
                                     <!--begin::Input-->
-                                    <select name="programme" id="programme" class="form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select name="programme" id="programme" class="form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <option selected>Programme</option>
                                         @foreach($programmes as $programme) 
                                             <option value="{{ $programme->programme_id }}">{{ $programme->programme_name }}  </option>
@@ -297,7 +297,7 @@
                                     <!--end::Label-->
 
                                     <!--begin::Input-->
-                                    <select name="subject" id="subject" class="form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select name="subject" id="subject" class="form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         
                                     </select>
                                     <!--end::Input-->
@@ -479,7 +479,7 @@
                                     <!--end::Label-->
 
                                     <!--begin::Input-->
-                                    <select id="country2" name="country_2" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="country2" name="country_2" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                          @foreach($countries as $k=>$country)
                                         <option value="{{$country->Name}}" >{{$country->Name}}</option>
                                         @endforeach
@@ -555,7 +555,7 @@
                                     <!--end::Label-->
 
                                     <!--begin::Input-->
-                                    <select id="country" name="highest_qualification" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="country" name="highest_qualification" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <option value="Ordinary Level (O Level)">Ordinary Level (O Level)</option>
                                         <option value="Advanced Level (A Level)">Advanced Level (A Level)</option>
                                         <option value="Undergraduate">Undergraduate</option>
