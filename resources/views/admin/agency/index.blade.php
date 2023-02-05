@@ -40,7 +40,7 @@
                             @foreach($all_data as $k=>$val)
                                 <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                                     <td class="py-4 px-6 font-medium">{{$k+1}}</td>
-                                    <th scope="row" class="py-4 px-1 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <th scope="row" class="py-4 px-1 font-medium text-gray-800 whitespace-nowrap dark:text-white">
                                         {{ $val->agency_name }}
                                     </th>
                                     <td class="">{{$val->email}}</td>
