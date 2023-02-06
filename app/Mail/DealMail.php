@@ -31,6 +31,6 @@ class DealMail extends Mailable
     public function build()
     {
          $order = $this->data;
-        return $this->from('support@easylearningbd.com')->view('mail.deal_mail',compact('order'))->subject('Email From UNICE EDUCATION MALAYSIA');
+        return $this->from('support@uniceeducation.com')->view('mail.deal_mail',compact('order'))->subject('Email From UNICE EDUCATION MALAYSIA');
     }
 }

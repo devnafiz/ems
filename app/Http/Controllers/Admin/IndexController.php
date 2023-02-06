@@ -29,6 +29,96 @@ class IndexController extends Controller
       
         $data['institutes']=User::where('name','institute')->count();
 
+        $data['progress']=StudentRegister::where('app_status','<',4)->count();
+        $data['progress_com']=StudentRegister::where('app_status','>=',6)->count();
+
+        $ag='AG';
+        $query = StudentRegister::where('app_status','<',4)->get();
+        if($query->count()>0){
+        foreach($query as $q){
+
+           $k=$q->Where('reference_id', 'LIKE', '%'.$ag.'%');
+
+        }
+
+        $data['admin_progress'] =$k->count();
+       }else{
+         $data['admin_progress']='0';
+       }
+
+
+
+         $query2 = StudentRegister::where('app_status','>=',6)->get();
+         if($query2->count()>0){
+        foreach($query2 as $q){
+
+           $c=$q->Where('reference_id', 'LIKE', '%'.$ag.'%');
+
+        }
+
+        $data['admin_agency_com'] =$c->count();
+       }else{
+
+        $data['admin_agency_com'] ='0';
+       }
+
+ //Institute
+
+         $in='IN';
+        $query3 = StudentRegister::where('app_status','<',4)->get();
+        if($query3->count()>0){
+        foreach($query3 as $query){
+
+           $p=$query->Where('reference_id', 'LIKE', '%'.$in.'%');
+
+        }
+
+        $data['admin_In_progress'] =$p->count();
+
+        }else{
+           $data['admin_In_progress'] ='0'; 
+        }
+
+
+
+        $query4 = StudentRegister::where('app_status','==',6)->get();
+        //dd($query4);
+        if($query4->count()>0){
+        
+        foreach($query4 as $d){
+
+           $I=$d->Where('reference_id', 'LIKE', '%'.$in.'%');
+
+
+        }
+        $data['admin_IN_com'] =$I->count();
+            //dd($data['admin_IN_com']);
+
+       } else{
+         $data['admin_IN_com'] =0;
+        }
+        
+
+      
+
+      
+
+
+        
+
+       
+
+
+
+
+
+         //dd($data['progress']);
+
+        //student
+
+         $data['passport_number']=StudentRegister::where('student_id',Auth::user()->id)->first(); 
+         //dd($data['passport_number']);      
+
 
         //agency
          $data['ag_students']=StudentRegister::where('reference_id',Auth::user()->generated_id)->count();

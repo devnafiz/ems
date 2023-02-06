@@ -20,16 +20,20 @@
                                  <img class="rounded-circle mt-5" src="{{asset('assets/img/101.png')}}" width="90">
                           @endif
                      
-                        <span class="font-weight-bold">{{$user_data->student_name ?? ''}}</span><span class="text-black-50">{{$user_data->email ?? ''}}</span><span>{{$user_data->country ?? ''}}</span></div>
+                        <span class="font-weight-bold">{{$user_data->student_name ?? ''}}</span><span class="text-black-50">{{$user_data->email ?? ''}}</span><span style="color:green;">Student ID : {{$user_data->generated_id ?? ''}}</span>
+                         @if(!empty($passport_number))
+                            <span style="color:green;">Passport Number : {{$passport_number->passport_number ?? ''}}</span>
+                         @endif
+                      </div>
                      
                   </div>
                   <div class="col-md-8">
                       <div class="p-3 py-5">
                           <div class="d-flex justify-content-between align-items-center mb-3">
                               <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
-                                  <h6>Back to home</h6>
+                                 <!--  <h6>Back to home</h6> -->
                               </div>
-                              <h6 class="text-right">Edit Profile</h6>
+                             <!--  <h6 class="text-right">Edit Profile</h6> -->
                           </div>
                           <div class="row mt-2">
                               <div class="col-md-12"><input type="text" class="form-control" placeholder="first name" value="{{$user_data->student_name ?? ''}}" readonly></div>
@@ -295,7 +299,7 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    261
+                    {{($progress)?? '0'}}
                   </p>
                 </div>
               </div>
@@ -316,12 +320,12 @@
                   <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                   >
-                    New applications
+                    Complete applications
                   </p>
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    376
+                    {{($progress_com)?? '0'}}
                   </p>
                 </div>
               </div>
@@ -381,7 +385,7 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    261
+                    {{($admin_progress) ?? '0'}}
                   </p>
                 </div>
               </div>
@@ -402,12 +406,12 @@
                   <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                   >
-                    New applications
+                    Complete applications
                   </p>
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    376
+                    {{($admin_agency_com) ?? '0'}}
                   </p>
                 </div>
               </div>
@@ -465,7 +469,7 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    261
+                   {{($admin_In_progress) ?? '0'}}
                   </p>
                 </div>
               </div>
@@ -491,7 +495,7 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    376
+                    {{($admin_IN_com) ?? '0'}}
                   </p>
                 </div>
               </div>

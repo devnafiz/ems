@@ -33,6 +33,6 @@ class StatusMail extends Mailable
     {
         $info = $this->data;
         //dd($info);
-        return $this->from('support@easylearningbd.com')->view('mail.status_change',compact('info'))->subject('EMAIL FROM UNICE EDUCATION MALAYSIA');
+        return $this->from('support@uniceeducation.com')->view('mail.status_change',compact('info'))->subject('EMAIL FROM UNICE EDUCATION MALAYSIA');
     }
 }
