@@ -324,7 +324,13 @@
                             {{ $application_details->health_declaration }}
                         </td>
                         <td>
-                            <a href="{{ asset('uploads/health') }}/{{ $application_details->health_declaration_file }}" download><img src="{{ asset('uploads/health') }}/{{ $application_details->health_declaration_file }}" alt="img" style="width: 70px; height: 60px" ></a>
+                              @if ($application_details->health_declaration_file &&
+                                                    file_exists(public_path('uploads/health/' . $application_details->health_declaration_file)))
+                            <a href="{{ asset('uploads/health') }}/{{ $application_details->health_declaration_file }}" download>download</a>
+                             @else
+                                <h6><span class="badge badge-danger">no file</span></h6>
+                             @endif
+                          
                         </td>
                     </tr>
                      <tr>
@@ -334,7 +340,14 @@
                             {{ $application_details->passport_scanned }}
                         </td>
                         <td>
-                            <a href="{{ asset('uploads/passport') }}/{{ $application_details->passport_scanned_file }}" download><img src="{{ asset('uploads/passport') }}/{{ $application_details->passport_scanned_file }}" alt="img" style="width: 70px; height: 60px" ></a>
+                             @if ($application_details->passport_scanned_file &&
+                                                    file_exists(public_path('uploads/passport/' . $application_details->passport_scanned_file)))
+                            <a href="{{ asset('uploads/passport') }}/{{ $application_details->passport_scanned_file }}" download>download</a>
+
+                             @else
+                                <h6><span class="badge badge-danger">no file</span></h6>
+                             @endif
+                          
                         </td>
                     </tr>
                     <tr>
@@ -344,7 +357,14 @@
                             {{ $application_details->photo }}
                         </td>
                         <td>
-                            <a href="{{ asset('uploads/photo') }}/{{ $application_details->photo_file }}" download><img src="{{ asset('uploads/photo') }}/{{ $application_details->photo_file }}" alt="img" style="width: 70px; height: 60px" ></a>
+                             @if ($application_details->passport_scanned_file &&
+                                                    file_exists(public_path('uploads/photo/' . $application_details->passport_scanned_file)))
+                            <a href="{{ asset('uploads/photo') }}/{{ $application_details->passport_scanned_file }}" download>download</a>
+                            @else
+                                <h6><span class="badge badge-danger">no file</span></h6>
+                             @endif
+
+                        
                         </td>
                     </tr>
                      <tr>
@@ -354,7 +374,13 @@
                             {{ $application_details->academic_certificate_1 }}
                         </td>
                         <td>
-                            <a href="{{ asset('uploads/certificates') }}/{{ $application_details->academic_certificate_file_1 }}" download><img src="{{ asset('uploads/certificates') }}/{{ $application_details->academic_certificate_file_1 }}" alt="img" style="width: 70px; height: 60px" ></a>
+                             @if ($application_details->academic_certificate_file_1 &&
+                                                    file_exists(public_path('uploads/certificates/' . $application_details->academic_certificate_file_1)))
+                            <a href="{{ asset('uploads/certificates') }}/{{ $application_details->academic_certificate_file_1 }}" download>download</a>
+                             @else
+                                <h6><span class="badge badge-danger">no file</span></h6>
+                             @endif
+                           
                         </td>
                     </tr>
 
@@ -365,7 +391,14 @@
                             {{ $application_details->academic_certificate_2 }}
                         </td>
                         <td>
-                            <a href="{{ asset('uploads/certificates') }}/{{ $application_details->academic_certificate_file_2 }}" download><img src="{{ asset('uploads/certificates') }}/{{ $application_details->academic_certificate_file_2 }}" alt="img" style="width: 70px; height: 60px" ></a>
+
+                               @if ($application_details->academic_certificate_file_1 &&
+                                                    file_exists(public_path('uploads/certificates/' . $application_details->academic_certificate_file_2)))
+                            <a href="{{ asset('uploads/certificates') }}/{{ $application_details->academic_certificate_file_2 }}" download>download</a>
+                             @else
+                                <h6><span class="badge badge-danger">no file</span></h6>
+                             @endif
+                            
                         </td>
                     </tr>
 
