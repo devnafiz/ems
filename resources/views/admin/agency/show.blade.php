@@ -54,8 +54,8 @@
                                         <p class="text-muted">{{($agency_data->status=='1')?'Active':'Deactive'}}</p>
                                       </div>
                                       <div class="col-6 mb-3">
-                                        <h6>Most Viewed</h6>
-                                        <p class="text-muted">Dolor sit amet</p>
+                                        <h6>Country</h6>
+                                        <p class="text-muted">{{$agency_data->profile->country ?? ''}}</p>
                                       </div>
                                     </div>
                                     

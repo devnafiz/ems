@@ -81,7 +81,7 @@ If you still have not received your purchase after the above mentioned times, pl
 </div>  
 <div style="float: right;width: 50%;">
     <u>Signature for Company</u><br/>
-    <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/uploads/signature/'.$items->signature_image))) }}" width="200" height="100">
+    <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/assets/img/0099_ceo.png'))) }}" width="200" height="100">
 </div>      
 
 

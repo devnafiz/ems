@@ -10,6 +10,7 @@ use Auth;
 use DB;
 use App\Models\StudentRegister;
 use App\Models\Agreement;
+use App\Models\Country;
 
 class IndexController extends Controller
 {
@@ -27,6 +28,14 @@ class IndexController extends Controller
         $data['agencys']=User::where('name','agency')->count();
       
         $data['institutes']=User::where('name','institute')->count();
+
+
+        //agency
+         $data['ag_students']=StudentRegister::where('reference_id',Auth::user()->generated_id)->count();
+        $data['ag_progress']=StudentRegister::where('reference_id',Auth::user()->generated_id)->where('app_status','<',4)->count();
+         $data['ag_progress_com']=StudentRegister::where('reference_id',Auth::user()->generated_id)->where('app_status','>=',6)->count();
+         //dd($data['ag_progress_com']);
+
         //dd($data['students']);
         return view('admin.index',$data);
     }
@@ -48,12 +57,15 @@ class IndexController extends Controller
 
         $data['edit_data']=User::with('profile')->where('id',$id)->first();
         //dd($data['edit_data']);
+         $data['countries'] =Country::all();
         return view('admin.agency.edit',$data);
     }
 
     public function updateAgency(Request $request,$id){
          $user_data = $this->UserDataValidation();
+
          $profile_data = $this->profileEditValidation();
+        //dd($profile_data );
 
           if (!empty($request->file('pro_image'))) {
             $documents = uniqid() . '.' . $request->pro_image->getClientOriginalExtension();
@@ -68,14 +80,24 @@ class IndexController extends Controller
 
 
         // dd($profile_data['user_id']);
-          if (!empty($profile_data['user_id'])) {
-                    Profile::where('user_id', $profile_data['user_id'])->update($profile_data);
+        
+
+                if (!empty($profile_data['user_id'])) {
+                     $profile = Profile::where('user_id', $profile_data['user_id'])->first();
+                     if($profile){
+                         Profile::where('user_id', $profile_data['user_id'])->update($profile_data);
+                     }else{
+
+                          $newOwner = Profile::create($profile_data);
+                     }  
+                   
                 } else {
                     unset($profile_data['user_id']);
                     $newOwner = Profile::create($profile_data);
                     // Creating owners and also inserting the owners id to join table with license
                    
                 }
+
 
               return redirect()
             ->back()

@@ -64,7 +64,7 @@
                                       </div>
                                       <div class="col-6 mb-3">
                                         <h6>Country</h6>
-                                        <p class="text-muted">Dolor sit amet</p>
+                                        <p class="text-muted">{{$student_data->profile->country ?? 'N/A'}}</p>
                                       </div>
                                     </div>
                                     

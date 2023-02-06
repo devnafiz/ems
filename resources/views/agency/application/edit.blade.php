@@ -118,7 +118,7 @@
                                     <!--end::Label-->
 
                                     <!--begin::Input-->
-                                    <select id="country" name="nationality" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="country" name="nationality" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         @foreach($countries as $k=>$country)
                                         <option value="{{$country->Name}}" {{($edit_data->nationality==$country->Name) ? 'selected':''}}>{{$country->Name}}</option>
                                         @endforeach
@@ -180,7 +180,7 @@
                                     <!--end::Label-->
 
                                     <!--begin::Input-->
-                                    <select id="country" name="obtain_single_entry_visa" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="country" name="obtain_single_entry_visa" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <option selected>Select</option>
                                          @foreach($countries as $k=>$country)
                                         <option value="{{$country->Name}}" {{($edit_data->obtain_single_entry_visa==$country->Name) ? 'selected':''}}>{{$country->Name}}</option>
@@ -252,7 +252,7 @@
                                     <!--end::Label-->
 
                                     <!--begin::Input-->
-                                    <select id="country" name="country" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="country" name="country" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                          @foreach($countries as $k=>$country)
                                         <option value="{{$country->Name}}" {{($edit_data->country==$country->Name) ? 'selected':''}}>{{$country->Name}}</option>
                                         @endforeach
@@ -286,7 +286,7 @@
                                     <!--end::Label-->
 
                                     <!--begin::Input-->
-                                    <select name="programme" id="programme" class="form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select name="programme" id="programme" class="form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <option selected>Programme</option>
                                         @foreach($programmes as $programme) 
                                             <option value="{{ $programme->programme_id }}" {{($edit_data->programme)? 'selected':'' }}>{{ $programme->programme_name }}  </option>
@@ -303,7 +303,7 @@
                                     <!--end::Label-->
 
                                     <!--begin::Input-->
-                                    <select name="subject" id="subject" class="form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select name="subject" id="subject" class="form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                                              @foreach($subject as $sub)
                                  <option value="{{ $sub->subject_id }}" {{ $edit_data->subject == $sub->subject_id ? 'selected': '' }} >{{ $sub->subject_name }}</option>  
@@ -461,7 +461,7 @@
                                 <div class="fv-row mb-10">
                                   
                                     <label class="form-label">Country</label>
-                                    <select id="country2" name="country_2" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="country2" name="country_2" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                          @foreach($countries as $k=>$country)
                                         <option value="{{$country->Name}}" {{($edit_data->country_2==$country->Name)? 'selected' : ''}}>{{$country->Name}}</option>
                                         @endforeach
@@ -524,7 +524,7 @@
                                     <!--end::Label-->
 
                                     <!--begin::Input-->
-                                    <select id="country" name="highest_qualification" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="country" name="highest_qualification" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <option value="Ordinary Level (O Level)" {{($edit_data->highest_qualification=='Ordinary Level (O Level)')? 'selected':'' }}>Ordinary Level (O Level)</option>
                                         <option value="Advanced Level (A Level)" {{($edit_data->highest_qualification=='Advanced Level (A Level)')? 'selected':'' }}>Advanced Level (A Level)</option>
                                         <option value="Undergraduate" {{($edit_data->highest_qualification=='Undergraduate')? 'selected':'' }}>Undergraduate</option>

@@ -25,10 +25,10 @@
                                            <span class="name"><b>{{$all_data->user->agency_name ?? ''}}</b></span><br/><br/>
                                            <span class="certify"><i>has successfully completed the certification</i></span> <br/><br/>
                                            <span class="fs-30">Agency Owner</span> <br/><br/>
-                                           <span class="fs-20">with score of <b>A+</b></span> <br/><br/>
+                                          <!--  <span class="fs-20">with score of <b>A+</b></span> <br/><br/> -->
                                          
                                          
-                                          <div class="row">
+                                         <!--  <div class="row">
                                             <div class="pm-certificate-footer">
                                                 <div class="md:col-span-4 pm-certified col-xs-4 text-center">
                                                   <span class="pm-credits-text block sans">Buffalo City School District</span>
@@ -36,7 +36,7 @@
                                                   <span class="bold block">Crystal Benton Instructional Specialist II, Staff Development</span>
                                                 </div>
                                                 <div class="md:col-span-4">
-                                                  <!-- LEAVE EMPTY -->
+                                                
                                                 </div>
                                                 <div class="md:col-span-4 pm-certified col-xs-4 text-center">
                                                   <span class="pm-credits-text block sans">Date Completed</span>
@@ -45,7 +45,7 @@
                                                  
                                                 </div>
                                             </div>
-                                          </div>
+                                          </div> -->
         
                                    
                                     </div>

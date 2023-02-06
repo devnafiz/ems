@@ -36,7 +36,7 @@
                                   <div class="card-body p-4">
                                      <div class="row pt-1">
                                       <div class="col-12 mb-3">
-                                        <h6 class="text-red-400">STudent ID :{{$all_data->generated_id ?? 'N/A'}}</h6>
+                                        <h6 class="text-red-400">Student ID :{{$all_data->generated_id ?? 'N/A'}}</h6>
                                         
                                       </div>
                                       
@@ -61,8 +61,8 @@
                                         <p class="text-muted">{{($all_data->status=='1')?'Active':'Deactive'}}</p>
                                       </div>
                                       <div class="col-6 mb-3">
-                                        <h6>Most Viewed</h6>
-                                        <p class="text-muted">Dolor sit amet</p>
+                                        <h6>Country</h6>
+                                        <p class="text-muted">{{$all_data->profile->country ?? 'N/A'}}</p>
                                       </div>
                                     </div>
                                     

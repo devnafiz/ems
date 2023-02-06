@@ -127,9 +127,9 @@ class AgencyController extends Controller
 
 
 
-        $data['agency_data']=User::where('id',$id)->first();
+        $data['agency_data']=User::with('profile')->where('id',$id)->first();
         $data['agreement']  =Agreement::where('user_id',$id)->first();
-
+          //dd($data['agreement'] );
         return view('agency.profile',$data);
     }
 

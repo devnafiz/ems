@@ -39,10 +39,10 @@
                               <div class="col-md-6"><input type="text" class="form-control" placeholder="Email" value="{{$user_data->email ?? ''}}" readonly></div>
                               <div class="col-md-6"><input type="text" class="form-control" value="{{$user_data->mobile_number ?? ''}}" placeholder="Phone number" readonly></div>
                           </div>
-                          <div class="row mt-3">
+                         <!--  <div class="row mt-3">
                               <div class="col-md-6"><input type="text" class="form-control" placeholder="address" value="{{$user_data->profile->address ?? ''}}"></div>
                               <div class="col-md-6"><input type="text" class="form-control" value="{{$user_data->profile->country ?? ''}}" placeholder="Country"></div>
-                          </div>
+                          </div> -->
                           
                          
                       </div>
@@ -103,7 +103,12 @@
     text-transform: uppercase;"
         >
           Welcome, <span >{{Auth::user()->agency_name}}</span>
-        </h3> 
+        </h3>
+         @if($agreement && $agreement->status==1)
+        <h4 class="my-6 text-2xl font-semibold text-gray-700 dark:text-red-500">Agency ID : {{Auth::user()->generated_id ?? ''}}</h4>
+        @else
+        <h4 class="my-6 text-2xl font-semibold text-gray-700 dark:text-red-500">Agency ID :</h4>
+        @endif
 
         <div class="grid gap-6 mb-8 md:grid-cols-3 xl:grid-cols-4">
               <!-- Card -->
@@ -128,7 +133,7 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                   {{$students}}
+                   {{$ag_students}}
                   </p>
                 </div>
               </div>
@@ -156,7 +161,7 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    261
+                   {{($ag_progress)?? '0'}}
                   </p>
                 </div>
               </div>
@@ -175,12 +180,12 @@
                   <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                   >
-                    New applications
+                    Complete applications
                   </p>
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    376
+                   {{($ag_progress_com) ?? '0'}}
                   </p>
                 </div>
               </div>

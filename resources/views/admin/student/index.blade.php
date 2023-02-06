@@ -23,7 +23,7 @@
                                     Email
                                 </th>
                                   <th scope="col" class="py-2 px-1">
-                                    Agency Id
+                                    Student Id
                                 </th>
                                  <th scope="col" class="py-2 px-1">
                                    Mobile Number

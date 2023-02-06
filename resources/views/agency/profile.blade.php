@@ -39,7 +39,17 @@
                                   
                                     <div class="row pt-1">
                                       <div class="col-12 mb-3">
-                                        <h6 class="text-red-400">Agency ID : @if($agreement->status=='1') {{$agency_data->generated_id ?? 'N/A'}} @else <span style="color:red">Your Id  not display .Because agreement not  completed.</span>@endif</h6>
+                                        <h6 class="text-red-400">Agency ID : 
+
+                                          @if(!empty($agreement)) 
+                                          @if($agreement->status=='1') 
+
+                                          {{$agency_data->generated_id ?? 'N/A'}}
+                                           @else 
+                                           <span style="color:red">Your Id  not display .Because agreement not  completed.</span>
+                                         @endif
+                                          @endif
+                                       </h6>
                                        
                                       </div>
                                       
@@ -65,8 +75,8 @@
                                         <p class="text-muted">{{($agency_data->status=='1')?'Active':'Deactive'}}</p>
                                       </div>
                                       <div class="col-6 mb-3">
-                                        <h6>Most Viewed</h6>
-                                        <p class="text-muted">Dolor sit amet</p>
+                                        <h6>Country</h6>
+                                        <p class="text-muted">{{$agency_data->profile->country ?? 'N/A'}}</p>
                                       </div>
                                     </div>
                                     
