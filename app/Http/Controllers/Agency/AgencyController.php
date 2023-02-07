@@ -76,6 +76,7 @@ class AgencyController extends Controller
     public function show($id)
     {
         $data['students'] = StudentRegister::with('user')->where('id', $id)->first();
+        //dd($data['students']);
 
         $data['all_status']=StudentStatus::where('application_id',$id)->get();
         $data['programme']=DB::table('programme')->where('programme_id', $data['students']->programme)->first()->programme_name;
@@ -137,6 +138,7 @@ class AgencyController extends Controller
     public function EditAgency($id){
 
        $data['edit_data']=User::with('profile')->where('id',$id)->first();
+       $data['countries'] =Country::all();
         //dd($data['edit_data']);
         return view('agency.profile_edit',$data);
 

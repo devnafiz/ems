@@ -9,6 +9,7 @@ use App\Models\Profile;
 use DB;
 use Auth;
 use App\Models\StudentRegister;
+use App\Models\Country;
 
 class InstituteController extends Controller
 {
@@ -113,6 +114,7 @@ class InstituteController extends Controller
     public function editProfile(Request $request,$id){
 
         $data['edit_data'] =User::with('profile')->where('id',$id)->first();
+        $data['countries'] =Country::all();
         return view('institute.edit_profile',$data);
 
     }

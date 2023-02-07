@@ -194,7 +194,9 @@ class StudentRegistrationController extends Controller
      */
     public function edit($id)
     {
-       $data['edit_data'] =StudentRegister::findOrfail($id);
+        
+       $data['edit_data'] =StudentRegister::where('student_id',$id)->first();
+       //dd($data['edit_data']);
        $data['countries'] =Country::all();
        $data['programmes'] = Program::where('status','1')->get();
        $data['subject'] = Subject::where('status','1')->get();

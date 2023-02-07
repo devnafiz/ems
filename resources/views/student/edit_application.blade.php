@@ -745,9 +745,14 @@
                                         <td>
                                             <input type="file" name="health_declaration_file" class="form-control form-control-solid" />
                                             <div>
-                                                @if($edit_data->health_declaration_file)
-                                                <img src="{{asset('uploads/health/'.$edit_data->health_declaration_file)}}" width="50" height="50">
-                                                @endif
+                                              
+
+                                                 @if ($edit_data->health_declaration_file &&
+                                                                file_exists(public_path('uploads/health/' . $edit_data->health_declaration_file)))
+                                        <a href="{{ asset('uploads/health') }}/{{ $edit_data->health_declaration_file }}" download>download</a>
+                                         @else
+                                            <h6><span class="badge badge-danger">no file</span></h6>
+                                         @endif
                                             </div>
                                         </td>
                                     </tr>
@@ -761,9 +766,15 @@
                                         <td>
                                             <input type="file" name="passport_scanned_file" class="form-control form-control-solid" />
                                             <div>
-                                                @if($edit_data->passport_scanned_file)
-                                                <img src="{{asset('uploads/passport/'.$edit_data->passport_scanned_file)}}" width="50" height="50">
-                                                @endif
+                                               
+
+                                                 @if ($edit_data->passport_scanned_file &&
+                                                    file_exists(public_path('uploads/passport/' . $edit_data->passport_scanned_file)))
+                                                <a href="{{ asset('uploads/passport') }}/{{ $edit_data->passport_scanned_file }}" download>download</a>
+
+                                                 @else
+                                                    <h6><span class="badge badge-danger">no file</span></h6>
+                                                 @endif
                                             </div>
                                         </td>
                                     </tr>
@@ -778,9 +789,14 @@
                                         <td>
                                             <input type="file" name="photo_file" class="form-control form-control-solid" />
                                             <div>
-                                                @if($edit_data->photo_file)
-                                                <img src="{{asset('uploads/photo/'.$edit_data->photo_file)}}" width="50" height="50">
-                                                @endif
+                                                
+
+                                                  @if ($edit_data->passport_scanned_file &&
+                                                    file_exists(public_path('uploads/photo/' . $edit_data->photo_file)))
+                                                    <a href="{{ asset('uploads/photo') }}/{{ $edit_data->photo_file }}" download>download</a>
+                                                    @else
+                                                        <h6><span class="badge badge-danger">no file</span></h6>
+                                                     @endif
                                             </div>
                                         </td>
                                     </tr>
@@ -794,9 +810,12 @@
                                         <td>
                                             <input type="file" name="academic_certificate_file_1" class="form-control form-control-solid" />
                                              <div>
-                                                @if($edit_data->academic_certificate_file_1)
-                                                <img src="{{asset('uploads/certificates/'.$edit_data->academic_certificate_file_1)}}" width="50" height="50">
-                                                @endif
+                                                 @if ($edit_data->academic_certificate_file_1 &&
+                                                    file_exists(public_path('uploads/certificates/' . $edit_data->academic_certificate_file_1)))
+                                                <a href="{{ asset('uploads/certificates') }}/{{ $edit_data->academic_certificate_file_1 }}" download>download</a>
+                                                 @else
+                                                    <h6><span class="badge badge-danger">no file</span></h6>
+                                                 @endif
                                             </div>
                                         </td>
                                     </tr>
@@ -810,9 +829,12 @@
                                         <td>
                                             <input type="file" name="academic_certificate_file_2" class="form-control form-control-solid" />
                                             <div>
-                                                @if($edit_data->academic_certificate_file_2)
-                                                <img src="{{asset('uploads/certificates/'.$edit_data->academic_certificate_file_2)}}" width="50" height="50">
-                                                @endif
+                                              @if ($edit_data->academic_certificate_file_1 &&
+                                                    file_exists(public_path('uploads/certificates/' . $edit_data->academic_certificate_file_2)))
+                            <a href="{{ asset('uploads/certificates') }}/{{ $edit_data->academic_certificate_file_2 }}" download>download</a>
+                             @else
+                                <h6><span class="badge badge-danger">no file</span></h6>
+                             @endif
                                             </div>
                                         </td>
                                     </tr>

@@ -31,7 +31,7 @@
                                     @if($user->roles)
                                         @foreach($user->roles as $user_role)
                                         <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <th scope="row" class="py-4 px-6 font-medium text-gray-800 whitespace-nowrap dark:text-white">
                                                 {{ $user_role->name }}
                                             </th>
                                             <td class="py-4 px-6">

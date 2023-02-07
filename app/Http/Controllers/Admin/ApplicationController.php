@@ -164,7 +164,8 @@ class ApplicationController extends Controller
 
     public function pdf(Request $request){
        $id = $request->id;
-      $item =$data['application_details'] =StudentRegister::findOrfail($id);
+      $item =StudentRegister::findOrfail($id);
+      //dd($item);
       $programme=DB::table('programme')->where('programme_id', $item->programme)->first()->programme_name;
         //dd($data['programme']);
       $subject=DB::table('subject')->where('subject_id', $item->subject)->first()->subject_name;

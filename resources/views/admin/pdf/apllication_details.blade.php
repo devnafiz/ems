@@ -20,8 +20,8 @@
                 <tr>
                     <td class="title" style="vertical-align: bottom;width:100%">
                        <span style="color: black; font-weight: 500;font-size:14px;">Student Information</span> <br>
-                       <span style="vertical-align: bottom; color: green;">Student Name:{{$items->student->student_name}}</span><br>
-                       <span style="vertical-align: bottom; color: green;">Student Id:</span><br>
+                       <span style="vertical-align: bottom; color: green;">Student Name:{{($items->user->student_name) ?? ''}}</span><br>
+                       <span style="vertical-align: bottom; color: green;">Student Id:{{($items->user->generated_id) ?? ''}}</span><br>
 
                    </td>
                     <td style="float: left;width:100%">
@@ -50,7 +50,7 @@
                  
                     <tr class="item last">
                         <td scope="row" style="width:100%;font-weight: bold; font-size: 14px;">Student Name</td>
-                        <td style="width:100%;border-left: none;">{{$items->student->student_name}}</td>
+                        <td style="width:100%;border-left: none;">{{$items->user->student_name}}</td>
                     </tr>
                     <tr class="item last">
                         <td scope="row" style="width:100%;font-weight: bold; font-size: 14px;">Mobile Number</td>
