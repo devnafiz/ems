@@ -42,11 +42,11 @@
                 <div id="navbarCollapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="" class="nav-link active">
+                        <a href="{{url('/')}}" class="nav-link active">
                             Home
                         </a>
                     </li>
-                    <li class="nav-item">
+                  <!--   <li class="nav-item">
                         <a href="" class="nav-link active">
                             Blog
                         </a>
@@ -55,7 +55,7 @@
                         <a href="" class="nav-link active">
                             About
                         </a>
-                    </li>
+                    </li> -->
                      @if (Route::has('login'))
                       @auth
                     <li class="nav-item">

@@ -86,7 +86,7 @@
 
                     <tr>
                         <th scope="row" class="mt-1 p-2">Student Name</th>
-                        <td>{{ $application_details->user->student_name }}</td>
+                        <td>{{ $application_details->user->student_name ?? '' }}</td>
                     </tr>
                     <tr>
                         <th scope="row" class="mt-1 p-2">Mobile Number</th>
@@ -357,9 +357,9 @@
                             {{ $application_details->photo }}
                         </td>
                         <td>
-                             @if ($application_details->passport_scanned_file &&
-                                                    file_exists(public_path('uploads/photo/' . $application_details->passport_scanned_file)))
-                            <a href="{{ asset('uploads/photo') }}/{{ $application_details->passport_scanned_file }}" download>download</a>
+                             @if ($application_details->photo_file &&
+                                                    file_exists(public_path('uploads/photo/' . $application_details->photo_file)))
+                            <a href="{{ asset('uploads/photo') }}/{{ $application_details->photo_file }}" download>download</a>
                             @else
                                 <h6><span class="badge badge-danger">no file</span></h6>
                              @endif

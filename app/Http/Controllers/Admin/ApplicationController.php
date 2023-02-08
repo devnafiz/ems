@@ -31,7 +31,7 @@ class ApplicationController extends Controller
     public function index()
     {
         
-         $data['applications'] =StudentRegister::paginate(10);
+         $data['applications'] =StudentRegister::orderByDesc('id')->paginate(10);
          //dd($data['applications']);
         return view('admin.application.index',$data);
     }

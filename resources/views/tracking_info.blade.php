@@ -45,11 +45,11 @@
                 <div id="navbarCollapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="" class="nav-link active">
+                        <a href="{{url('/')}}" class="nav-link active">
                             Home
                         </a>
                     </li>
-                    <li class="nav-item">
+                   <!-- <li class="nav-item">
                         <a href="" class="nav-link active">
                             Blog
                         </a>
@@ -58,7 +58,7 @@
                         <a href="" class="nav-link active">
                             About
                         </a>
-                    </li>
+                    </li>-->
                      @if (Route::has('login'))
                       @auth
                     <li class="nav-item">
@@ -141,9 +141,9 @@
                                            @foreach($student_status as $val)
                                              <h5>{{$val->appstatus->name ?? 'N/A'}}:  @if ($val->status_file &&
                                                     file_exists(public_path('uploads/status/' . $val->status_file)))
-                                                    <a class="text-black badge badge-danger"
+                                                    <a class="text-black badge badge-success"
                                                         href="{{ asset('uploads/status/' . $val->status_file) }}"
-                                                        download><i class="fa fa-file fa-2x" aria-hidden="true"></i>Download</a>
+                                                        download><i class="fa fa-file " aria-hidden="true"></i>Download</a>
                                                 @else
                                                    <span class="badge badge-danger">no file</span>
                                                    <i class="fa-sharp fa-solid fa-file-arrow-down"></i>
