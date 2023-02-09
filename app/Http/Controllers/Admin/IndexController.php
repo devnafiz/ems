@@ -250,6 +250,17 @@ class IndexController extends Controller
     }
 
 
+    //dashboard appllication progress
+
+    public function applicationProgress(){
+
+    $data['applications']=StudentRegister::where('app_status','<',4)->paginate(10);
+    return view('admin.application.index',$data);
+
+    
+    }
+
+
 
     //all student 
 

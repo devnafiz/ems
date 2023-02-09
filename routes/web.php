@@ -136,6 +136,11 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     //notification
     Route::get('/mark-as-read/{id}',[ApplicationController::class, 'markNotification'])->name('markNotification');
 
+    //dashboard
+    Route::get('/application/progress',[IndexController::class,'applicationProgress'])->name('application.progress');  
+
+
+
 
 
     

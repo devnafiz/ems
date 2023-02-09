@@ -365,9 +365,9 @@
                             {{ $students->photo }}
                         </td>
                         <td>
-                              @if ($students->passport_scanned_file &&
-                                                    file_exists(public_path('uploads/photo/' . $students->passport_scanned_file)))
-                            <a href="{{ asset('uploads/photo') }}/{{ $student->passport_scanned_file }}" download>download</a>
+                              @if ($students->photo_file &&
+                                                    file_exists(public_path('uploads/photo/' . $students->photo_file)))
+                            <a href="{{ asset('uploads/photo') }}/{{ $students->photo_file }}" download>download</a>
                             @else
                                 <h6><span class="badge badge-danger">no file</span></h6>
                              @endif

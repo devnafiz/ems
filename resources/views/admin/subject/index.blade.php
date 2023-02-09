@@ -11,22 +11,22 @@
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400  table-bordered"  >
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th  scope="row" >
+                                <th  scope="row" class="py-1 px-2">
                                     SL
                                 </th>
-                                <th scope="col" class="py-3 px-4">
+                                <th scope="col" class="py-1 px-2">
                                     Name
                                 </th>
                               <!--   <th scope="col" class="py-3 px-6">
                                     Percentage
                                 </th> -->
-                                <th scope="col" class="py-3 px-4">
+                                <th scope="col" class="py-1 px-2">
                                     Programme
                                 </th>
-                                <th scope="col" class="py-3 px-4">
+                                <th scope="col" class="py-1 px-2">
                                     status
                                 </th>
-                                <th scope="col" class="py-3 px-4">
+                                <th scope="col" class="py-1 px-2">
                                     Action
                                 </th>
                             </tr>
@@ -34,23 +34,23 @@
                         <tbody>
                             @foreach($all_data as $k=>$val)
                                 <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                                    <td  class="py-4  px-4 ">
+                                    <td  class="py-1 px-2 ">
                                         {{$k+1}}
                                         
                                     </td>
-                                    <td class="py-4 px-4 font-medium text-gray-800 whitespace-nowrap dark:text-white">
+                                    <td class="py-1 px-2 font-medium text-gray-800 whitespace-nowrap dark:text-white">
                                         {{ $val->subject_name }}
                                     </td>
                                     <!-- <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ $val->percentage }}%
                                     </td> -->
-                                    <td scope="row" class="py-4 px-4 font-medium text-gray-800 whitespace-nowrap dark:text-white">
+                                    <td scope="row" class="py-1 px-2 font-medium text-gray-800 whitespace-nowrap dark:text-white">
                                        <span class="badge badge-success">{{$val->programme->programme_name ?? 'N/A'}}</span>
                                     </td>
-                                     <td scope="row" class="py-4 px-4 font-medium text-gray-800 whitespace-nowrap dark:text-white">
+                                     <td scope="row" class="py-1 px-2 font-medium text-gray-800 whitespace-nowrap dark:text-white">
                                        <span class="badge badge-info">{{($val->status == 1)? 'active' :'inactive'}}</span>
                                     </td>
-                                    <td class="py-4 px-4">
+                                    <td class="py-1 px-2">
                                         <div class="flex space-x-2">
                                             <a href="{{route('admin.subjects.edit',$val->subject_id)}}" class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md">edit</a>
                                                @if($val->status == 1)

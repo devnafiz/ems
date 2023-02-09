@@ -12,26 +12,26 @@
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto table-bordered">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th scope="col" class="py-3 px-1">
+                                <th scope="col" class="py-1 px-2">
                                     SL
                                 </th>
 
-                                <th scope="col" class="py-2 px-1">
+                                <th scope="col" class="py-1 px-2">
                                    Agency Name
                                 </th>
-                                 <th scope="col" class="py-2 px-1">
+                                 <th scope="col" class="py-1 px-2">
                                     Email
                                 </th>
-                                  <th scope="col" class="py-2 px-1">
+                                  <th scope="col" class="py-1 px-2">
                                     Agency Id
                                 </th>
-                                 <th scope="col" class="py-2 px-1">
+                                 <th scope="col" class="py-1 px-2">
                                    Mobile Number
                                 </th>
-                                 <th scope="col" class="py-2 px-1">
+                                 <th scope="col" class="py-1 px-2">
                                    Status
                                 </th>
-                                <th scope="col" class="py-2 px-1">
+                                <th scope="col" class="py-1 px-2">
                                     Action
                                 </th>
                             </tr>
@@ -39,20 +39,20 @@
                         <tbody>
                             @foreach($all_data as $k=>$val)
                                 <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                                    <td class="py-4 px-6 font-medium">{{$k+1}}</td>
-                                    <th scope="row" class="py-4 px-1 font-medium text-gray-800 whitespace-nowrap dark:text-white">
+                                    <td class="py-1 px-2 font-medium">{{$k+1}}</td>
+                                    <th scope="row" class="py-1 px-2 font-medium text-gray-800 whitespace-nowrap dark:text-white">
                                         {{ $val->user->agency_name ?? ''}}
                                     </th>
-                                    <td class="">{{$val->user->email ?? ''}}</td>
-                                     <td class="">{{$val->generated_id ?? 'N/A'}}</td>
-                                    <td class="">{{$val->user->mobile_number ?? ''}}</td>
-                                    <td class="">   @if($val->status == 1)
+                                    <td class="py-1 px-2">{{$val->user->email ?? ''}}</td>
+                                    <td class="py-1 px-2">{{$val->generated_id ?? 'N/A'}}</td>
+                                    <td class="py-1 px-2">{{$val->user->mobile_number ?? ''}}</td>
+                                    <td class="py-1 px-2">   @if($val->status == 1)
                                         <span class="badge badge-pill badge-success"> Active </span>
                                         @else
                                        <span class="badge badge-pill badge-danger"> InActive </span>
                                         @endif
                                     </td>
-                                    <td class="py-4 px-6">
+                                    <td class="py-1 px-2">
                                         <div class="flex space-x-2">
                                              <a href="{{route('admin.agreement.view',$val->id)}}" class="px-4 py-2 bg-green-500 hover:bg-blue-700 text-white rounded-md"><i></i>View</a>
                                             <a href="#" class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"><i></i>Edit</a>

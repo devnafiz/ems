@@ -44,9 +44,12 @@
         <div class="mt-4">
             <x-label for="subject_name" :value="__('Country Name')" />
 
-           <select id="country" name="obtain_single_entry_visa" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+           <select id="country" name="country" class=" form-control form-control-solid bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         @foreach($countries as $k=>$country)
-                                        <option value="{{$country->Name}}" >{{$country->Name}}</option>
+                                        <option value="{{$country->Name}}"  @if($edit_data->profile)
+                                                           {{ ($edit_data->profile->country==$country->Name) ?'selected' : ''}}
+                                                          @else
+                                                          @endif  >{{$country->Name}}</option>
                                         @endforeach
                                     </select>
         </div>

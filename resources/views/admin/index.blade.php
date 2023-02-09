@@ -271,7 +271,11 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
+                  @if($students)
+                  <a href="{{route('admin.student.index')}}">{{$students}}</a>
+                  @else
                    {{$students}}
+                  @endif
                   </p>
                 </div>
               </div>
@@ -299,7 +303,11 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
+                  @if($progress)
+                    <a href="{{route('admin.application.progress')}}"> {{($progress)?? '0'}}</a>
+                  @else
                     {{($progress)?? '0'}}
+                  @endif  
                   </p>
                 </div>
               </div>
@@ -325,7 +333,11 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
+                  @if($progress_com)
+                   <a href=""> {{($progress_com)?? '0'}}</a>
+                  @else
                     {{($progress_com)?? '0'}}
+                   @endif 
                   </p>
                 </div>
               </div>
@@ -357,7 +369,11 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                   {{$agencys}}
+                  @if($agencys)
+                   <a href="">{{$agencys}}</a>
+                  @else
+                  {{$agencys}}
+                  @endif 
                   </p>
                 </div>
               </div>
@@ -385,7 +401,12 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
+                  @if($admin_progress)
+                  <a href=""> {{($admin_progress) ?? '0'}}</a>
+                  @else
                     {{($admin_progress) ?? '0'}}
+                  @endif
+                   
                   </p>
                 </div>
               </div>
@@ -411,7 +432,13 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
+                  @if($admin_agency_com)
+                  <a href="">{{($admin_agency_com) ?? '0'}}</a>
+                  @else
+
                     {{($admin_agency_com) ?? '0'}}
+
+                   @endif 
                   </p>
                 </div>
               </div>
@@ -441,7 +468,11 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
+                  @if($institutes)
+                   <a href=""> {{$institutes}}</a>
+                  @else
                     {{$institutes}}
+                   @endif 
                   </p>
                 </div>
               </div>
@@ -469,7 +500,12 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
+                  @if($admin_In_progress)
+                  <a href="">{{($admin_In_progress) ?? '0'}}</a>
+                  @else
                    {{($admin_In_progress) ?? '0'}}
+
+                   @endif
                   </p>
                 </div>
               </div>
@@ -495,7 +531,11 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
+                  @if($admin_IN_com)
+                   <a href="">{{($admin_IN_com) ?? '0'}}</a>
+                  @else
                     {{($admin_IN_com) ?? '0'}}
+                  @endif  
                   </p>
                 </div>
               </div>
