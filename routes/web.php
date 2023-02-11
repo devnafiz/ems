@@ -14,9 +14,11 @@ use App\Http\Controllers\Admin\ApplicationStatusController;
 use App\Http\Controllers\Admin\ApplicationProgressController;
 use App\Http\Controllers\Admin\ProgramController;
 use App\Http\Controllers\Admin\SubjectController;
+use App\Http\Controllers\Admin\SystemController;
 
 use App\Http\Controllers\Institute\InstituteController;
 use App\Http\Controllers\HomeController;
+use App\Models\SiteSetting;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,20 +32,24 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $data['setting']=SiteSetting::findOrFail(1);
+    return view('welcome',$data);
 });
 
 Route::get('/student', function () {
-    return view('student.register');
+    $data['setting']=SiteSetting::findOrFail(1);
+    return view('student.register',$data);
 })->name('student');
 
 Route::get('/agency', function () {
-    return view('agency.register');
+    $data['setting']=SiteSetting::findOrFail(1);
+    return view('agency.register',$data);
 });
 
 Route::get('/institute',function(){
+    $data['setting']=SiteSetting::findOrFail(1);
   
-  return view('institute.register');
+  return view('institute.register',$data);
 });
 
 Route::get('change-password',[HomeController::class,'ChangePassword'])->name('change.password');
@@ -100,6 +106,11 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::get('/agency/active/{id}', [IndexController::class, 'AgencyActive'])->name('agency.active');
     Route::get('/agency/delete/{id}', [IndexController::class, 'AgencyDelete'])->name('agency.delete');
 
+    //site Setting
+
+    Route::get('/site', [SystemController::class, 'SiteSetting'])->name('site.setting');
+    Route::post('/site/update', [SystemController::class, 'SiteSettingUpdate'])->name('update.sitesetting');
+
     //all Student
 
    // Route::get('/all-student',[IndexController::class,'allStudents'])->name('all.students');
@@ -137,7 +148,9 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::get('/mark-as-read/{id}',[ApplicationController::class, 'markNotification'])->name('markNotification');
 
     //dashboard
-    Route::get('/application/progress',[IndexController::class,'applicationProgress'])->name('application.progress');  
+    Route::get('/application/progress',[IndexController::class,'applicationProgress'])->name('application.progress');
+
+
 
 
 

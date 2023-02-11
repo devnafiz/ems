@@ -39,7 +39,18 @@
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <img src="{{ asset('assets/img/Unice-Education_Malaysia.png') }}" alt="img" style="width:50%;">
+                      @if(!empty($setting))
+                         <a href="{{url('/')}}">
+                     
+                           <img src="{{asset('uploads/logo/'.$setting['logo'])}}" style="width:50%;">
+                        </a>
+                     @else
+                         <a href="{{url('/')}}">
+         
+                          <img src="{{asset('assets/img/Unice-Education_Malaysia.png')}}"   style="width:50%;">
+                        </a>
+                     @endif
+                   <!--  <img src="{{ asset('assets/img/Unice-Education_Malaysia.png') }}" alt="img" style="width:50%;"> -->
                 </div>
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">

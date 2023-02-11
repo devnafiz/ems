@@ -1,7 +1,17 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-              <img src="{{asset('assets/img/Unice-Education_Malaysia.png')}}" width="100%" class="max-w-xl  h-30 fill-current text-gray-500 px-4" style="padding: 68px;">
+            @if(!empty($setting))
+             <a href="{{url('/')}}">
+         
+            <img src="{{asset('uploads/logo/'.$setting['logo'])}}" width="100%" class="max-w-xl  h-30 fill-current text-gray-500 px-4" style="padding: 68px;">
+        </a>
+            @else
+               <a href="{{url('/')}}">
+         
+            <img src="{{asset('assets/img/Unice-Education_Malaysia.png')}}" width="100%" class="max-w-xl  h-30 fill-current text-gray-500 px-4" style="padding: 68px;">
+        </a>
+        @endif
             <h2 style="font-size: 1.5em;text-align: center;">Agency Registration</h2>
         </x-slot>
          @if(Session::has('message'))

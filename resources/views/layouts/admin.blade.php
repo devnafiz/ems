@@ -59,6 +59,7 @@
     <?php
        $notifications = auth()->user()->unreadNotifications->count();
        $notifications_all = auth()->user()->unreadNotifications;
+       $setting =DB::table('site_settings')->first();
 
     ?>
     <!-- npm run watch -->
@@ -99,10 +100,10 @@
       <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0" style="background-color: #3e84d5 !important;">
         <div class="py-4 text-gray-500 dark:text-gray-400">
           <a
-            class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
+            class="ml-6 text-sm font-bold text-gray-900 dark:text-gray-200"
             href="#"
           >
-          Unice Education
+          {{($setting->site_name) ?? 'Name Here'}}
           </a>
           <ul class="mt-6">
             <li class="relative px-6 py-1">

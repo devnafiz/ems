@@ -2,10 +2,17 @@
     <x-auth-card>
        
         <x-slot name="logo" class="px-4">
+            @if(!empty($setting))
+             <a href="{{url('/')}}">
+         
+            <img src="{{asset('uploads/logo/'.$setting['logo'])}}" width="100%" class="max-w-xl  h-30 fill-current text-gray-500 px-4" style="padding: 68px;">
+        </a>
+            @else
                <a href="{{url('/')}}">
          
             <img src="{{asset('assets/img/Unice-Education_Malaysia.png')}}" width="100%" class="max-w-xl  h-30 fill-current text-gray-500 px-4" style="padding: 68px;">
         </a>
+        @endif
         </x-slot>
    
         <br/><br/>

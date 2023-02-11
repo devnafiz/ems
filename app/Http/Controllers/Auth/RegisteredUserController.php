@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Models\SiteSetting;
 
 
 class RegisteredUserController extends Controller
@@ -29,8 +30,8 @@ class RegisteredUserController extends Controller
 
     public function angencyRegister(){
 
-
-        return view('agency.register');
+       $data['setting']= SiteSetting::findOrFail(1);
+        return view('agency.register',$data);
     }
 
     /**
