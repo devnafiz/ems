@@ -334,7 +334,7 @@
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
                   @if($progress_com)
-                   <a href=""> {{($progress_com)?? '0'}}</a>
+                   <a href="{{route('admin.application.completed')}}"> {{($progress_com)?? '0'}}</a>
                   @else
                     {{($progress_com)?? '0'}}
                    @endif 
@@ -370,7 +370,7 @@
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
                   @if($agencys)
-                   <a href="">{{$agencys}}</a>
+                   <a href="{{route('admin.all.agency')}}">{{$agencys}}</a>
                   @else
                   {{$agencys}}
                   @endif 
@@ -444,9 +444,11 @@
               </div>
              
             </div>
-            <!-- Cards -->
-                    <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-              <!-- Card -->
+
+
+           
+         <!-- <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+             
               <div
                 class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
               >
@@ -476,7 +478,7 @@
                   </p>
                 </div>
               </div>
-              <!-- Card -->
+              
               <div
                 class="flex items-center p-4 bg-blue-100 rounded-lg shadow-xs dark:bg-gray-800"
               >
@@ -509,7 +511,7 @@
                   </p>
                 </div>
               </div>
-              <!-- Card -->
+              
               <div
                 class="flex items-center p-5 bg-red-100 rounded-lg shadow-xs dark:bg-gray-800"
               >
@@ -539,6 +541,7 @@
                   </p>
                 </div>
               </div>
+            </div>-->
               <!-- Card -->
               @endrole
              

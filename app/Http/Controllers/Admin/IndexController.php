@@ -260,6 +260,12 @@ class IndexController extends Controller
     
     }
 
+    public function applicationCompleted(){
+
+          $data['applications']=StudentRegister::where('app_status','>=',6)->paginate(10);
+          return view('admin.application.index',$data);
+    }
+
 
 
     //all student 

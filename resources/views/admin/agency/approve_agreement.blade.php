@@ -56,7 +56,7 @@
                                               <p style="font-size:11px;float:left;"> SL no: {{$items->generated_id}}</p>
                                               <div style="float: right;left: 100px;position: relative;">
                                                 @if($items->signature_image)
-                                                  <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/assets/img/Certified-Stamp-PNG-Clipart-Background.png'))) }}" width="150" height="150">
+                                                 <!--  <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/assets/img/Certified-Stamp-PNG-Clipart-Background.png'))) }}" width="150" height="150"> -->
                                                 @endif 
                                                
                                               </div>

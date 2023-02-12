@@ -149,6 +149,7 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
 
     //dashboard
     Route::get('/application/progress',[IndexController::class,'applicationProgress'])->name('application.progress');
+    Route::get('/application/completed',[IndexController::class,'applicationCompleted'])->name('application.completed');
 
 
 
