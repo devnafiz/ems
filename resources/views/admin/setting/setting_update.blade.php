@@ -86,20 +86,59 @@
         
        
         <!-- Photo -->
-        <div class="mt-4">
-            <x-label class="block mb-2 text-sm font-medium text-gray-800 dark:text-gray-300" for="photo">Site Logo</x-label>
-            <span class="sr-only">Choose Logo</span>
-            <input type="file" id="logo" name="logo"
-              class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+        <div class="row">
+          <div class="col-md-4">
+              <div class="mt-4">
+                  <x-label class="block mb-2 text-sm font-medium text-gray-800 dark:text-gray-300" for="photo">Site Logo</x-label>
+                  <span class="sr-only">Choose Logo</span>
+                  <input type="file" id="logo" name="logo"
+                    class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
 
-              <div class="col-md-3">
-                        @if ($edit_data->logo &&
-                        file_exists(public_path('uploads/logo/' . $edit_data->logo)))
-                        <a class="text-black" href="{{ asset('uploads/logo/' . $edit_data->logo) }}" download><i class="fa fa-file fa-3x" aria-hidden="true"></i></a>
-                        @else
-                        <h6><span class="badge badge-danger">No Logo</span></h6>
-                        @endif
-          </div>
+                    <div class="col-md-3">
+                              @if ($edit_data->logo &&
+                              file_exists(public_path('uploads/logo/' . $edit_data->logo)))
+                              <a class="text-black" href="{{ asset('uploads/logo/' . $edit_data->logo) }}" download><i class="fa fa-file fa-3x" aria-hidden="true"></i>Download</a>
+                              @else
+                              <h6><span class="badge badge-danger">No Logo</span></h6>
+                              @endif
+                     </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mt-4">
+                  <x-label class="block mb-2 text-sm font-medium text-gray-800 dark:text-gray-300" for="photo">Admin Signature</x-label>
+                  <span class="sr-only">Admin Signature</span>
+                  <input type="file" id="signature" name="signature"
+                    class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+
+                    <div class="col-md-3">
+                              @if ($edit_data->signature &&
+                              file_exists(public_path('uploads/logo/' . $edit_data->signature)))
+                              <a class="text-black" href="{{ asset('uploads/logo/' . $edit_data->signature) }}" download><i class="fa fa-file fa-3x" aria-hidden="true"></i>Download</a>
+                              @else
+                              <h6><span class="badge badge-danger">No signature</span></h6>
+                              @endif
+                     </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mt-4">
+                  <x-label class="block mb-2 text-sm font-medium text-gray-800 dark:text-gray-300" for="photo">Certificate Logo</x-label>
+                  <span class="sr-only">Certificate Logo</span>
+                  <input type="file" id="certificate_logo" name="certificate_logo"
+                    class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+
+                    <div class="col-md-3">
+                              @if ($edit_data->certificate_logo &&
+                              file_exists(public_path('uploads/logo/' . $edit_data->certificate_logo)))
+                              <a class="text-black" href="{{ asset('uploads/logo/' . $edit_data->certificate_logo) }}" download><i class="fa fa-file fa-3x" aria-hidden="true"></i>Download</a>
+                              @else
+                              <h6><span class="badge badge-danger">No Logo</span></h6>
+                              @endif
+                     </div>
+                </div>
+            </div>
+
         </div>
 
       

@@ -36,6 +36,25 @@ class SystemController extends Controller
            
         }
 
+          if (!empty($request->file('signature'))) {
+            $signatures = uniqid() . '.' . $request->signature->getClientOriginalExtension();
+            $request->signature->move(public_path('uploads/logo/'), $signatures);
+            //dd($logo);
+            $setting_data['signature'] = $signatures;
+           
+        }
+          if (!empty($request->file('certificate_logo'))) {
+            $certificate_logo = uniqid() . '.' . $request->certificate_logo->getClientOriginalExtension();
+            $request->certificate_logo->move(public_path('uploads/logo/'), $certificate_logo);
+            //dd($logo);
+            $setting_data['certificate_logo'] = $certificate_logo;
+           
+        }
+
+
+
+
+
          
         //$image = $request->file('logo');
         //$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
@@ -61,6 +80,21 @@ class SystemController extends Controller
             //dd($setting_data['logo']);
             //dd($agreement['signature_image']);
         }
+         if (!empty($request->file('signature'))) {
+            $signatures = uniqid() . '.' . $request->signature->getClientOriginalExtension();
+            $request->signature->move(public_path('uploads/logo/'), $signatures);
+            //dd($logo);
+            $setting_data['signature'] = $signatures;
+           
+        }
+          if (!empty($request->file('certificate_logo'))) {
+            $certificate_logo = uniqid() . '.' . $request->certificate_logo->getClientOriginalExtension();
+            $request->certificate_logo->move(public_path('uploads/logo/'), $certificate_logo);
+            //dd($logo);
+            $setting_data['certificate_logo'] = $certificate_logo;
+           
+        }
+
 
         SiteSetting::findOrFail($setting_id)->update($setting_data);
 
@@ -120,6 +154,8 @@ public function siteSettingValidation()
             'linkedin' => 'nullable|string|max:255',
             'youtube' => 'nullable|string|max:255',
             'logo' => 'nullable|file',
+            'signature'=>'nullable|file',
+            'certificate_logo'=>'nullable|file',
          
         ]);
     }

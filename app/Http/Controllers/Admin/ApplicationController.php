@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\DealMail;
 
 use Session;
+use App\Models\SiteSetting;
 
 class ApplicationController extends Controller
 {
@@ -304,6 +305,9 @@ class ApplicationController extends Controller
     public function AgreementApproved($id){
 
         $data['all_data']=Agreement::with('user')->findOrfail($id);
+        $data['items'] =Agreement::with('user')->where('id',$id)->first();
+         $data['setting']=SiteSetting::findOrFail(1);
+         //dd($data['items']);
         return view('admin.agency.approve_agreement',$data);
 
     }

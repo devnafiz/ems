@@ -11,5 +11,5 @@ class SiteSetting extends Model
 
     protected $table ='site_settings';
 
-    protected $fillable =['site_name','logo','phone_one','email','company_name','company_address','facebook','twitter','linkedin','youtube'];
+    protected $fillable =['site_name','logo','phone_one','email','company_name','company_address','facebook','twitter','linkedin','youtube','signature','certificate_logo'];
 }

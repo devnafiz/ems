@@ -42,7 +42,7 @@
                       @if(!empty($setting))
                          <a href="{{url('/')}}">
                      
-                           <img src="{{asset('uploads/logo/'.$setting['logo'])}}" style="width:50%;">
+                           <img src="{{asset('uploads/logo/'.$setting['logo'])}}" style="width:100%;">
                         </a>
                      @else
                          <a href="{{url('/')}}">
