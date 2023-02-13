@@ -32,34 +32,30 @@ class IndexController extends Controller
         $data['progress']=StudentRegister::where('app_status','<',4)->count();
         $data['progress_com']=StudentRegister::where('app_status','>=',6)->count();
 
+        
+
         $ag='AG';
-        $query = StudentRegister::where('app_status','<',4)->get();
-        if($query->count()>0){
-        foreach($query as $q){
+        $query= StudentRegister::Where('reference_id', 'LIKE', '%'.$ag.'%')->where('app_status','<=',4)->count();
+        //$query = StudentRegister::where('app_status','<',4)->get();
+        if($query>0){
+        
 
-           $k=$q->Where('reference_id', 'LIKE', '%'.$ag.'%');
-
-        }
-
-        $data['admin_progress'] =$k->count();
+        $data['admin_progress'] = $query;
        }else{
          $data['admin_progress']='0';
        }
 
 
 
-         $query2 = StudentRegister::where('app_status','>=',6)->get();
-         if($query2->count()>0){
-        foreach($query2 as $q){
+        // $query2 = StudentRegister::where('app_status','>=',6)->get();
+     $query2= StudentRegister::Where('reference_id', 'LIKE', '%'.$ag.'%')->where('app_status','>=',6)->count();
+         if($query2>0){
+       
 
-           $c=$q->Where('reference_id', 'LIKE', '%'.$ag.'%');
+            $data['admin_agency_com'] =$query2;
+          }else{
 
-        }
-
-        $data['admin_agency_com'] =$c->count();
-       }else{
-
-        $data['admin_agency_com'] ='0';
+          $data['admin_agency_com'] ='0';
        }
 
  //Institute
@@ -264,6 +260,29 @@ class IndexController extends Controller
 
           $data['applications']=StudentRegister::where('app_status','>=',6)->paginate(10);
           return view('admin.application.index',$data);
+    }
+
+    public function applicationProgressAgency(){
+
+        $ag='AG';
+        $data['applications']= StudentRegister::Where('reference_id', 'LIKE', '%'.$ag.'%')->where('app_status','<=',4)->paginate(10);
+       
+        
+
+        return view('admin.application.index',$data);
+
+       
+    }
+
+
+    public function applicationCompletedAgency(){
+
+         $ag='AG';
+        $data['applications']= StudentRegister::Where('reference_id', 'LIKE', '%'.$ag.'%')->where('app_status','>=',6)->paginate(10);
+       
+        
+
+        return view('admin.application.index',$data);
     }
 
 

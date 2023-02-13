@@ -402,7 +402,7 @@
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
                   @if($admin_progress)
-                  <a href=""> {{($admin_progress) ?? '0'}}</a>
+                  <a href="{{route('admin.application.agency.progress')}}"> {{($admin_progress) ?? '0'}}</a>
                   @else
                     {{($admin_progress) ?? '0'}}
                   @endif
@@ -433,7 +433,7 @@
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
                   @if($admin_agency_com)
-                  <a href="">{{($admin_agency_com) ?? '0'}}</a>
+                  <a href="{{route('admin.application.agency.completed')}}">{{($admin_agency_com) ?? '0'}}</a>
                   @else
 
                     {{($admin_agency_com) ?? '0'}}
